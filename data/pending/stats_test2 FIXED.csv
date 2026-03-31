@@ -1,0 +1,15 @@
+PROJECT,Test Project Null data desc
+,4
+,10
+,12
+PROJECT,No data project
+PROJECT,Project with nulls in data
+A,1
+B,2
+,3
+D,99
+E,100
+PROJECT,Project with correct data
+Ian,56
+Iana,7
+Liz,71
