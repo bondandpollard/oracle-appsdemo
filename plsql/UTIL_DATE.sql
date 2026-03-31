@@ -9,16 +9,18 @@ CREATE OR REPLACE PACKAGE util_date AS
   **------------------------------------------------------------------------
   ** Modification History
   **  
-  ** Date            Name                 Description
+  ** Date             Name                Description
   **------------------------------------------------------------------------
-  ** 16/06/2022      Ian Bond             Program created
-  ** 21/08/2023      Ian Bond             Use to_number function when assigning 
+  ** 16/06/2022       Ian Bond            Program created
+  ** 21/08/2023       Ian Bond            Use to_number function when assigning 
   **                                      char values to numeric variables. 
-  ** 24/09/2025      Ian Bond             Add exceptions to handle incorrect input
+  ** 24/09/2025       Ian Bond            Add exceptions to handle incorrect input
   **                                      values such as years containing letters or
   **                                      decimals.
-  ** 27/09/2025      Ian Bond             Improve exception handling.
-  **   
+  ** 27/09/2025       Ian Bond            Improve exception handling.
+  ** 31/03/2026       Ian Bond            Change function names:
+  **                                        first_day_month --> month_first_day
+  **                                        last_day_month  --> month_day_last
   */
 
 
@@ -176,12 +178,12 @@ CREATE OR REPLACE PACKAGE util_date AS
     ) RETURN DATE;
 
   /*
-  ** first_day_month - First date in month for specified day
+  ** month_day_first - First date in month for specified day
   **
   ** Return the date of the first occurrence of the specified day of the week in the month.
   **
   ** For example, to find the first Tuesday (day 2) in August 2022:
-  **   l_first_date := util_date.first_day_month(to_date('01-AUG-22','DD-MON-RR'),2);
+  **   l_first_date := util_date.month_day_first(to_date('01-AUG-22','DD-MON-RR'),2);
   **
   ** This will give the date 2-AUG-22 which is the first Tuesday in August.
   **
@@ -189,24 +191,29 @@ CREATE OR REPLACE PACKAGE util_date AS
   **   p_date         - Any valid date in the target month 
   **   p_day_no       - Number indicating the day 
   **                      1 = Monday
-  **                      2 = Tuesday etc.
+  **                      2 = Tuesday
+  **                      3 = Wednesday
+  **                      4 = Thursday
+  **                      5 = Friday
+  **                      6 = Saturday
+  **                      7 = Sunday
   ** RETURN
   **   DATE  the date on which the specified day first occurs in month
   ** EXCEPTIONS
   **   <exception_name1>      - <brief description>
   */
-  FUNCTION first_day_month(
+  FUNCTION month_day_first(
     p_date   IN DATE, 
     p_day_no IN NUMBER
     ) RETURN DATE;
 
   /*
-  ** last_day_month - Last day in month that a given day occurs
+  ** month_day_last - Last day in month that a given day occurs
   **
   ** Return the date of the last occurrence of the specified day of the week in the month.
   **
   ** For example, to find the last Tuesday (day 2) in August 2022:
-  **   l_last_date := util_date.last_day_month(to_date('01-AUG-22','DD-MON-RR'),2);
+  **   l_last_date := util_date.month_day_last(to_date('01-AUG-22','DD-MON-RR'),2);
   **
   ** This will give the date 30-AUG-22 which is the last Tuesday in August.
   **
@@ -214,13 +221,18 @@ CREATE OR REPLACE PACKAGE util_date AS
   **   p_date         - Any valid date in the target month 
   **   p_day_no       - Number indicating the day 
   **                      1 = Monday
-  **                      2 = Tuesday etc.
+  **                      2 = Tuesday
+  **                      3 = Wednesday
+  **                      4 = Thursday
+  **                      5 = Friday
+  **                      6 = Saturday
+  **                      7 = Sunday
   ** RETURN
   **   DATE  the date on which the specified day last occurs in month
   ** EXCEPTIONS
   **   <exception_name1>      - <brief description>
   */
-  FUNCTION last_day_month(
+  FUNCTION month_day_last(
     p_date   IN DATE, 
     p_day_no IN NUMBER
     ) RETURN DATE;
@@ -591,12 +603,20 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
   **------------------------------------------------------------------------
   ** Modification History
   **  
-  ** Date            Name                 Description
+  ** Date             Name                Description
   **------------------------------------------------------------------------
-  ** 16/06/2022      Ian Bond             Program created
-  ** 24/09/2025      Ian Bond             Add exception handler to easter_sunday.
-  ** 27/09/2025      Ian Bond             Improve exception handling.  
+  ** 16/06/2022       Ian Bond            Program created
+  ** 21/08/2023       Ian Bond            Use to_number function when assigning 
+  **                                      char values to numeric variables. 
+  ** 24/09/2025       Ian Bond            Add exceptions to handle incorrect input
+  **                                      values such as years containing letters or
+  **                                      decimals.
+  ** 27/09/2025       Ian Bond            Improve exception handling.
+  ** 31/03/2026       Ian Bond            Change function names:
+  **                                        first_day_month --> month_first_day
+  **                                        last_day_month  --> month_day_last
   */
+
 
 
   /*
@@ -719,7 +739,7 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
       RETURN NULL;
   END first_day;
 
-  FUNCTION first_day_month(
+  FUNCTION month_day_first(
     p_date   IN DATE, 
     p_day_no IN NUMBER
   ) 
@@ -744,14 +764,14 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
     RETURN v_result_date;
   EXCEPTION
     WHEN out_of_range THEN
-      util_admin.log_message('Day number ' || to_char(p_day_no) || ' not in range 1 to 7.' ,sqlerrm, 'UTIL_DATE.FIRST_DAY_MONTH', 'S', gc_error);
+      util_admin.log_message('Day number ' || to_char(p_day_no) || ' not in range 1 to 7.' ,sqlerrm, 'UTIL_DATE.MONTH_DAY_FIRST', 'S', gc_error);
       RETURN NULL;
     WHEN OTHERS THEN
-      util_admin.log_message('Unexpected eror.' ,sqlerrm, 'UTIL_DATE.FIRST_DAY_MONTH', 'S', gc_error);
+      util_admin.log_message('Unexpected eror.' ,sqlerrm, 'UTIL_DATE.MONTH_DAY_FIRST', 'S', gc_error);
       RETURN NULL;
-  END first_day_month;
+  END month_day_first;
 
-  FUNCTION last_day_month(
+  FUNCTION month_day_last(
     p_date   IN DATE, 
     p_day_no IN NUMBER
   ) 
@@ -776,12 +796,12 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
     RETURN v_result_date;
   EXCEPTION
     WHEN out_of_range THEN
-      util_admin.log_message('Day number ' || to_char(p_day_no) || ' not in range 1 to 7.' ,sqlerrm, 'UTIL_DATE.LAST_DAY_MONTH', 'S', gc_error);
+      util_admin.log_message('Day number ' || to_char(p_day_no) || ' not in range 1 to 7.' ,sqlerrm, 'UTIL_DATE.MONTH_DAY_LAST', 'S', gc_error);
       RETURN NULL;
     WHEN OTHERS THEN
-      util_admin.log_message('Unexpected eror.' ,sqlerrm, 'UTIL_DATE.LAST_DAY_MONTH', 'S', gc_error);
+      util_admin.log_message('Unexpected eror.' ,sqlerrm, 'UTIL_DATE.MONTH_DAY_LAST', 'S', gc_error);
       RETURN NULL;
-  END last_day_month;
+  END month_day_last;
 
   FUNCTION first_workday_month(
     p_date             IN DATE, 
