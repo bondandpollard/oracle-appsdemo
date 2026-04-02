@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="02955888-6D00-053A-2969-22C81AF47460" containerWithKeyObject="DF5F8184-872E-5468-B7D5-618B9EFA8F23" localFKIndex="670AF626-F1F5-9A32-5275-CDB424A2716C" name="APPLOG_APPSEVERITY_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:14:27 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<referredTableLongName>APPSEVERITY</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>04F9F3C5-41FD-F133-ECC2-67BB059A87A6</referredTableID>
+<keyObject>CCA862B2-4C54-68D3-DA2A-DD7255E29AC4</keyObject>
+<referredKeyID>CCA862B2-4C54-68D3-DA2A-DD7255E29AC4</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>SEVERITY</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
