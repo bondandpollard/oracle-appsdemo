@@ -1,0 +1,155 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9A96D5D5-7C8F-CCD7-9684-A02DB6D3FDC1" name="EMP">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-20 08:26:49 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EMPNO" id="6F77D32D-69E0-F49A-B910-2ED4F2EFE3CA">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-20 08:33:21 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ENAME" id="5A3DFF17-D515-26F6-8C5C-DD1AB89AA757">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-20 08:34:25 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="JOB" id="053B0C44-9D1A-0CDE-7062-579021836DD8">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-20 08:34:48 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MGR" id="B98887D7-E27D-BB05-9375-D70FDEC2093E">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-20 08:35:23 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="947BE35D-9226-A0F6-D93E-677EAE801518" referredColumn="6F77D32D-69E0-F49A-B910-2ED4F2EFE3CA"/>
+</associations>
+</Column>
+<Column name="HIREDATE" id="D9497906-FBB0-9621-3189-967E9BE89458">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 19:54:26 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SAL" id="7CEDF932-9B05-700D-8854-1CC1DDDE17EB">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 19:55:03 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMM" id="8DD9A3C0-26D3-EF5C-95F2-2114E87B356A">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 19:55:28 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DEPTNO" id="DF493893-66F5-A273-15F9-1AC4CC983F11">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 21:11:52 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="38FC14E7-914B-A613-88DF-D53494D88380" referredColumn="CB4CDA97-E79D-E8C8-4327-2F8CF2F65E96"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ABF0125D-EB60-7660-087E-8B26B2423919" name="EMP_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-20 08:33:21 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6F77D32D-69E0-F49A-B910-2ED4F2EFE3CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2FD3ACEE-148C-F53C-BB98-3D266F43E0CF" name="EMP_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 21:47:00 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6F77D32D-69E0-F49A-B910-2ED4F2EFE3CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7B8D7AC8-885B-9878-A016-B5697209A6DE" name="EMP_MGR_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 21:40:08 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B98887D7-E27D-BB05-9375-D70FDEC2093E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9F5A3996-3BFB-2151-92D5-129B50DC2B07" name="EMP_DEPTNO_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 22:00:25 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF493893-66F5-A273-15F9-1AC4CC983F11"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
