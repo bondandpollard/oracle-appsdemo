@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DF5F8184-872E-5468-B7D5-618B9EFA8F23" name="APPLOG">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 13:37:44 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RECID" id="1B77756F-BD82-1358-FF38-A04860A74F57">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 14:32:47 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>28</dataTypePrecision>
+<ownDataTypeParameters>,28,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MESSAGE" id="27E321D4-8813-F8E3-53F1-81ADA366578C">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 14:44:46 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LOGGED_AT" id="32839C7E-76C8-4C6B-6C74-B3E9EC8CBD8A">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:08:02 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_NAME" id="A525FC8E-9530-91F7-8A6B-756C58B0A935">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:10:55 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="APPLOG_SQLERRM" id="7DEF6631-8953-2F40-7641-41EDA9815B64">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:11:24 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROGRAM_NAME" id="51E26675-9EBF-61CE-B251-89C05EB6DBCF">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:11:50 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SEVERITY" id="3B84A017-5627-0257-CCA5-7DBF2F05B337">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:12:16 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="02955888-6D00-053A-2969-22C81AF47460" referredColumn="B4BCE554-8C73-C4CC-3278-FDB452161506"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3B053CD7-9760-D52A-0232-DF80DFAC2CBD" name="APPLOG_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:13:09 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B77756F-BD82-1358-FF38-A04860A74F57"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6AF07C97-79C5-0E8F-9374-0912A088693B" name="APPLOG_IDX">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:13:00 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B77756F-BD82-1358-FF38-A04860A74F57"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="670AF626-F1F5-9A32-5275-CDB424A2716C" name="APPLOG_APPSEVERITY_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:14:27 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3B84A017-5627-0257-CCA5-7DBF2F05B337"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
