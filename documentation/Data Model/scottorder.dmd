@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="scottorder" id="636CEBC1-38CB-53DA-019E-96DF5DC6A72C" version="3.5">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:39:45 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>636CEBC1-38CB-53DA-019E-96DF5DC6A72C</designId>
+</OSDM_Design>
