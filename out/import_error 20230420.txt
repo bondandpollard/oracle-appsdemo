@@ -1,0 +1,55 @@
+columns cleared
+breaks cleared
+computes cleared
+                                                                                       Bond and Pollard Limited                                                                                       
+                                                                                       ========================                                                                                       
+Data Import Error Report                                                                                                                                                              Page:          1
+                                                                                                                                                                                                      
+                                                                                                                                                                                                      
+Rec ID Filename             Key Value       Data                 Message                        SQLERRM                        Date                 User           
+------ -------------------- --------------- -------------------- ------------------------------ ------------------------------ -------------------- ---------------
+   104 order_data 017 ERROR TEST0040        TEST0040,27/08/2022, Customer ID 103Z invalid                                      20-APR-23 12:04:32.9 APPSDEMO       
+       S.csv                                C,103Z,02/082022,101                                                               26000                               
+                                            863,12                                                                                                                 
+
+   105                      TEST0040        TEST0040,27/08/2022, Ship Date 02/082022 must be on                                20-APR-23 12:04:32.9 APPSDEMO       
+                                            C,103Z,02/082022,101  or later than the order date                                 63000                               
+                                            863,12               27/08/2022                                                                                        
+
+   106                      TEST0040        TEST0040,27/08/2022, Customer ID 103Z invalid                                      20-APR-23 12:04:32.9 APPSDEMO       
+                                            C,103Z,02/08/2022,10                                                               64000                               
+                                            0890Z,24                                                                                                               
+
+   107                      TEST0040        TEST0040,27/08/2022, Ship Date 02/08/2022 must be o                                20-APR-23 12:04:32.9 APPSDEMO       
+                                            C,103Z,02/08/2022,10 n or later than the order date                                64000                               
+                                            0890Z,24              27/08/2022                                                                                       
+
+   108                      TEST0040        TEST0040,27/08/2022, Product ID 100890Z invalid                                    20-APR-23 12:04:32.9 APPSDEMO       
+                                            C,103Z,02/08/2022,10                                                               64000                               
+                                            0890Z,24                                                                                                               
+
+   109                      TEST0040        TEST0040,27/08/2022, Customer ID 103Z invalid                                      20-APR-23 12:04:32.9 APPSDEMO       
+                                            C,103Z,02/08/2022,10                                                               65000                               
+                                            2130,100                                                                                                               
+
+   110                      TEST0040        TEST0040,27/08/2022, Ship Date 02/08/2022 must be o                                20-APR-23 12:04:32.9 APPSDEMO       
+                                            C,103Z,02/08/2022,10 n or later than the order date                                65000                               
+                                            2130,100              27/08/2022                                                                                       
+
+   111                      TEST0042        TEST0042,03/09/2022, Ship Date 02/09/2022 must be o                                20-APR-23 12:04:32.9 APPSDEMO       
+                                            ,101,02/09/2022,1018 n or later than the order date                                66000                               
+                                            63,9                  03/09/2022                                                                                       
+
+   112                      TEST0042        TEST0042,03/09/2022, Ship Date 02/09/2022 must be o                                20-APR-23 12:04:32.9 APPSDEMO       
+                                            ,101,02/09/2022,2003 n or later than the order date                                67000                               
+                                            80,51A                03/09/2022                                                                                       
+
+   113                      TEST0042        TEST0042,03/09/2022, Qty 51A invalid                                               20-APR-23 12:04:32.9 APPSDEMO       
+                                            ,101,02/09/2022,2003                                                               67000                               
+                                            80,51A                                                                                                                 
+
+
+
+
+10 rows selected. 
+

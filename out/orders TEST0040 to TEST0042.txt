@@ -1,0 +1,91 @@
+columns cleared
+breaks cleared
+computes cleared
+old:SELECT O.ordid,
+       O.ordref,
+       O.orderdate,
+       O.shipdate,
+       O.commplan,
+       O.total,
+       O.custid,
+       C.name,
+       E.ename,
+       I.itemid,
+       I.prodid,
+       P.descrip,
+       I.actualprice,
+       I.qty,
+       I.itemtot
+FROM   ord O,
+       customer C,
+       emp E,
+       item I,
+       product P
+WHERE  ((O.ordref >= NVL('&p_ordref_from',O.ordref) AND O.ordref <= NVL('&p_ordref_to',O.ordref)) OR (O.ordref IS NULL AND '&p_ordref_from' IS NULL))
+AND    O.orderdate >= NVL(to_date('&p_orderdate_from','DD/MM/YYYY'),O.orderdate) AND O.orderdate <= NVL(to_date('&p_orderdate_to','DD/MM/YYYY'),O.orderdate)
+AND    C.custid = O.custid
+AND    E.empno = C.repid
+AND    I.ordid (+) = O.ordid
+AND    P.prodid (+) = I.prodid
+ORDER BY O.ordid, I.itemid
+new:SELECT O.ordid,
+       O.ordref,
+       O.orderdate,
+       O.shipdate,
+       O.commplan,
+       O.total,
+       O.custid,
+       C.name,
+       E.ename,
+       I.itemid,
+       I.prodid,
+       P.descrip,
+       I.actualprice,
+       I.qty,
+       I.itemtot
+FROM   ord O,
+       customer C,
+       emp E,
+       item I,
+       product P
+WHERE  ((O.ordref >= NVL('TEST0040',O.ordref) AND O.ordref <= NVL('TEST0042',O.ordref)) OR (O.ordref IS NULL AND 'TEST0040' IS NULL))
+AND    O.orderdate >= NVL(to_date('','DD/MM/YYYY'),O.orderdate) AND O.orderdate <= NVL(to_date('','DD/MM/YYYY'),O.orderdate)
+AND    C.custid = O.custid
+AND    E.empno = C.repid
+AND    I.ordid (+) = O.ordid
+AND    P.prodid (+) = I.prodid
+ORDER BY O.ordid, I.itemid
+                                                     Bond and Pollard Limited                                                     
+                                                     ========================                                                     
+Sales Order Report                                                                                                Page:          1
+                                                                                                                                  
+                                                                                                                                  
+Order ID Ord Ref    Date Ordered To Ship      Comm       Total   Cust Name            Rep        Item Product Description
+-------- ---------- ------------ ------------ ---- ----------- ------ --------------- ---------- ---- ------- --------------------
+    Price      Qty  Item Total
+--------- -------- -----------
+   10856 TEST0040   27-AUG-22    02-SEP-22    C       1,882.00    103 JUST TENNIS     WARD          1  101863 SP JUNIOR RACKET     
+    12.50       12      150.00
+
+   10856 TEST0040   27-AUG-22    02-SEP-22    C       1,882.00    103 JUST TENNIS     WARD          2  100890 ACE TENNIS NET       
+    58.00       24    1,392.00
+
+   10856 TEST0040   27-AUG-22    02-SEP-22    C       1,882.00    103 JUST TENNIS     WARD          3  102130 RH: "GUIDE TO TENNIS 
+                                                                                                              "      3.40      100 
+     340.00
+
+   10857 TEST0041   29-AUG-22    03-SEP-22    C       4,238.50    101 TKB SPORT SHOP  WARD          1  101863 SP JUNIOR RACKET     
+    12.50        5       62.50
+
+   10857 TEST0041   29-AUG-22    03-SEP-22    C       4,238.50    101 TKB SPORT SHOP  WARD          2  100890 ACE TENNIS NET       
+    58.00       72    4,176.00
+
+   10858 TEST0042   03-SEP-22    03-SEP-22              316.50    101 TKB SPORT SHOP  WARD          1  101863 SP JUNIOR RACKET     
+    12.50        9      112.50
+
+   10858 TEST0042   03-SEP-22    03-SEP-22              316.50    101 TKB SPORT SHOP  WARD          2  200380 SB VITA SNACK-6 PACK 
+     4.00       51      204.00
+
+
+7 rows selected. 
+
