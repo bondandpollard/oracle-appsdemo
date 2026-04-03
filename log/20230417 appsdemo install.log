@@ -1,0 +1,1186 @@
+The schema appsdemo will be dropped/created
+Connect with SYS AS DBA, enter SYS password
+Connected.
+old:  DROP USER &v_connect_user CASCADE
+new:DROP USER demo_connect CASCADE
+
+User DEMO_CONNECT dropped.
+
+old:  CREATE USER &v_connect_user IDENTIFIED BY &v_connect_pwd DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp
+new:CREATE USER demo_connect IDENTIFIED BY mydemo23 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp
+
+User DEMO_CONNECT created.
+
+old:  GRANT CONNECT TO &v_connect_user
+new:GRANT CONNECT TO demo_connect
+
+Grant succeeded.
+
+old:  DROP USER &v_app_owner CASCADE
+new:DROP USER appsdemo CASCADE
+
+User APPSDEMO dropped.
+
+old:  CREATE USER &v_app_owner IDENTIFIED BY &v_password DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp
+new:CREATE USER appsdemo IDENTIFIED BY tiger DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp
+
+User APPSDEMO created.
+
+old:  ALTER USER &v_app_owner QUOTA UNLIMITED ON users
+new:ALTER USER appsdemo QUOTA UNLIMITED ON users
+
+User APPSDEMO altered.
+
+old:  GRANT CONNECT, RESOURCE, CREATE VIEW, CREATE PUBLIC SYNONYM TO &v_app_owner
+new:GRANT CONNECT, RESOURCE, CREATE VIEW, CREATE PUBLIC SYNONYM TO appsdemo
+
+Grant succeeded.
+
+old:  CREATE OR REPLACE DIRECTORY data_in AS '&v_data_in_dir'
+new:CREATE OR REPLACE DIRECTORY data_in AS 'D:\USER_DATA\XEPDB1\appsdemo\data\DATA_IN'
+
+Directory DATA_IN created.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_in TO &v_app_owner
+new:GRANT READ, WRITE ON DIRECTORY data_in TO appsdemo
+
+Grant succeeded.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_in TO &v_connect_user
+new:GRANT READ, WRITE ON DIRECTORY data_in TO demo_connect
+
+Grant succeeded.
+
+old:  CREATE OR REPLACE DIRECTORY data_in_error AS '&v_data_in_dir\\error'
+new:CREATE OR REPLACE DIRECTORY data_in_error AS 'D:\USER_DATA\XEPDB1\appsdemo\data\DATA_IN\error'
+
+Directory DATA_IN_ERROR created.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_in_error TO &v_app_owner
+new:GRANT READ, WRITE ON DIRECTORY data_in_error TO appsdemo
+
+Grant succeeded.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_in_error TO &v_connect_user
+new:GRANT READ, WRITE ON DIRECTORY data_in_error TO demo_connect
+
+Grant succeeded.
+
+old:  CREATE OR REPLACE DIRECTORY data_in_processed AS '&v_data_in_dir\\processed'
+new:CREATE OR REPLACE DIRECTORY data_in_processed AS 'D:\USER_DATA\XEPDB1\appsdemo\data\DATA_IN\processed'
+
+Directory DATA_IN_PROCESSED created.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_in_processed TO &v_app_owner
+new:GRANT READ, WRITE ON DIRECTORY data_in_processed TO appsdemo
+
+Grant succeeded.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_in_processed TO &v_connect_user
+new:GRANT READ, WRITE ON DIRECTORY data_in_processed TO demo_connect
+
+Grant succeeded.
+
+old:  CREATE OR REPLACE DIRECTORY data_out AS '&v_data_out_dir'
+new:CREATE OR REPLACE DIRECTORY data_out AS 'D:\USER_DATA\XEPDB1\appsdemo\data\DATA_OUT'
+
+Directory DATA_OUT created.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_out TO &v_app_owner
+new:GRANT READ, WRITE ON DIRECTORY data_out TO appsdemo
+
+Grant succeeded.
+
+old:  GRANT READ, WRITE ON DIRECTORY data_out TO &v_connect_user
+new:GRANT READ, WRITE ON DIRECTORY data_out TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON sys.utl_file TO &v_app_owner
+new:GRANT EXECUTE ON sys.utl_file TO appsdemo
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON sys.utl_file TO &v_connect_user
+new:GRANT EXECUTE ON sys.utl_file TO demo_connect
+
+Grant succeeded.
+
+
+SYNONYM UTL_FILE created.
+
+Connected.
+
+Sequence CUSTID_SEQ created.
+
+
+Sequence ORDID_SEQ created.
+
+
+Sequence PRODID_SEQ created.
+
+
+Sequence IMPORTCSV_FILEID_SEQ created.
+
+
+Table BONUS created.
+
+
+Table CUSTOMER created.
+
+
+INDEX CUSTOMER_PK created.
+
+
+Table CUSTOMER altered.
+
+
+Table CUSTOMER altered.
+
+
+Table CUSTOMER altered.
+
+
+Table CUSTOMER altered.
+
+
+Trigger INSERT_CUSTOMER compiled
+
+
+Trigger INSERT_CUSTOMER altered.
+
+
+Table DEPT created.
+
+
+INDEX DEPT_PK created.
+
+
+Table DEPT altered.
+
+
+Table DUMMY created.
+
+
+Table EMP created.
+
+
+INDEX EMP_PK created.
+
+
+Table EMP altered.
+
+
+Table EMP altered.
+
+
+Table EMP altered.
+
+
+Table PRODUCT created.
+
+
+INDEX PRODUCT_PK created.
+
+
+Table PRODUCT altered.
+
+
+Table PRODUCT altered.
+
+
+Trigger INSERT_PRODUCT compiled
+
+
+Trigger INSERT_PRODUCT altered.
+
+
+Table ORD created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+INDEX ORD_PK created.
+
+
+Table ORD altered.
+
+
+Table ORD altered.
+
+
+Table ORD altered.
+
+
+Table ORD altered.
+
+
+Trigger INSERT_ORD compiled
+
+
+Trigger INSERT_ORD altered.
+
+
+Table ITEM created.
+
+
+INDEX ITEM_PK created.
+
+
+Table ITEM altered.
+
+
+Table ITEM altered.
+
+
+Table ITEM altered.
+
+
+Table ITEM altered.
+
+
+Table ITEM altered.
+
+
+Table PRICE created.
+
+
+INDEX PRICE_PK created.
+
+
+Table PRICE altered.
+
+
+Table PRICE altered.
+
+
+Table PRICE altered.
+
+
+Table PRICE altered.
+
+
+Table SALGRADE created.
+
+
+Table COUNTRY created.
+
+
+INDEX COUNTRY_IDX created.
+
+
+Table COUNTRY altered.
+
+
+Table COUNTRY_HOLIDAY created.
+
+
+INDEX COUNTRY_HOLIDAY_IDX created.
+
+
+Table COUNTRY_HOLIDAY altered.
+
+
+Table COUNTRY_HOLIDAY altered.
+
+
+Table COUNTRY_HOLIDAY altered.
+
+
+Table COUNTRY_HOLIDAY altered.
+
+
+Table COUNTRY_HOLIDAY altered.
+
+
+Table IMPORTCSV created.
+
+
+INDEX IMPORTCSV_IDX created.
+
+
+Table IMPORTCSV altered.
+
+
+Table IMPORTERROR created.
+
+
+INDEX IMPORTERROR_IDX created.
+
+
+Table IMPORTERROR altered.
+
+
+Table DEMO created.
+
+
+Table APPSEVERITY created.
+
+
+INDEX APPSEVERITY_IDX created.
+
+
+Table APPSEVERITY altered.
+
+
+Table APPLOG created.
+
+
+INDEX APPLOG_IDX created.
+
+
+Table APPLOG altered.
+
+
+Table APPLOG altered.
+
+
+View SALES created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM applog          FOR &v_app_owner\.applog
+new:CREATE OR REPLACE PUBLIC SYNONYM applog          FOR appsdemo.applog
+
+SYNONYM APPLOG created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM appseverity     FOR &v_app_owner\.appseverity
+new:CREATE OR REPLACE PUBLIC SYNONYM appseverity     FOR appsdemo.appseverity
+
+SYNONYM APPSEVERITY created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM bonus           FOR &v_app_owner\.bonus
+new:CREATE OR REPLACE PUBLIC SYNONYM bonus           FOR appsdemo.bonus
+
+SYNONYM BONUS created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM country         FOR &v_app_owner\.country
+new:CREATE OR REPLACE PUBLIC SYNONYM country         FOR appsdemo.country
+
+SYNONYM COUNTRY created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM country_holiday FOR &v_app_owner\.country_holiday
+new:CREATE OR REPLACE PUBLIC SYNONYM country_holiday FOR appsdemo.country_holiday
+
+SYNONYM COUNTRY_HOLIDAY created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM customer        FOR &v_app_owner\.customer
+new:CREATE OR REPLACE PUBLIC SYNONYM customer        FOR appsdemo.customer
+
+SYNONYM CUSTOMER created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM demo            FOR &v_app_owner\.demo
+new:CREATE OR REPLACE PUBLIC SYNONYM demo            FOR appsdemo.demo
+
+SYNONYM DEMO created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM dept            FOR &v_app_owner\.dept
+new:CREATE OR REPLACE PUBLIC SYNONYM dept            FOR appsdemo.dept
+
+SYNONYM DEPT created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM dummy           FOR &v_app_owner\.dummy
+new:CREATE OR REPLACE PUBLIC SYNONYM dummy           FOR appsdemo.dummy
+
+SYNONYM DUMMY created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM emp             FOR &v_app_owner\.emp
+new:CREATE OR REPLACE PUBLIC SYNONYM emp             FOR appsdemo.emp
+
+SYNONYM EMP created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM importcsv       FOR &v_app_owner\.importcsv
+new:CREATE OR REPLACE PUBLIC SYNONYM importcsv       FOR appsdemo.importcsv
+
+SYNONYM IMPORTCSV created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM importerror     FOR &v_app_owner\.importerror
+new:CREATE OR REPLACE PUBLIC SYNONYM importerror     FOR appsdemo.importerror
+
+SYNONYM IMPORTERROR created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM item            FOR &v_app_owner\.item
+new:CREATE OR REPLACE PUBLIC SYNONYM item            FOR appsdemo.item
+
+SYNONYM ITEM created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM ord             FOR &v_app_owner\.ord
+new:CREATE OR REPLACE PUBLIC SYNONYM ord             FOR appsdemo.ord
+
+SYNONYM ORD created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM price           FOR &v_app_owner\.price
+new:CREATE OR REPLACE PUBLIC SYNONYM price           FOR appsdemo.price
+
+SYNONYM PRICE created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM product         FOR &v_app_owner\.product
+new:CREATE OR REPLACE PUBLIC SYNONYM product         FOR appsdemo.product
+
+SYNONYM PRODUCT created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM salgrade        FOR &v_app_owner\.salgrade
+new:CREATE OR REPLACE PUBLIC SYNONYM salgrade        FOR appsdemo.salgrade
+
+SYNONYM SALGRADE created.
+
+
+SYNONYM SALES created.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON applog           TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON applog           TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON appseverity      TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON appseverity      TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON bonus            TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON bonus            TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON appsdemo.country TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON appsdemo.country TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON country_holiday  TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON country_holiday  TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON customer         TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON customer         TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON demo             TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON demo             TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON dept             TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON dept             TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON dummy            TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON dummy            TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON emp              TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON emp              TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON importcsv        TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON importcsv        TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON importerror      TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON importerror      TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON item             TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON item             TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON ord              TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON ord              TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON price            TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON price            TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON product          TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON product          TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT DELETE, INSERT, SELECT, UPDATE ON salgrade         TO &v_connect_user
+new:GRANT DELETE, INSERT, SELECT, UPDATE ON salgrade         TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT SELECT ON sales TO &v_connect_user
+new:GRANT SELECT ON sales TO demo_connect
+
+Grant succeeded.
+
+Goodbye!
+Load data into appsdemo in database XEPDB1
+Connected.
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+1 row inserted.
+
+
+Commit complete.
+
+Connected.
+
+Package DEMO_STRING compiled
+
+
+Package Body DEMO_STRING compiled
+
+
+Package PLSQL_CONSTANTS compiled
+
+
+Package UTIL_STRING compiled
+
+
+Package Body UTIL_STRING compiled
+
+
+Package UTIL_NUMERIC compiled
+
+
+Package Body UTIL_NUMERIC compiled
+
+
+Package UTIL_DATE compiled
+
+
+Package Body UTIL_DATE compiled
+
+
+Package UTIL_ADMIN compiled
+
+
+Package Body UTIL_ADMIN compiled
+
+
+Package UTIL_FILE compiled
+
+
+Package Body UTIL_FILE compiled
+
+
+Package ORDERRP compiled
+
+
+Package Body ORDERRP compiled
+
+
+Package EXPORT compiled
+
+
+Package Body EXPORT compiled
+
+
+Package IMPORT compiled
+
+
+Package Body IMPORT compiled
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM demo_string     FOR &v_app_owner\.demo_string
+new:CREATE OR REPLACE PUBLIC SYNONYM demo_string     FOR appsdemo.demo_string
+
+SYNONYM DEMO_STRING created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM export          FOR &v_app_owner\.export
+new:CREATE OR REPLACE PUBLIC SYNONYM export          FOR appsdemo.export
+
+SYNONYM EXPORT created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM import          FOR &v_app_owner\.import
+new:CREATE OR REPLACE PUBLIC SYNONYM import          FOR appsdemo.import
+
+SYNONYM IMPORT created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM orderrp         FOR &v_app_owner\.orderrp
+new:CREATE OR REPLACE PUBLIC SYNONYM orderrp         FOR appsdemo.orderrp
+
+SYNONYM ORDERRP created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM plsql_constants FOR &v_app_owner\.plsql_constants
+new:CREATE OR REPLACE PUBLIC SYNONYM plsql_constants FOR appsdemo.plsql_constants
+
+SYNONYM PLSQL_CONSTANTS created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM util_admin      FOR &v_app_owner\.util_admin
+new:CREATE OR REPLACE PUBLIC SYNONYM util_admin      FOR appsdemo.util_admin
+
+SYNONYM UTIL_ADMIN created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM util_date       FOR &v_app_owner\.util_date
+new:CREATE OR REPLACE PUBLIC SYNONYM util_date       FOR appsdemo.util_date
+
+SYNONYM UTIL_DATE created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM util_file       FOR &v_app_owner\.util_file
+new:CREATE OR REPLACE PUBLIC SYNONYM util_file       FOR appsdemo.util_file
+
+SYNONYM UTIL_FILE created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM util_numeric    FOR &v_app_owner\.util_numeric
+new:CREATE OR REPLACE PUBLIC SYNONYM util_numeric    FOR appsdemo.util_numeric
+
+SYNONYM UTIL_NUMERIC created.
+
+old:  CREATE OR REPLACE PUBLIC SYNONYM util_string     FOR &v_app_owner\.util_string
+new:CREATE OR REPLACE PUBLIC SYNONYM util_string     FOR appsdemo.util_string
+
+SYNONYM UTIL_STRING created.
+
+old:  GRANT EXECUTE ON demo_string     TO &v_connect_user
+new:GRANT EXECUTE ON demo_string     TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON export          TO &v_connect_user
+new:GRANT EXECUTE ON export          TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON import          TO &v_connect_user
+new:GRANT EXECUTE ON import          TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON orderrp         TO &v_connect_user
+new:GRANT EXECUTE ON orderrp         TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON plsql_constants TO &v_connect_user
+new:GRANT EXECUTE ON plsql_constants TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON util_admin      TO &v_connect_user
+new:GRANT EXECUTE ON util_admin      TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON util_date       TO &v_connect_user
+new:GRANT EXECUTE ON util_date       TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON util_file       TO &v_connect_user
+new:GRANT EXECUTE ON util_file       TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON util_numeric    TO &v_connect_user
+new:GRANT EXECUTE ON util_numeric    TO demo_connect
+
+Grant succeeded.
+
+old:  GRANT EXECUTE ON util_string     TO &v_connect_user
+new:GRANT EXECUTE ON util_string     TO demo_connect
+
+Grant succeeded.
+
+Connected.
+old:  ALTER USER &v_app_owner ACCOUNT LOCK
+new:ALTER USER appsdemo ACCOUNT LOCK
+
+User APPSDEMO altered.
+
+old:  ALTER USER &v_app_owner NO AUTHENTICATION
+new:ALTER USER appsdemo NO AUTHENTICATION
+
+User APPSDEMO altered.
+
+Connection created by CONNECT script command disconnected
