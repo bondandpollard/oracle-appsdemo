@@ -1,0 +1,1 @@
+g++ setup.cpp -o setup.exe -static -static-libgcc -static-libstdc++ -lshlwapi -lole32 -luuid 
