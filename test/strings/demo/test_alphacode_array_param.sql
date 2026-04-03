@@ -1,0 +1,1 @@
+SELECT 'Alphacode for ' || :p1 || ' is ' || demo_string.alphacode_array(:p1) || ' check result is: ' || demo_string.alphacode_calc(:p1) "alphacode challenge" FROM dual;
