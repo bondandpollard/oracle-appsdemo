@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3F2FCAFE-9EBF-838E-9E88-4AEA01DE9EBB" name="COUNTRY">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:27:48 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COUNTRY_ID" id="D42EF2E3-938F-FE73-E46F-D5653EAA783E">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:29:34 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2 BYTE</dataTypeSize>
+<ownDataTypeParameters>2 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COUNTRY_NAME" id="150559FC-83CE-BE77-0E8A-F38215C363A9">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:32:23 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60 BYTE</dataTypeSize>
+<ownDataTypeParameters>60 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="52906617-E2EB-F9FF-47FB-9B25AE2470DA" name="COUNTRY_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:29:34 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D42EF2E3-938F-FE73-E46F-D5653EAA783E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1E9F0B83-1112-D369-4C38-46839CAF3AD6" name="COUNTRY_IDX">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:32:56 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D42EF2E3-938F-FE73-E46F-D5653EAA783E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
