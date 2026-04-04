@@ -25,7 +25,7 @@ COLUMN project_desc       HEADING 'Description'         FORMAT A20;
 COLUMN data_project_id    HEADING 'Data Project ID'     FORMAT 9999;
 COLUMN stats_data_id      HEADING 'Data ID'             FORMAT 9999;
 COLUMN data_desc          HEADING 'Data Description'    FORMAT A20; 
-COLUMN stats_data_value   HEADING 'Value'               FORMAT A30;
+COLUMN stats_value        HEADING 'Value'               FORMAT 999,999,999;
 
 BREAK ON project_id SKIP PAGE NODUP
 
@@ -40,12 +40,16 @@ TTITLE CENTER 'Bond and Pollard Limited' SKIP 1 -
   
 ACCEPT p_project_id NUMBER PROMPT "Project Id:"
 
-SELECT P.stats_project_id   project_id
-  ,P.DESCRIPTION            project_desc
+SELECT P.stats_project_id     project_id
+  ,P.DESCRIPTION              project_desc
   ,S.stats_data_id
-  ,S.stats_project_id       data_project_id
-  ,S.DESCRIPTION            data_desc
-  ,NVL(TO_CHAR(S.stats_value),'*** ERROR NULL VALUE ***') stats_data_value
+  ,S.stats_project_id         data_project_id
+  ,S.DESCRIPTION              data_desc
+  ,S.stats_value 
+  ,CASE 
+    WHEN S.stats_value <=0 OR S.stats_value > 0 THEN ''
+    ELSE 'ERROR: NULL values not valid'
+   END "Check"
 FROM stats_project P
 FULL JOIN stats_data S ON S.stats_project_id = P.stats_project_id
 WHERE P.stats_project_id = &p_project_id OR &p_project_id = 0
