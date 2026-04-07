@@ -27,8 +27,8 @@
   Prompt for the listener port, default 1521.
   Prompt for installation root directory APP_HOME and validate exists.
   Prompt for data directory  DATA_HOME and validate exists.
-  Copy application files to the APP_HOME directory.
-  Create the DATA_HOME directory.
+  If user specified a different APP_HOME directory from current, move app files.
+  If user specified a different DATA_HOME directory from current, move data files.
   Create set_env.bat
   Create set_env.sql
   Create auto_install.sql
@@ -42,60 +42,105 @@
   Date          Version     Author          Description
   =======================================================================================================================
   08/03/2025    1.00        IAB             Created.
+  06/04/2026    1.01        IAB             Amend to allow install in current directory without creating mew directories
+                                            and copying files. If installing to current directory do not add dbservice and
+                                            app_owner to path. This makes installation easier when you download the demo
+                                            app from a GitHub repository into a specified directory and just want to install it
+                                            there.
   
  */
  
- 
-// Function to log messages to install.log
-void log_event(const char *format, ...) {
-    FILE *log_file = fopen("install.log", "a");  // Open log file in append mode
+// Log message, optionally display to screen 
+static void log_event_v(const char *format, bool display, va_list args) {
+    FILE *log_file = std::fopen("install.log", "a");
     if (!log_file) {
         printf("Error: Could not open install.log for writing.\n");
         return;
     }
+    va_list args_copy;
+    va_copy(args_copy, args);
+    vfprintf(log_file, format, args);
+    std::fprintf(log_file, "\n");
+    if (display) {
+        vprintf(format, args_copy);
+        std::putchar('\n');
+    }
+    va_end(args_copy);
+    std::fclose(log_file);
+}
 
+// Write message to log only
+void log_event(const char *format, ...) {
     va_list args;
     va_start(args, format);
-    vfprintf(log_file, format, args);  // Write formatted message to log file
+    log_event_v(format, false, args);
     va_end(args);
-
-    fprintf(log_file, "\n");  // Add newline
-    fclose(log_file);  // Close log file
 }
+
+// Write message to log and display on screen
+void log_event_display(const char *format, ...) {
+    va_list args;
+    va_start(args, format);
+    log_event_v(format, true, args);
+    va_end(args);
+}
+
 
 void display_intro() {
-    printf("********************************************\n");
-    printf("*      ORACLE DEMO APPLICATION SETUP       *\n");
-    printf("*      (c) Bond & Pollard Ltd 2025         *\n");
-    printf("********************************************\n");
-    printf("This program will install the Oracle demo application.\n\n");
-    printf("Prerequisites:\n");
-    printf("You must install Oracle Express first.\n\n");
-    printf("You will be prompted to enter a set of parameters to configure the demo schema, and specify the installation location.\n\n");
-
-
+    log_event_display("********************************************\n");
+    log_event_display("*      ORACLE DEMO APPLICATION SETUP       *\n");
+    log_event_display("*      (c) Bond & Pollard Ltd 2025         *\n");
+    log_event_display("********************************************\n");
+    log_event_display("This program will install the Oracle demo application.");
+    log_event_display("\nPREREQUISITES");
+    log_event_display("You must install Oracle Express first");
+    log_event_display("\nINSTRUCTIONS");
+    log_event_display("You will be prompted to enter the parameters required to configure the demo app.");
+    log_event_display("Press ENTER to accept the default values, or enter your own preferences.");
+    log_event_display("Check the log for errors.");
 }
 
-void notify_complete(const char *app_home, const char *data_home, const char *dbservice, const char *app_owner, const char *connect_user) {
-    printf("\nINSTALLATION SUMMARY:\n");
-    printf("=====================\n");
-    printf("Database Service  : %s\n", dbservice);
-    printf("Application Owner : %s\n", app_owner);
-    printf("Connection User   : %s\n", connect_user);
-    printf("Application Home  : %s\n", app_home);
-    printf("Data Home         : %s\n", data_home);
-    printf("Setup Log         : install.log\n");
-    printf("\n\nInstallation complete. Press RETURN to exit.\n");
-    
-    log_event("\nINSTALLATION SUMMARY:\n");
-    log_event("=====================\n");
-    log_event("Database Service  : %s\n", dbservice);
-    log_event("Application Owner : %s\n", app_owner);
-    log_event("Connection User   : %s\n", connect_user);
-    log_event("Application Home  : %s\n", app_home);
-    log_event("Data Home         : %s\n", data_home);
-    log_event("Setup Log         : install.log\n");
+void log_install_param( const char *source_dir, 
+                        const char *dbservice, 
+                        const char *port, 
+                        const char *db_connect, 
+                        const char *app_owner,
+                        const char *connect_user,
+                        const char *app_home,
+                        const char *sql_app_home,
+                        const char *data_home,
+                        const char *sql_data_home
+                        ) {
+    log_event_display("=======================");
+    log_event_display("INSTALLATION PARAMETERS");
+    log_event_display("=======================");
+    log_event_display("Setup started in                     : %s", source_dir);
+    log_event_display("Database Service                     : %s", dbservice);
+    log_event_display("Listener Port                        : %s", port);
+    log_event_display("Database Connection                  : %s", db_connect);
+    log_event_display("Application Owner (APP_OWNER)        : %s", app_owner);
+    log_event_display("Connection User (CONNECT_USER)       : %s", connect_user);
+    log_event_display("Application Home Directory (APP_HOME): %s", app_home);
+    log_event_display("Application Home SQL (SQL_APP_HOME)  : %s", sql_app_home);
+    log_event_display("Data Home Directory (DATA_HOME)      : %s", data_home);
+    log_event_display("Data Home SQL (SQL_DATA_HOME)        : %s", sql_data_home);
+    log_event_display("Setup Log                            : %s\\install.log", source_dir);
+}
 
+void notify_complete(const char *source_dir, 
+                        const char *dbservice, 
+                        const char *port, 
+                        const char *db_connect, 
+                        const char *app_owner,
+                        const char *connect_user,
+                        const char *app_home,
+                        const char *sql_app_home,
+                        const char *data_home,
+                        const char *sql_data_home
+                        ) {
+    log_install_param(source_dir, dbservice, port, db_connect, app_owner, connect_user, app_home, sql_app_home, data_home, sql_data_home);
+    log_event_display("\n\nInstallation complete. Press RETURN to exit.\n");
+    
     while (getchar() != '\n');  // Flush input buffer
     getchar();  // Wait for Enter
 }
@@ -146,7 +191,7 @@ void create_shortcut_on_desktop(const char *bat_file_path, const char *app_home,
     // Initialize COM
     hr = CoInitialize(NULL);
     if (FAILED(hr)) {
-        printf("Error: Failed to initialize COM. HRESULT: 0x%X\n", hr);
+        log_event_display("Error: Failed to initialize COM. HRESULT: 0x%X\n", hr);
         return;
     }
 
@@ -164,7 +209,7 @@ void create_shortcut_on_desktop(const char *bat_file_path, const char *app_home,
             char shortcut_path[MAX_PATH];
 
             if (SHGetFolderPath(NULL, CSIDL_DESKTOP, NULL, 0, desktop_path) != S_OK) {
-                printf("Error: Could not retrieve desktop path.\n");
+                log_event_display("Error: Could not retrieve desktop path.\n");
                 return;
             }
 
@@ -188,7 +233,7 @@ void copy_and_rename_to_desktop(const char *source_file, const char *app_owner) 
 
     // Get the current user's desktop directory
     if (SHGetFolderPath(NULL, CSIDL_DESKTOP, NULL, 0, desktop_path) != S_OK) {
-        printf("Error: Could not retrieve desktop path.\n");
+        log_event_display("Error: Could not retrieve desktop path.\n");
         return;
     }
 
@@ -197,9 +242,9 @@ void copy_and_rename_to_desktop(const char *source_file, const char *app_owner) 
 
     // Copy and rename the file
     if (!CopyFile(source_file, destination_file, FALSE)) {
-        printf("Error: Failed to copy %s to %s\n", source_file, destination_file);
+        log_event_display("Error: Failed to copy %s to %s\n", source_file, destination_file);
     } else {
-        printf("Success: Copied %s to %s\n", source_file, destination_file);
+        log_event_display("Success: Copied %s to %s\n", source_file, destination_file);
     }
 }
 
@@ -220,14 +265,6 @@ void show_progress_bar(int percent, short position_row) {
     }
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE); // Reset color
     printf("] %d%%", percent);
-}
-
-void debug_string(const char *label, const char *str) {
-    printf("%s: '", label);
-    for (size_t i = 0; i < strlen(str); i++) {
-        printf("%c (0x%02X) ", str[i], str[i]);  // Print ASCII values
-    }
-    printf("'\n");
 }
 
 void trim_whitespace(char *str) {
@@ -255,7 +292,7 @@ void prompt_string(const char *message, char *input, int size, const char *defau
     if (strlen(input) == 0) {
         strcpy(input, default_value);
     }
-}
+ }
 
 void get_current_directory(char *buffer, size_t size) {
     char exe_path[MAX_PATH];
@@ -328,6 +365,7 @@ bool path_valid(const char* path){
     return test_path;
 }
 
+    
 // Function to prompt user for a directory path
 void prompt_directory(const char *message, char *input, int size, const char *default_value, char *target, int target_size, char *dbservice, char *app_owner, bool strict) {
     prompt_string(message, input, size, default_value);
@@ -354,7 +392,14 @@ void prompt_directory(const char *message, char *input, int size, const char *de
    
     trim_whitespace(input);
     
-    make_app_path(input, target, target_size, dbservice, app_owner);    // Make path unique to db service and application
+    // if installing to current directory then do not add dbservice and app_owner to path
+    if (strcmp(input,default_value) !=0) {
+      make_app_path(input, target, target_size, dbservice, app_owner);    // Make path unique to dbservice and app_owner
+    }
+    else {
+      snprintf(target, target_size, "%s", default_value);                 // Make path the default do not add dbservice and app_owner
+    }
+    
 }
 
 void generate_set_env_sql(const char *dbservice, 
@@ -369,10 +414,10 @@ void generate_set_env_sql(const char *dbservice,
                           const char *app_home) {
     char filespec [MAX_PATH];
     snprintf(filespec, sizeof(filespec), "%s%s", app_home, "\\config\\set_env.sql");
-    printf("Creating %s...\n",filespec);
+    log_event_display("Creating %s...\n",filespec);
     FILE *file = fopen(filespec, "w");
     if (!file) {
-        printf("Error: Cannot open file for writing!\n");
+        log_event_display("Error: Cannot open file for writing!\n");
         return;
     }
     
@@ -418,7 +463,7 @@ void generate_set_env_sql(const char *dbservice,
     fprintf(file, "DEFINE v_data_home = \"%s\"\n", sql_data_home);  // Enclose path in double quotes
 
     fclose(file);
-    printf("SQL script generated: %s\n", filespec);
+    log_event_display("SQL script generated: %s\n", filespec);
 }
 
 void generate_set_env_bat(const char *dbservice, 
@@ -432,10 +477,10 @@ void generate_set_env_bat(const char *dbservice,
                           const char *data_home) {
     char filespec [MAX_PATH];
     snprintf(filespec, sizeof(filespec), "%s%s", app_home, "\\config\\set_env.bat");
-    printf("Creating %s...\n",filespec);
+    log_event_display("Creating %s...\n",filespec);
     FILE *file = fopen(filespec, "w");
     if (!file) {
-        printf("Error: Cannot open file for writing!\n");
+        log_event_display("Error: Cannot open file for writing!\n");
         return;
     }
 
@@ -478,7 +523,7 @@ void generate_set_env_bat(const char *dbservice,
     fprintf(file, ":END\n");
     
     fclose(file);
-    printf("Script generated: %s\n", filespec);
+    log_event_display("Script generated: %s\n", filespec);
 }
 
 void generate_auto_install_sql(const char *dbservice, 
@@ -493,10 +538,10 @@ void generate_auto_install_sql(const char *dbservice,
                            const char *app_home) {
     char filespec [MAX_PATH];
     snprintf(filespec, sizeof(filespec), "%s%s", app_home, "\\install\\auto_install.sql");
-    printf("Creating %s...\n",filespec);
+    log_event_display("Creating %s...\n",filespec);
     FILE *file = fopen(filespec, "w");
     if (!file) {
-        printf("Error: Cannot open file for writing!\n");
+        log_event_display("Error: Cannot open file for writing!\n");
         return;
     }
   
@@ -521,10 +566,22 @@ void generate_auto_install_sql(const char *dbservice,
     fprintf(file, "@'&v_app_home\\\\install\\\\lock_schema'        \"&v_dbservice\" \"&v_dbconnect\" \"&v_app_owner\" \"&v_sys_pwd\" \n");
     fprintf(file, "EXIT\n");
     fclose(file);
-    printf("SQL script generated: %s\n", filespec);
+    log_event_display("SQL script generated: %s\n", filespec);
 }
 
-void copy_directory(const char *source, const char *destination, short progress_bar_row) {
+
+bool move_file_safe(const char* src, const char* dst) {
+    if (!MoveFileEx(src, dst, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING)) {
+        log_event_display("\nError moving file: %s -> %s (Error: %lu)\n", src, dst, GetLastError());
+        return false;
+    }
+    log_event("Moved file: %s -> %s", src, dst);
+    return true;
+}
+
+
+
+void move_directory(const char *source, const char *destination, short progress_bar_row, bool move_app_home) {
     WIN32_FIND_DATA findFileData;
     HANDLE hFind;
     char sourcePath[MAX_PATH];
@@ -534,8 +591,7 @@ void copy_directory(const char *source, const char *destination, short progress_
     // Ensure parent directories exist
     if (SHCreateDirectoryEx(NULL, destination, NULL) != ERROR_SUCCESS &&
         GetLastError() != ERROR_ALREADY_EXISTS) {
-        printf("Error: Could not create directory %s (Error Code: %lu)\n", destination, GetLastError());
-        log_event("Error: Could not create directory %s", destination);
+        log_event_display("Error: Could not create directory %s (Error Code: %lu)\n", destination, GetLastError());
         return;
     }
 
@@ -545,8 +601,7 @@ void copy_directory(const char *source, const char *destination, short progress_
     // Find first file in source directory
     hFind = FindFirstFile(sourcePath, &findFileData);
     if (hFind == INVALID_HANDLE_VALUE) {
-        printf("Error: Could not open source directory %s\n", source);
-        log_event("Error: Could not open source directory %s", source);
+        log_event_display("Error: Could not open source directory %s", source);
         return;
     }
 
@@ -561,7 +616,7 @@ void copy_directory(const char *source, const char *destination, short progress_
     // Restart file search
     hFind = FindFirstFile(sourcePath, &findFileData);
     if (hFind == INVALID_HANDLE_VALUE) {
-        printf("Error: Could not open source directory %s\n", source);
+        log_event_display("Error: Could not open source directory %s\n", source);
         return;
     }
 
@@ -570,24 +625,37 @@ void copy_directory(const char *source, const char *destination, short progress_
         if (strcmp(findFileData.cFileName, ".") == 0 || strcmp(findFileData.cFileName, "..") == 0) {
             continue;
         }
+        
+        // Do not move the setup.log file
+        if (strcmp(findFileData.cFileName, "install.log") == 0) {
+            continue;
+        }
 
         // Construct full source and destination paths
         snprintf(sourcePath, sizeof(sourcePath), "%s\\%s", source, findFileData.cFileName);
         snprintf(destPath, sizeof(destPath), "%s\\%s", destination, findFileData.cFileName);
 
         if (findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-            // Recursively copy directory
-            copy_directory(sourcePath, destPath, progress_bar_row);
+            // Skip the data directory so it remains in source when moving the app home
+            if (move_app_home && _stricmp(findFileData.cFileName, "data") == 0) {
+              log_event_display("Skipping data directory during move");
+              continue;
+            }
+            
+            // Recursively move directory
+            move_directory(sourcePath, destPath, progress_bar_row, move_app_home);
+            
+            // Remove directory after contents moved
+            RemoveDirectory(sourcePath);
         } else {
-            // Copy file
-            if (!CopyFile(sourcePath, destPath, FALSE)) {
-                printf("\nError copying file: %s -> %s\n", sourcePath, destPath);
-                log_event("Error copying file: %s -> %s", sourcePath, destPath);
+            // Move file
+            if (!MoveFileEx(sourcePath, destPath, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING)) {
+                log_event_display("Error moving file: %s -> %s", sourcePath, destPath);
             } else {
                 filesCopied++;
                 int progress = (filesCopied * 100) / fileCount;
                 show_progress_bar(progress, progress_bar_row);  // Update progress bar
-                log_event("Copied file: %s -> %s", sourcePath, destPath);
+                log_event("Moved file: %s -> %s", sourcePath, destPath);
             }
         }
 
@@ -621,35 +689,46 @@ int main() {
     int status = -1;
     short progress_bar_row;
     char exec_sql[MAX_PATH];
+    bool move_app_home;
     CONSOLE_SCREEN_BUFFER_INFO csbi; // positioning progress bar
     
-    log_event("ORACLE APPSDEMO INSTALLATION LOG");
+   
     // Display welcome banner and instructions
     display_intro();
    
     // Get the directory where setup.exe is running
     get_current_directory(source_dir, sizeof(source_dir));
-    log_event("Setup started from directory: %s", source_dir);
+    log_event_display("\nSetup is running from source directory: %s", source_dir);
     
     // Get the location of the application data files
     snprintf(source_data_dir, sizeof(source_data_dir),"%s%s", source_dir, "\\data");
     
+    if (!confirm_continue("Do you want to continue with the installation (Y or N)?")) {
+      log_event_display("Exiting setup before entering parameters.");
+      return 0;
+    }
+    
+    while (getchar() != '\n');  // Flush input buffer
+    
     // Prompt user for set up configuration values such as 
     // installation root directory, passwords
     
-    prompt_string("Enter the pluggable database service name",dbservice, sizeof(dbservice),"XEPDB1");
-    prompt_string("Enter the application owner username",app_owner, sizeof(app_owner),"APPSDEMO");
-    //prompt_string("Enter the password for the application owner",app_owner_pwd, sizeof(app_owner_pwd),"tiger");
-    prompt_string("Enter the connection username",connect_user, sizeof(connect_user),"DEMO_CONNECT");
-    //prompt_string("Enter the password for the connection user",connect_pwd, sizeof(connect_pwd),"tiger");
-    prompt_string("Enter the listener port",port, sizeof(port),"1521");
+    prompt_string("\nEnter the pluggable database service name",dbservice, sizeof(dbservice),"XEPDB1");
+    prompt_string("\nEnter the application owner username",app_owner, sizeof(app_owner),"APPSDEMO");
+    prompt_string("\nEnter the connection username",connect_user, sizeof(connect_user),"DEMO_CONNECT");
+    prompt_string("\nEnter the listener port",port, sizeof(port),"1521");
     
     // Prompt user application installation location, store in app_home
-    printf("\nSpecify the application home directory APP_HOME. Include the drive, separate each directory with a single \\. \n");
-    printf("Do not end with a \\ unless specifying just the drive root e.g. D:\\ \n");
-    printf("You may include spaces and ampersands & in the APP_HOME path. \n");
-    printf("Do not include quotes \" \n");
-    prompt_directory("Enter the app installation directory path", app_install_locn, sizeof(app_install_locn),"C:\\", app_home, sizeof(app_home), dbservice, app_owner,false);
+    log_event_display("\nSpecify the application home directory APP_HOME.");
+    log_event_display("If specifying a different directory:");
+    log_event_display("> Include the drive letter.");
+    log_event_display("> Separate each directory with a single \\. ");
+    log_event_display("> e.g. D:\\myapps\\demo");
+    log_event_display("> Do not end with a \\ unless specifying just the drive root e.g. D:\\ ");
+    log_event_display("> You may include spaces and ampersands & in the APP_HOME path. ");
+    log_event_display("> Do not include quotes \" ");
+    prompt_directory("Enter APP_HOME directory path", app_install_locn, sizeof(app_install_locn), source_dir, app_home, sizeof(app_home), dbservice, app_owner,false);
+
     
     // Create sql_app_home for sql scripts with escape character prior to directory delimiters.
     // If path contains ampersands insert escape characters in front of them
@@ -657,12 +736,17 @@ int main() {
     replace_substring(temp_path, sql_app_home, "&", "\\&");
   
     // Prompt user data installation location, store in data_home
-    printf("\nSpecify the data home directory DATA_HOME. Include the drive, separate each directory with a single \\. \n");
-    printf("Do not end with a \\ unless specifying just the drive root e.g. D:\\ \n");
-    printf("Spaces are not allowed in this path.\n");
-    printf("Do not include ampersands &. \n");
-    printf("Do not include quotes \". \n");
-    prompt_directory("Enter the data directory path", data_install_locn, sizeof(data_install_locn),"C:\\", data_home, sizeof(data_home), dbservice, app_owner, true);
+    log_event_display("\nSpecify the data home directory DATA_HOME.");
+    log_event_display("If specifying a different directory:");
+    log_event_display("> Include the drive letter.");
+    log_event_display("> Separate each directory with a single \\. ");
+    log_event_display("> e.g. D:\\test\\demo");
+    log_event_display("> Do not end with a \\ unless specifying just the drive root e.g. D:\\ ");
+    log_event_display("> Spaces are not allowed in this path.");
+    log_event_display("> Do not include ampersands &. ");
+    log_event_display("> Do not include quotes \". ");
+    prompt_directory("Enter the DATA_HOME data directory path", data_install_locn, sizeof(data_install_locn), source_dir, data_home, sizeof(data_home), dbservice, app_owner, true);
+
     snprintf(data_home, sizeof(data_home), "%s%s", data_home, "\\data");
     
     // Create sql_data_home for sql scripts with escape character prior to directory delimiters.
@@ -673,72 +757,55 @@ int main() {
     // Database connection string
     snprintf(db_connect, sizeof(db_connect), "%s%s%s%s", "//localhost:", port, "/", dbservice);
 
-    // Display user parameters
-    printf("SETUP PARAMETERS\n");
-    printf("================\n");
-    printf("Source files extracted to: %s\n", source_dir);
-    printf("DBSERVICE = %s\n", dbservice);
-    printf("Listener port = %s\n", port);
-    printf("Database connection string = %s\n", db_connect);
-    printf("APP_OWNER = %s\n", app_owner);
-    printf("CONNECT_USER = %s\n", connect_user);
-    printf("APP_HOME directory = %s\n", app_home);
-    printf("SQL_APP_HOME directory = %s\n", sql_app_home);
-    printf("DATA_HOME directory = %s\n", data_home);
-    printf("SQL_DATA_HOME directory = %s\n", sql_data_home);
-    
+  
     // Log user parameters
-    log_event("Source files extracted to: %s", source_dir);
-    log_event("DBSERVICE = %s", dbservice);
-    log_event("Listener port = %s", port);
-    log_event("Database connection string = %s", db_connect);
-    log_event("APP_OWNER = %s", app_owner);
-    log_event("CONNECT_USER = %s", connect_user);
-    log_event("APP_HOME directory = %s", app_home);
-    log_event("SQL_APP_HOME directory = %s", sql_app_home);
-    log_event("DATA_HOME directory = %s", data_home);
-    log_event("SQL_DATA_HOME directory = %s", sql_data_home);
+    log_install_param(source_dir, dbservice, port, db_connect, app_owner, connect_user, app_home, sql_app_home, data_home, sql_data_home);
+ 
     
     // Confirm user wishes to continue
     if (confirm_continue("Do you want to continue with the installation (Y or N)?")) {
-     
-        log_event("User confirmed installation to continue.");
-        // Copy application files to the target directory
-        printf("Creating APP_HOME. Copying files from %s to %s...\n", source_dir, app_home);
-        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-        progress_bar_row = csbi.dwCursorPosition.Y + 2;  // Adjust dynamically
-        copy_directory(source_dir, app_home, progress_bar_row);
-        printf("APP_HOME created.\n\n");
-        log_event("APP_HOME created.");
         
-        // Create the data directories
-        printf("Creating DATA_HOME. Copying files from %s to %s...\n", source_data_dir, data_home);
-        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-        progress_bar_row = csbi.dwCursorPosition.Y + 2;  // Adjust dynamically
-        copy_directory(source_data_dir, data_home, progress_bar_row);
-        printf("DATA_HOME created.\n\n");
-        log_event("DATA_HOME created.");
+        log_event_display("User confirmed installation to continue.");
+        
+        // APP_HOME setup
+        if (strcmp(app_home, source_dir) !=0) {
+          // Move application files to the target directory
+          log_event_display("Creating APP_HOME. Moving files from %s to %s...\n", source_dir, app_home);
+          GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+          progress_bar_row = csbi.dwCursorPosition.Y + 2;  // Adjust dynamically
+          move_app_home = true;
+          move_directory(source_dir, app_home, progress_bar_row, move_app_home);
+          log_event_display("APP_HOME created.");
+        } else {
+          log_event_display("APP_HOME is set to %s\n", app_home);
+        }
+        
+        // DATA_HOME setup
+        if (strcmp(data_install_locn, source_dir) != 0) {
+          // Create the data directories
+          log_event_display("Creating DATA_HOME. Moving files from %s to %s...\n", source_data_dir, data_home);
+          GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+          progress_bar_row = csbi.dwCursorPosition.Y + 2;  // Adjust dynamically
+          move_app_home = false;
+          move_directory(source_data_dir, data_home, progress_bar_row, move_app_home);
+          log_event_display("DATA_HOME created.");
+          RemoveDirectory(source_data_dir); // Delete the old data directory from the source location after move
+        } else {
+          log_event_display("DATA_HOME is set to %s\n", data_home);
+        }
         
         // Create custom configuration scripts using the user defined parameters
         generate_set_env_sql(dbservice, port, db_connect, app_owner, app_owner_pwd, connect_user, connect_pwd, sql_app_home, sql_data_home, app_home);
-        printf("SQL script set_env.sql created.\n");
-        log_event("SQL script set_env.sql created.");
-        
-        generate_set_env_bat(dbservice, port, db_connect, app_owner, app_owner_pwd, connect_user, connect_pwd, app_home, data_home);
-        printf("Script set_env.bat created.\n");
-        log_event("Script set_env.bat created.");
-        
+        generate_set_env_bat(dbservice, port, db_connect, app_owner, app_owner_pwd, connect_user, connect_pwd, app_home, data_home);  
         generate_auto_install_sql(dbservice, port, db_connect, app_owner, app_owner_pwd, connect_user, connect_pwd, sql_app_home, sql_data_home, app_home);
-        printf("SQL Script auto_install.sql created.\n");
-        log_event("SQL script auto_install.sql created.");
-    
-        // Optionally, execute SQL*Plus automatically
-        printf("Creating database objects.\n");
+
+         
+        // Execute SQL*Plus to create database objects
+        log_event_display("Creating database objects.\n");
         snprintf(exec_sql, sizeof(exec_sql), "%s%s%s", "sqlplus / as sysdba @\"",app_home,"\\install\\auto_install.sql\"");
-        printf("Executing: %s\n", exec_sql);
-        log_event("Executing: %s",exec_sql);
+        log_event_display("Executing: %s",exec_sql);
         system(exec_sql);
-        log_event("Database objects created.");
+        log_event_display("Database objects created.");
         
         //Send startora.bat to desktop as a shortcut
         snprintf(target_path, sizeof(target_path), "%s\\com\\startora.bat", app_home);
@@ -746,17 +813,15 @@ int main() {
 
         // Create shortcut on the Desktop
         create_shortcut_on_desktop(target_path, working_dir, app_owner);
-        printf("Shortcut created on Desktop: %s.lnk\n", app_owner);
-        log_event("Shortcut created on Desktop: %s.lnk.n", app_owner);
+        log_event_display("Shortcut created on Desktop: %s", app_owner);
     
         // Tell user installation is complete
-        notify_complete(app_home, data_home, dbservice, app_owner, connect_user); 
-        log_event("Installation completed.");
+        notify_complete(source_dir, dbservice, port, db_connect, app_owner, connect_user, app_home, sql_app_home, data_home, sql_data_home);
+        log_event_display("***** INSTALLATION COMPLETED. *****");
         status=0;
     } else {
-        printf("Installation abandoned.\n");
-        log_event("Installation abandoned.");
-        status=-1;
+        log_event_display("Installation abandoned.");
+        status=0;
     }
       
     return status;
