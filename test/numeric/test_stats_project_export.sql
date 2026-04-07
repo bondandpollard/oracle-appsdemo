@@ -30,7 +30,7 @@ BEGIN
   util_numeric.display_stats(v_stats_result,&p_percentile);
   
   -- Export stats to CSV file
-  v_csv_fname := util_numeric.export_project_stats(&p_project_id, v_stats_result,&p_percentile);
+  v_csv_fname := export.project_stats(&p_project_id, v_stats_result,&p_percentile);
   
   util_admin.log_message('Statistics exported to CSV file: '||v_csv_fname); 
     

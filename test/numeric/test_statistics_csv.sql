@@ -42,7 +42,7 @@ BEGIN
   util_admin.log_message('PCT_CONT ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_cont,'9999999990.9999')));
   
   -- Write stats to CSV file
-  v_csv_fname := util_numeric.export_stats(v_stats_result, '&p_name',&p_percentile);
+  v_csv_fname := export.stats(v_stats_result, '&p_name',&p_percentile);
   
   util_admin.log_message('Statistics exported to CSV file: '||v_csv_fname); 
   
