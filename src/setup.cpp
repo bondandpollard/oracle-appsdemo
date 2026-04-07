@@ -87,14 +87,17 @@ void log_event_display(const char *format, ...) {
 
 
 void display_intro() {
-    log_event_display("********************************************\n");
-    log_event_display("*      ORACLE DEMO APPLICATION SETUP       *\n");
-    log_event_display("*      (c) Bond & Pollard Ltd 2025         *\n");
-    log_event_display("********************************************\n");
-    log_event_display("This program will install the Oracle demo application.");
+    log_event_display("********************************************");
+    log_event_display("*                                          *");
+    log_event_display("*      ORACLE DEMO APPLICATION SETUP       *");
+    log_event_display("*                                          *");
+    log_event_display("*      (c) Bond & Pollard Ltd 2026         *");
+    log_event_display("*                                          *");
+    log_event_display("********************************************");
     log_event_display("\nPREREQUISITES");
     log_event_display("You must install Oracle Express first");
     log_event_display("\nINSTRUCTIONS");
+    log_event_display("This program will install the Oracle demo application.");
     log_event_display("You will be prompted to enter the parameters required to configure the demo app.");
     log_event_display("Press ENTER to accept the default values, or enter your own preferences.");
     log_event_display("Check the log for errors.");
@@ -139,7 +142,7 @@ void notify_complete(const char *source_dir,
                         const char *sql_data_home
                         ) {
     log_install_param(source_dir, dbservice, port, db_connect, app_owner, connect_user, app_home, sql_app_home, data_home, sql_data_home);
-    log_event_display("\n\nInstallation complete. Press RETURN to exit.\n");
+    log_event_display("\n\nInstallation complete. Press RETURN to exit.");
     
     while (getchar() != '\n');  // Flush input buffer
     getchar();  // Wait for Enter
@@ -191,7 +194,7 @@ void create_shortcut_on_desktop(const char *bat_file_path, const char *app_home,
     // Initialize COM
     hr = CoInitialize(NULL);
     if (FAILED(hr)) {
-        log_event_display("Error: Failed to initialize COM. HRESULT: 0x%X\n", hr);
+        log_event_display("Error: Failed to initialize COM. HRESULT: 0x%X", hr);
         return;
     }
 
@@ -209,7 +212,7 @@ void create_shortcut_on_desktop(const char *bat_file_path, const char *app_home,
             char shortcut_path[MAX_PATH];
 
             if (SHGetFolderPath(NULL, CSIDL_DESKTOP, NULL, 0, desktop_path) != S_OK) {
-                log_event_display("Error: Could not retrieve desktop path.\n");
+                log_event_display("Error: Could not retrieve desktop path.");
                 return;
             }
 
@@ -233,7 +236,7 @@ void copy_and_rename_to_desktop(const char *source_file, const char *app_owner) 
 
     // Get the current user's desktop directory
     if (SHGetFolderPath(NULL, CSIDL_DESKTOP, NULL, 0, desktop_path) != S_OK) {
-        log_event_display("Error: Could not retrieve desktop path.\n");
+        log_event_display("Error: Could not retrieve desktop path.");
         return;
     }
 
@@ -242,9 +245,9 @@ void copy_and_rename_to_desktop(const char *source_file, const char *app_owner) 
 
     // Copy and rename the file
     if (!CopyFile(source_file, destination_file, FALSE)) {
-        log_event_display("Error: Failed to copy %s to %s\n", source_file, destination_file);
+        log_event_display("Error: Failed to copy %s to %s", source_file, destination_file);
     } else {
-        log_event_display("Success: Copied %s to %s\n", source_file, destination_file);
+        log_event_display("Success: Copied %s to %s", source_file, destination_file);
     }
 }
 
@@ -414,10 +417,10 @@ void generate_set_env_sql(const char *dbservice,
                           const char *app_home) {
     char filespec [MAX_PATH];
     snprintf(filespec, sizeof(filespec), "%s%s", app_home, "\\config\\set_env.sql");
-    log_event_display("Creating %s...\n",filespec);
+    log_event_display("Creating %s...",filespec);
     FILE *file = fopen(filespec, "w");
     if (!file) {
-        log_event_display("Error: Cannot open file for writing!\n");
+        log_event_display("Error: Cannot open file for writing!");
         return;
     }
     
@@ -463,7 +466,7 @@ void generate_set_env_sql(const char *dbservice,
     fprintf(file, "DEFINE v_data_home = \"%s\"\n", sql_data_home);  // Enclose path in double quotes
 
     fclose(file);
-    log_event_display("SQL script generated: %s\n", filespec);
+    log_event_display("SQL script generated: %s", filespec);
 }
 
 void generate_set_env_bat(const char *dbservice, 
@@ -477,10 +480,10 @@ void generate_set_env_bat(const char *dbservice,
                           const char *data_home) {
     char filespec [MAX_PATH];
     snprintf(filespec, sizeof(filespec), "%s%s", app_home, "\\config\\set_env.bat");
-    log_event_display("Creating %s...\n",filespec);
+    log_event_display("Creating %s...",filespec);
     FILE *file = fopen(filespec, "w");
     if (!file) {
-        log_event_display("Error: Cannot open file for writing!\n");
+        log_event_display("Error: Cannot open file for writing!");
         return;
     }
 
@@ -523,7 +526,7 @@ void generate_set_env_bat(const char *dbservice,
     fprintf(file, ":END\n");
     
     fclose(file);
-    log_event_display("Script generated: %s\n", filespec);
+    log_event_display("Script generated: %s", filespec);
 }
 
 void generate_auto_install_sql(const char *dbservice, 
@@ -538,10 +541,10 @@ void generate_auto_install_sql(const char *dbservice,
                            const char *app_home) {
     char filespec [MAX_PATH];
     snprintf(filespec, sizeof(filespec), "%s%s", app_home, "\\install\\auto_install.sql");
-    log_event_display("Creating %s...\n",filespec);
+    log_event_display("Creating %s...",filespec);
     FILE *file = fopen(filespec, "w");
     if (!file) {
-        log_event_display("Error: Cannot open file for writing!\n");
+        log_event_display("Error: Cannot open file for writing!");
         return;
     }
   
@@ -566,13 +569,13 @@ void generate_auto_install_sql(const char *dbservice,
     fprintf(file, "@'&v_app_home\\\\install\\\\lock_schema'        \"&v_dbservice\" \"&v_dbconnect\" \"&v_app_owner\" \"&v_sys_pwd\" \n");
     fprintf(file, "EXIT\n");
     fclose(file);
-    log_event_display("SQL script generated: %s\n", filespec);
+    log_event_display("SQL script generated: %s", filespec);
 }
 
 
 bool move_file_safe(const char* src, const char* dst) {
     if (!MoveFileEx(src, dst, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING)) {
-        log_event_display("\nError moving file: %s -> %s (Error: %lu)\n", src, dst, GetLastError());
+        log_event_display("Error moving file: %s -> %s (Error: %lu)\n", src, dst, GetLastError());
         return false;
     }
     log_event("Moved file: %s -> %s", src, dst);
@@ -591,7 +594,7 @@ void move_directory(const char *source, const char *destination, short progress_
     // Ensure parent directories exist
     if (SHCreateDirectoryEx(NULL, destination, NULL) != ERROR_SUCCESS &&
         GetLastError() != ERROR_ALREADY_EXISTS) {
-        log_event_display("Error: Could not create directory %s (Error Code: %lu)\n", destination, GetLastError());
+        log_event_display("Error: Could not create directory %s (Error Code: %lu)", destination, GetLastError());
         return;
     }
 
@@ -616,7 +619,7 @@ void move_directory(const char *source, const char *destination, short progress_
     // Restart file search
     hFind = FindFirstFile(sourcePath, &findFileData);
     if (hFind == INVALID_HANDLE_VALUE) {
-        log_event_display("Error: Could not open source directory %s\n", source);
+        log_event_display("Error: Could not open source directory %s", source);
         return;
     }
 
@@ -638,7 +641,7 @@ void move_directory(const char *source, const char *destination, short progress_
         if (findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
             // Skip the data directory so it remains in source when moving the app home
             if (move_app_home && _stricmp(findFileData.cFileName, "data") == 0) {
-              log_event_display("Skipping data directory during move");
+              log_event_display("...Skipping data directory during move");
               continue;
             }
             
@@ -703,6 +706,7 @@ int main() {
     // Get the location of the application data files
     snprintf(source_data_dir, sizeof(source_data_dir),"%s%s", source_dir, "\\data");
     
+    log_event_display("IMPORTANT: You must install Oracle before running this setup.");
     if (!confirm_continue("Do you want to continue with the installation (Y or N)?")) {
       log_event_display("Exiting setup before entering parameters.");
       return 0;
@@ -777,7 +781,7 @@ int main() {
           move_directory(source_dir, app_home, progress_bar_row, move_app_home);
           log_event_display("APP_HOME created.");
         } else {
-          log_event_display("APP_HOME is set to %s\n", app_home);
+          log_event_display("APP_HOME is set to %s", app_home);
         }
         
         // DATA_HOME setup
@@ -791,7 +795,7 @@ int main() {
           log_event_display("DATA_HOME created.");
           RemoveDirectory(source_data_dir); // Delete the old data directory from the source location after move
         } else {
-          log_event_display("DATA_HOME is set to %s\n", data_home);
+          log_event_display("DATA_HOME is set to %s", data_home);
         }
         
         // Create custom configuration scripts using the user defined parameters
@@ -801,7 +805,7 @@ int main() {
 
          
         // Execute SQL*Plus to create database objects
-        log_event_display("Creating database objects.\n");
+        log_event_display("Creating database objects.");
         snprintf(exec_sql, sizeof(exec_sql), "%s%s%s", "sqlplus / as sysdba @\"",app_home,"\\install\\auto_install.sql\"");
         log_event_display("Executing: %s",exec_sql);
         system(exec_sql);
@@ -817,7 +821,6 @@ int main() {
     
         // Tell user installation is complete
         notify_complete(source_dir, dbservice, port, db_connect, app_owner, connect_user, app_home, sql_app_home, data_home, sql_data_home);
-        log_event_display("***** INSTALLATION COMPLETED. *****");
         status=0;
     } else {
         log_event_display("Installation abandoned.");
