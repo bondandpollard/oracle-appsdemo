@@ -40,15 +40,24 @@
   
   CONNECT &v_app_owner/&v_pwd@&v_dbconnect
   
-  @'&v_app_home\\plsql\\plsql_constants'
-  @'&v_app_home\\plsql\\util_string'
-  @'&v_app_home\\plsql\\util_numeric'
-  @'&v_app_home\\plsql\\util_date'
-  @'&v_app_home\\plsql\\util_admin'
-  @'&v_app_home\\plsql\\util_file'
-  @'&v_app_home\\plsql\\orderrp'
-  @'&v_app_home\\plsql\\export'
-  @'&v_app_home\\plsql\\import'
+  @'&v_app_home\\plsql\\plsql_constants_s.pls'
+  @'&v_app_home\\plsql\\util_admin_s.pls'
+  @'&v_app_home\\plsql\\util_string_s.pls'
+  @'&v_app_home\\plsql\\util_file_s.pls'
+  @'&v_app_home\\plsql\\orderrp_s.pls'
+  @'&v_app_home\\plsql\\import_s.pls'
+  @'&v_app_home\\plsql\\util_date_s.pls'
+  @'&v_app_home\\plsql\\util_numeric_s.pls'
+  @'&v_app_home\\plsql\\export_s.pls'
+  
+  @'&v_app_home\\plsql\\util_admin_b.pls'
+  @'&v_app_home\\plsql\\util_string_b.pls'
+  @'&v_app_home\\plsql\\util_file_b.pls'
+  @'&v_app_home\\plsql\\orderrp_b.pls'
+  @'&v_app_home\\plsql\\import_b.pls'
+  @'&v_app_home\\plsql\\util_date_b.pls'
+  @'&v_app_home\\plsql\\util_numeric_b.pls'
+  @'&v_app_home\\plsql\\export_b.pls'
   
  
 /*
