@@ -20,16 +20,19 @@
   SET ESCAPE ON
   
 /*
- ***********************************************************
- *   IMPORTANT                                             *
- *   You must set v_app_root to the directory in which you *
- *   installed your application                            *
- ***********************************************************
+ ************************************************************
+ *   IMPORTANT                                              *
+ *   You must set v_app_root to the directory in which you  *
+ *   installed your application                             *
+ *   e.g.                                                   *    
+ *    v_app_root = "D:\\ORACLE\\MYDEMO"                     *
+ ************************************************************
 */
 
   DEFINE v_app_root = "D:\\USERS\\IANBO\\DOCUMENTS\\BUSINESS\\BOND \& POLLARD LTD\\ADMIN\\IT\\APPLICATIONS\\ORACLE\\DEMO\\XEPDB1\\APPSDEMO"
+  --DEFINE v_app_root = "D:\\TEST"
   
   @'&v_app_root\\config\\set_env'
   
-  @'&v_app_home\\install\\compile_packages' "&v_dbservice" "&v_dbconnect" "&v_app_owner" "&v_pwd" "&v_app_home" "&v_connect_user"
+  @'&v_app_home\\install\\compile_packages' "&v_dbservice" "&v_dbconnect" "&v_app_owner" "&v_pwd" "&v_app_home" "&v_connect_user" "&v_connect_pwd"
 
