@@ -46,7 +46,7 @@ BEGIN
       v_stats_result := util_numeric.get_stats_project(tb_project_id_tbl(i));
  
       -- Export frequency table and stats for this project to CSV file
-      v_csv_fname := util_numeric.export_project_stats(tb_project_id_tbl(i),v_stats_result);
+      v_csv_fname := export.project_stats(tb_project_id_tbl(i),v_stats_result);
       
       -- Display CSV file name
       util_admin.log_message('Statistics exported to file: '||v_csv_fname); 
