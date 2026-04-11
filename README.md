@@ -6,3 +6,5 @@ The schema is based on the famous Scott/Tiger training database, with additional
 defining holiday dates.
 Sample code includes: Error logging, CSV record handling and field extract, Import/Export of CSV data, Numeric, Date, and String functions,
 Binary Search, Sort, Remove Duplicates, Statistics.
+Please visit our website for further information:
+http://www.bondpollard.co.uk/
