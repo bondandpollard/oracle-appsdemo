@@ -439,7 +439,25 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
       RETURN NULL;
       
   END easter_sunday;
+  
+  FUNCTION easter_monday(
+    p_year IN NUMBER
+  ) 
+  RETURN DATE 
+  IS
+  BEGIN
+    RETURN easter_sunday(p_year) +1;
+  END easter_monday;
 
+  FUNCTION good_friday(
+    p_year IN NUMBER
+  ) 
+  RETURN DATE 
+  IS
+  BEGIN
+    RETURN easter_sunday(p_year) -2;
+  END good_friday;
+  
   FUNCTION easter_friday(
     p_year IN NUMBER
   ) 
@@ -457,15 +475,6 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
   BEGIN
     RETURN easter_sunday(p_year) +6;
   END easter_saturday;
-
-  FUNCTION easter_monday(
-    p_year IN NUMBER
-  ) 
-  RETURN DATE 
-  IS
-  BEGIN
-    RETURN easter_sunday(p_year) +1;
-  END easter_monday;
 
   FUNCTION shrove_tuesday(
     p_year IN NUMBER
@@ -494,14 +503,14 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
     RETURN easter_sunday(p_year) -7;
   END palm_sunday;
 
-  FUNCTION whitsunday(
+  FUNCTION whitsun(
     p_year IN NUMBER
   ) 
   RETURN DATE 
   IS
   BEGIN
     RETURN easter_sunday(p_year) +49;
-  END whitsunday;
+  END whitsun;
 
   FUNCTION whit_monday(
     p_year IN NUMBER

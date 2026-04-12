@@ -21,6 +21,7 @@ CREATE OR REPLACE PACKAGE util_date AS
   ** 31/03/2026       Ian Bond            Change function names:
   **                                        first_day_month --> month_first_day
   **                                        last_day_month  --> month_day_last
+  ** 12/04/2026       Ian Bond            Add good_friday and correct easter_friday and easter_saturday.
   */
 
 
@@ -395,11 +396,47 @@ CREATE OR REPLACE PACKAGE util_date AS
   FUNCTION easter_sunday(
     p_year IN  NUMBER
     ) RETURN DATE;
-
+    
+  /*
+  ** easter_monday - Date of Easter Monday
+  **
+  ** Returns the date of Easter Monday for a specified year.
+  **
+  ** IN
+  **   p_year         - A 4-digit year number
+  ** RETURN
+  **   DATE  is the date on which Easter Monday falls for the specified year
+  ** EXCEPTIONS
+  **   <exception_name1>      - <brief description>
+  */
+  FUNCTION easter_monday(
+    p_year IN NUMBER
+    ) RETURN DATE;
+    
+  /*
+  ** good_friday - Date of Good Friday
+  **
+  ** Returns the date of Good Friday for a specified year.
+  ** Good Friday is the Friday before Easter Sunday.
+  ** Not to be confused with Easter Friday, which is the Friday following Easter Sunday.
+  **
+  ** IN
+  **   p_year         - A 4-digit year number
+  ** RETURN
+  **   DATE  is the date on which Good Friday falls for the specified year
+  ** EXCEPTIONS
+  **   <exception_name1>      - <brief description>
+  */
+  FUNCTION good_friday(
+    p_year IN NUMBER
+    ) RETURN DATE;
+    
   /*
   ** easter_friday - Date of Easter Friday
   **
   ** Returns the date of Easter Friday for a specified year.
+  ** Easter Friday is the 5th day after Easter Sunday.
+  ** Not to be confused with Good Friday, which is the Friday before Easter.
   **
   ** IN
   **   p_year         - A 4-digit year number
@@ -416,6 +453,7 @@ CREATE OR REPLACE PACKAGE util_date AS
   ** easter_saturday - Date of Easter Saturday
   **
   ** Returns the date of Easter Saturday for a specified year.
+  ** Easter Saturday is the 6th day after Easter Sunday.
   **
   ** IN
   **   p_year         - A 4-digit year number
@@ -425,22 +463,6 @@ CREATE OR REPLACE PACKAGE util_date AS
   **   <exception_name1>      - <brief description>
   */
   FUNCTION easter_saturday(
-    p_year IN NUMBER
-    ) RETURN DATE;
-
-  /*
-  ** easter_monday - Date of Easter Monday
-  **
-  ** Returns the date of Easter Monday for a specified year.
-  **
-  ** IN
-  **   p_year         - A 4-digit year number
-  ** RETURN
-  **   DATE  is the date on which Easter Monday falls for the specified year
-  ** EXCEPTIONS
-  **   <exception_name1>      - <brief description>
-  */
-  FUNCTION easter_monday(
     p_year IN NUMBER
     ) RETURN DATE;
 
@@ -493,18 +515,19 @@ CREATE OR REPLACE PACKAGE util_date AS
     ) RETURN DATE;
 
   /*
-  ** whitsunday - Date of Whitsunday
+  ** whitsun - Date of Whitsun
   **
-  ** Returns the date of Whitsunday for a specified year.
+  ** Returns the date of Whitsun for a specified year.
+  ** Also known as Pentecost, from the Greek for 50th.
   **
   ** IN
   **   p_year         - A 4-digit year number
   ** RETURN
-  **   DATE  is the date on which Whitsunday falls for the specified year
+  **   DATE  is the date on which Whitsun falls for the specified year
   ** EXCEPTIONS
   **   <exception_name1>      - <brief description>
   */
-  FUNCTION whitsunday(
+  FUNCTION whitsun(
     p_year IN NUMBER
     ) RETURN DATE;
 
