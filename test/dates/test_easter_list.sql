@@ -1,4 +1,18 @@
 -- Test Easter related holidays
+
+CLEAR COLUMNS
+CLEAR BREAKS
+CLEAR COMPUTES
+
+SET PAGESIZE 66
+SET NEWPAGE 0
+SET LINESIZE 132
+
+TTITLE CENTER 'Bond and Pollard Limited' SKIP 1 -
+  CENTER ======================== SKIP 1-
+  LEFT 'Holidays Based on Easter'  -
+  RIGHT 'Page:' SQL.PNO SKIP 2
+
 ACCEPT p_year prompt "Enter year format YYYY:"
 
   SELECT 
@@ -10,7 +24,7 @@ ACCEPT p_year prompt "Enter year format YYYY:"
   FROM dual
   UNION
   SELECT
-    util_date.mardi_gras(&p_year), 'Mardi Gras is shrove tuesday'
+    util_date.mardi_gras(&p_year), 'Mardi Gras / Shrove Tuesday'
   FROM dual
   UNION
   SELECT
@@ -22,11 +36,7 @@ ACCEPT p_year prompt "Enter year format YYYY:"
   FROM dual
   UNION
   SELECT
-    util_date.easter_friday(&p_year), 'Easter Friday'
-  FROM dual
-  UNION
-  SELECT
-    util_date.easter_saturday(&p_year), 'Easter Saturday'
+    util_date.good_friday(&p_year), 'Good Friday'
   FROM dual
   UNION
   SELECT
@@ -38,11 +48,19 @@ ACCEPT p_year prompt "Enter year format YYYY:"
   FROM dual
   UNION
   SELECT
+    util_date.easter_friday(&p_year), 'Easter Friday / Friday after Easter'
+  FROM dual
+  UNION
+  SELECT
+    util_date.easter_saturday(&p_year), 'Easter Saturday / Saturday after Easter'
+  FROM dual
+  UNION
+  SELECT
     util_date.ascension_day(&p_year), 'Ascension Day'
   FROM dual
   UNION
   SELECT
-      util_date.whitsunday(&p_year), 'Whitsunday'
+      util_date.whitsun(&p_year), 'Whitsun / Pentecost'
   FROM dual
   UNION
   SELECT
@@ -50,5 +68,5 @@ ACCEPT p_year prompt "Enter year format YYYY:"
   FROM dual
   UNION
   SELECT
-    util_date.corpus_christi(&p_year), 'Corpus Christ'
+    util_date.corpus_christi(&p_year), 'Corpus Christi'
   FROM dual;
