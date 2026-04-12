@@ -446,7 +446,7 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
   RETURN DATE 
   IS
   BEGIN
-    RETURN easter_sunday(p_year) -2;
+    RETURN easter_sunday(p_year) +5;
   END easter_friday;
 
   FUNCTION easter_saturday(
@@ -455,7 +455,7 @@ CREATE OR REPLACE PACKAGE BODY util_date AS
   RETURN DATE 
   IS
   BEGIN
-    RETURN easter_sunday(p_year) -1;
+    RETURN easter_sunday(p_year) +6;
   END easter_saturday;
 
   FUNCTION easter_monday(
