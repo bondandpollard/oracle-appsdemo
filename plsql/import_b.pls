@@ -636,7 +636,7 @@ CREATE OR REPLACE PACKAGE BODY import AS
         -- Note that the error messages for duplicate or invalid KEY_VALUE (PROJECT DESC) will remain in the IMPORTERROR table,
         -- as there cannot be a successful import. These error messages will need to be deleted manually.
         BEGIN
-          l_key_value := SUBSTR(l_project_desc, 1);
+          l_key_value := SUBSTR(l_project_desc, 1,LENGTH(l_key_value));
           UPDATE importcsv
           SET
             key_value = l_key_value
