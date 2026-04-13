@@ -62,7 +62,8 @@
 **                            Foreign key <table_from>_<table_to>_FK. Only for objects added to Oracle demo.
 ** 06/03/2023   Ian Bond      Add a connection user that will be used by all applications that connect to the database.
 ** 12/03/2025   Ian Bond      Fix problem with public synonyms being replaced each time a new version of demo app installed.   
-** 04/03/2026   Ian Bond      Add statistics tables.     
+** 04/03/2026   Ian Bond      Add statistics tables.    
+** 12/04/2026   Ian Bond      Amend stats_data.stats value to have 6 decimal places.
 */
 
 /*
@@ -631,7 +632,7 @@
     STATS_DATA_ID     NUMBER(28,0) GENERATED ALWAYS AS IDENTITY, 
     STATS_PROJECT_ID  NUMBER(28,0),
     DESCRIPTION       VARCHAR2(100),
-    STATS_VALUE       NUMBER(38)
+    STATS_VALUE       NUMBER(38,10)
   );
     
   CREATE UNIQUE INDEX STATS_DATA_IDX ON STATS_DATA (STATS_DATA_ID);
