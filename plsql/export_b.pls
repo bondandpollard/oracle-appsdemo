@@ -16,6 +16,7 @@ CREATE OR REPLACE PACKAGE BODY export AS
   )
   IS 
     l_rec plsql_constants.maxvarchar2_t;
+    c_format CONSTANT VARCHAR2(30) := '999,999,999,999,990.9999999999';
   BEGIN
    -- Frequency table headings
    l_rec := '"KEY","FREQUENCY"';
@@ -23,7 +24,7 @@ CREATE OR REPLACE PACKAGE BODY export AS
 
    -- Frequency table
     FOR i IN 1 .. p_stats_result.freq_tbl.COUNT LOOP 
-      l_rec := p_stats_result.freq_tbl(i).key
+      l_rec := trim(to_char(p_stats_result.freq_tbl(i).key,c_format))
               || gc_delim || to_char(p_stats_result.freq_tbl(i).frequency);
       utl_file.put_line(p_file_id,l_rec);
     END LOOP;
@@ -31,25 +32,25 @@ CREATE OR REPLACE PACKAGE BODY export AS
     -- Statistics
     l_rec := '"STATISTICS"';
     utl_file.put_line(p_file_id,l_rec);
-    utl_file.put_line(p_file_id,'"Sum"' || gc_delim || to_char(p_stats_result.stats.sum_values));
+    utl_file.put_line(p_file_id,'"Sum"' || gc_delim || trim(to_char(p_stats_result.stats.sum_values,c_format)));
     utl_file.put_line(p_file_id,'"N Total"' || gc_delim || to_char(p_stats_result.stats.n_total));  
     utl_file.put_line(p_file_id,'"Distinct N"' || gc_delim || to_char(p_stats_result.stats.distinct_n));
-    utl_file.put_line(p_file_id,'"Mean"' || gc_delim || trim(to_char(p_stats_result.stats.mean,'9999999990.9999')));
-    utl_file.put_line(p_file_id,'"Median"' || gc_delim || trim(to_char(p_stats_result.stats.median,'9999999990.9999')));
+    utl_file.put_line(p_file_id,'"Mean"' || gc_delim || trim(to_char(p_stats_result.stats.mean,c_format)));
+    utl_file.put_line(p_file_id,'"Median"' || gc_delim || trim(to_char(p_stats_result.stats.median,c_format)));
     FOR i IN 1 .. p_stats_result.stats.mode_values.COUNT LOOP 
-      utl_file.put_line(p_file_id,'"Mode '  || to_char(i) || '"' || gc_delim || to_char(p_stats_result.stats.mode_values(i)));
+      utl_file.put_line(p_file_id,'"Mode '  || to_char(i) || '"' || gc_delim || trim(to_char(p_stats_result.stats.mode_values(i),c_format)));
     END LOOP;
-    utl_file.put_line(p_file_id,'"Lowest"' || gc_delim || to_char(p_stats_result.stats.lowest));
-    utl_file.put_line(p_file_id,'"Highest"' || gc_delim || to_char(p_stats_result.stats.highest));
-    utl_file.put_line(p_file_id,'"Range"' || gc_delim || to_char(p_stats_result.stats.range));          
-    utl_file.put_line(p_file_id,'"Variance Population"' || gc_delim || trim(to_char(p_stats_result.stats.variance_pop,'9999999990.9999')));
-    utl_file.put_line(p_file_id,'"Variance Sample"' || gc_delim || trim(to_char(p_stats_result.stats.variance_samp,'9999999990.9999')));
-    utl_file.put_line(p_file_id,'"Standard Deviation Population"' || gc_delim || trim(to_char(p_stats_result.stats.stddev_pop,'9999999990.9999')));
-    utl_file.put_line(p_file_id,'"Standard Deviation Sample"' || gc_delim || trim(to_char(p_stats_result.stats.stddev_samp,'9999999990.9999')));
-    utl_file.put_line(p_file_id,'"Interquartile Range"' || gc_delim || trim(to_char(p_stats_result.stats.iqr,'9999999990.9999')));  
+    utl_file.put_line(p_file_id,'"Lowest"' || gc_delim || trim(to_char(p_stats_result.stats.lowest,c_format)));
+    utl_file.put_line(p_file_id,'"Highest"' || gc_delim || trim(to_char(p_stats_result.stats.highest,c_format)));
+    utl_file.put_line(p_file_id,'"Range"' || gc_delim || trim(to_char(p_stats_result.stats.range,c_format)));          
+    utl_file.put_line(p_file_id,'"Variance Population"' || gc_delim || trim(to_char(p_stats_result.stats.variance_pop,c_format)));
+    utl_file.put_line(p_file_id,'"Variance Sample"' || gc_delim || trim(to_char(p_stats_result.stats.variance_samp,c_format)));
+    utl_file.put_line(p_file_id,'"Standard Deviation Population"' || gc_delim || trim(to_char(p_stats_result.stats.stddev_pop,c_format)));
+    utl_file.put_line(p_file_id,'"Standard Deviation Sample"' || gc_delim || trim(to_char(p_stats_result.stats.stddev_samp,c_format)));
+    utl_file.put_line(p_file_id,'"Interquartile Range"' || gc_delim || trim(to_char(p_stats_result.stats.iqr,c_format)));  
     -- Percentiles
-    utl_file.put_line(p_file_id,'"Percentile Discrete ('||to_char(p_pct,'0.99')||')"'|| gc_delim || trim(to_char(util_numeric.percentile_disc(p_stats_result.freq_tbl, p_pct),'9999999990.9999')));
-    utl_file.put_line(p_file_id,'"Percentile Continuous ('||to_char(p_pct,'0.99')||')"' || gc_delim || trim(to_char(util_numeric.percentile_cont(p_stats_result.freq_tbl, p_pct),'9999999990.9999')));
+    utl_file.put_line(p_file_id,'"Percentile Discrete ('||to_char(p_pct,'0.99')||')"'|| gc_delim || trim(to_char(util_numeric.percentile_disc(p_stats_result.freq_tbl, p_pct),c_format)));
+    utl_file.put_line(p_file_id,'"Percentile Continuous ('||to_char(p_pct,'0.99')||')"' || gc_delim || trim(to_char(util_numeric.percentile_cont(p_stats_result.freq_tbl, p_pct),c_format)));
   END stats_csv;
 
   /*

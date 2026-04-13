@@ -853,7 +853,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     l PLS_INTEGER; -- Left bound of array to search
     r PLS_INTEGER; -- Right bound of array to search
     n PLS_INTEGER; -- For VARRAY count = last element of array
-    t PLS_INTEGER; -- Search target value
+    t NUMBER;      -- Search target value
     m PLS_INTEGER; -- Mid position of range [l,r]
     p PLS_INTEGER; -- Position of target
     e_null_value EXCEPTION;
@@ -975,7 +975,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     l PLS_INTEGER; -- Left bound of array to search
     r PLS_INTEGER; -- Right bound of array to search
     n PLS_INTEGER; -- For VARRAY count = last element of array
-    t PLS_INTEGER; -- Search target value
+    t NUMBER;      -- Search target value
     m PLS_INTEGER; -- Mid position of range [l,r]
     p PLS_INTEGER; -- Position of target
     v_debug_msg applog.message%TYPE;
@@ -1070,7 +1070,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     l PLS_INTEGER; -- Left bound of array to search
     r PLS_INTEGER; -- Right bound of array to search
     n PLS_INTEGER; -- For VARRAY count = last element of array
-    t PLS_INTEGER; -- Search target value
+    t NUMBER;      -- Search target value
     m PLS_INTEGER; -- Mid position of range [l,r]
     p PLS_INTEGER; -- Position of target
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.BINARY_SEARCH_RIGHTMOST_ARRAY';
@@ -1428,7 +1428,6 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
       RETURN NULL;
   END search_unsorted_array;
   
-  
   FUNCTION search_unsorted(
     p_target       IN NUMBER,
     p_list         IN VARCHAR2
@@ -1506,7 +1505,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
   ) RETURN t_number_array
   IS 
     v_current_value NUMBER;
-    v_index NUMBER;
+    v_index PLS_INTEGER;
     v_noduplicates_array t_number_array := t_number_array();
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.REMOVE_DUPLICATES_NOSORT_ARRAY';
     v_debug_msg applog.message%TYPE;
@@ -1563,7 +1562,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
   ) RETURN t_number_array
   IS 
     v_current_value NUMBER;
-    v_index NUMBER;
+    v_index PLS_INTEGER;
     v_sorted_array t_number_array;
     v_noduplicates_array t_number_array := t_number_array();
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.REMOVE_DUPLICATES_ARRAY';
@@ -1632,7 +1631,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     v_sorted_array t_number_array;
     v_array_size PLS_INTEGER;
     v_index PLS_INTEGER;
-    v_current_key PLS_INTEGER;
+    v_current_key NUMBER;
     v_current_count PLS_INTEGER;
     v_error_value VARCHAR2(20);
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.POPULATE_FREQUENCY_TABLE';
@@ -1657,11 +1656,12 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     
     v_index := 1;
     WHILE v_index <= v_array_size LOOP 
+    
       -- Strict integer check 
-      IF v_sorted_array(v_index) != TRUNC(v_sorted_array(v_index)) THEN 
-        v_error_value := TO_CHAR(v_sorted_array(v_index));
-        RAISE e_non_integer;
-      END IF;
+      --IF v_sorted_array(v_index) != TRUNC(v_sorted_array(v_index)) THEN 
+      --  v_error_value := TO_CHAR(v_sorted_array(v_index));
+      --  RAISE e_non_integer;
+      --END IF;
       
       v_current_key := v_sorted_array(v_index);
       v_current_count := 1;
@@ -1700,9 +1700,9 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
   
   FUNCTION frequency_table_sum (
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER
+  ) RETURN NUMBER
   IS 
-    v_sum PLS_INTEGER :=0;
+    v_sum NUMBER :=0;
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.FREQUENCY_TABLE_SUM';
     v_debug_msg applog.message%TYPE;
     v_debug_mode VARCHAR2(1) := 'X';
@@ -1845,9 +1845,9 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
   
   FUNCTION frequency_table_mode (
     p_frequency_table IN t_frequency_table
-  ) RETURN t_int_table
+  ) RETURN t_num_table
   IS 
-    tb_modes t_int_table := t_int_table();
+    tb_modes t_num_table := t_num_table();
     v_max_frequency PLS_INTEGER :=0;
     v_index PLS_INTEGER;
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.FREQUENCY_TABLE_MODE';
@@ -1885,9 +1885,9 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
   
   FUNCTION frequency_table_highest (
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER
+  ) RETURN NUMBER
   IS 
-    v_highest PLS_INTEGER :=0;
+    v_highest NUMBER :=0;
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.FREQUENCY_TABLE_HIGHEST';
     v_debug_msg applog.message%TYPE;
     v_debug_mode VARCHAR2(1) := 'X';
@@ -1909,9 +1909,9 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
 
   FUNCTION frequency_table_lowest (
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER
+  ) RETURN NUMBER
   IS 
-    v_lowest PLS_INTEGER :=0;
+    v_lowest NUMBER :=0;
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.FREQUENCY_TABLE_LOWEST';
     v_debug_msg applog.message%TYPE;
     v_debug_mode VARCHAR2(1) := 'S';
@@ -1933,9 +1933,9 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
   
   FUNCTION frequency_table_range (
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER
+  ) RETURN NUMBER
   IS 
-    v_range PLS_INTEGER :=0;
+    v_range NUMBER :=0;
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.FREQUENCY_TABLE_RANGE';
     v_debug_msg applog.message%TYPE;
     v_debug_mode VARCHAR2(1) := 'X';
@@ -2097,7 +2097,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
   FUNCTION percentile_disc(
     p_frequency_table IN t_frequency_table,
     p_pct             IN NUMBER 
-  ) RETURN PLS_INTEGER
+  ) RETURN NUMBER
   IS 
     v_freq_count PLS_INTEGER;
     v_rank PLS_INTEGER;
@@ -2262,7 +2262,7 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     rec_stats.distinct_n      := tb_frequency_table.COUNT;
     rec_stats.mean            := frequency_table_mean(tb_frequency_table);
     rec_stats.median          := frequency_table_median(tb_frequency_table);
-    rec_stats.mode_values     := frequency_table_mode(tb_frequency_table); -- table of INT
+    rec_stats.mode_values     := frequency_table_mode(tb_frequency_table); -- table of NUMBER
     rec_stats.lowest          := frequency_table_lowest(tb_frequency_table);
     rec_stats.highest         := frequency_table_highest(tb_frequency_table);
     rec_stats.range           := frequency_table_range(tb_frequency_table);
@@ -2431,12 +2431,13 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     p_stats_result IN t_stats_result
   )
   IS 
+    c_format CONSTANT VARCHAR2(30) := '999,999,999,999,990.9999999999';
   BEGIN 
     util_admin.log_message('----------------------------------------------------------');
     util_admin.log_message('FREQUENCY TABLE');
     util_admin.log_message('----------------------------------------------------------');
     FOR i IN 1 .. p_stats_result.freq_tbl.COUNT LOOP 
-      util_admin.log_message( 'KEY='||to_char(p_stats_result.freq_tbl(i).KEY)||
+      util_admin.log_message( 'KEY='||trim(to_char(p_stats_result.freq_tbl(i).KEY,c_format))||
                               ' Frequency='||to_char(p_stats_result.freq_tbl(i).frequency));
     END LOOP;
     util_admin.log_message('----------------------------------------------------------');
@@ -2447,28 +2448,29 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     p_pct IN NUMBER DEFAULT 0.5
   )
   IS
+    c_format CONSTANT VARCHAR2(30) := '999,999,999,999,990.9999999999';
   BEGIN
     util_admin.log_message('STATISTICS');
-    util_admin.log_message('Sum='||to_char(p_stats_result.stats.sum_values));
+    util_admin.log_message('Sum='||trim(to_char(p_stats_result.stats.sum_values,c_format)));
     util_admin.log_message('N Total='||to_char(p_stats_result.stats.n_total));
     util_admin.log_message('Distinct N='||to_char(p_stats_result.stats.distinct_n));
-    util_admin.log_message('Mean='||trim(to_char(p_stats_result.stats.mean,'9999999990.9999')));
-    util_admin.log_message('Median='||trim(to_char(p_stats_result.stats.median,'9999999990.9999')));
+    util_admin.log_message('Mean='||trim(to_char(p_stats_result.stats.mean,c_format)));
+    util_admin.log_message('Median='||trim(to_char(p_stats_result.stats.median,c_format)));
     FOR i IN 1 .. p_stats_result.stats.mode_values.COUNT LOOP 
-      util_admin.log_message('Mode '||to_char(i)||' = '||to_char(p_stats_result.stats.mode_values(i) ) );
+      util_admin.log_message('Mode '||to_char(i)||' = '||trim(to_char(p_stats_result.stats.mode_values(i),c_format)));
     END LOOP;
-    util_admin.log_message('Lowest='||to_char(p_stats_result.stats.lowest));
-    util_admin.log_message('Highest='||to_char(p_stats_result.stats.highest));
-    util_admin.log_message('Range='||to_char(p_stats_result.stats.range));
-    util_admin.log_message('Variance Population='||trim(to_char(p_stats_result.stats.variance_pop,'9999999990.9999')));
-    util_admin.log_message('Variance Sample='||trim(to_char(p_stats_result.stats.variance_samp,'9999999990.9999')));
-    util_admin.log_message('Standard Deviation Population='||trim(to_char(p_stats_result.stats.stddev_pop,'9999999990.9999')));
-    util_admin.log_message('Standard Deviation Sample='||trim(to_char(p_stats_result.stats.stddev_samp,'9999999990.9999')));
-    util_admin.log_message('Interquartile Range='||trim(to_char(p_stats_result.stats.iqr,'9999999990.9999')));
+    util_admin.log_message('Lowest='||trim(to_char(p_stats_result.stats.lowest,c_format)));
+    util_admin.log_message('Highest='||trim(to_char(p_stats_result.stats.highest,c_format)));
+    util_admin.log_message('Range='||trim(to_char(p_stats_result.stats.range,c_format)));
+    util_admin.log_message('Variance Population='||trim(to_char(p_stats_result.stats.variance_pop,c_format)));
+    util_admin.log_message('Variance Sample='||trim(to_char(p_stats_result.stats.variance_samp,c_format)));
+    util_admin.log_message('Standard Deviation Population='||trim(to_char(p_stats_result.stats.stddev_pop,c_format)));
+    util_admin.log_message('Standard Deviation Sample='||trim(to_char(p_stats_result.stats.stddev_samp,c_format)));
+    util_admin.log_message('Interquartile Range='||trim(to_char(p_stats_result.stats.iqr,c_format)));
     
     -- Percentiles
-    util_admin.log_message('Percentile Discrete ('||to_char(p_pct,'0.99')||')='||trim(to_char(percentile_disc(p_stats_result.freq_tbl, p_pct),'9999999990.9999')));
-    util_admin.log_message('Percentile Continuous ('||to_char(p_pct,'0.99')||')='||trim(to_char(percentile_cont(p_stats_result.freq_tbl, p_pct),'9999999990.9999')));   
+    util_admin.log_message('Percentile Discrete ('||to_char(p_pct,'0.99')||')='||trim(to_char(percentile_disc(p_stats_result.freq_tbl, p_pct),c_format)));
+    util_admin.log_message('Percentile Continuous ('||to_char(p_pct,'0.99')||')='||trim(to_char(percentile_cont(p_stats_result.freq_tbl, p_pct),c_format)));   
   END display_stats;
   
 END util_numeric;

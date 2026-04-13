@@ -81,6 +81,7 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   ** 04/03/2026       Ian Bond            Add get_stats_project to call get_stats with data from table stats_data.
   ** 22/03/2026       Ian Bond            Add functions to write frequency table and stats to CSV file.
   ** 24/03/2026       Ian Bond            Add function to export project stats to CSV file.
+  ** 12/02/2026       Ian Bond            Allow decimal places in statistics data.
   */
  
   
@@ -117,23 +118,23 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   TYPE t_number_array IS VARRAY(gc_max_array_size) OF NUMBER;
   
   TYPE t_frequency_row IS RECORD (
-    key         PLS_INTEGER,
+    key         NUMBER,
     frequency   PLS_INTEGER
   );
   
   TYPE t_frequency_table IS TABLE OF t_frequency_row;
   
-  TYPE t_int_table IS TABLE OF PLS_INTEGER;
+  TYPE t_num_table IS TABLE OF NUMBER;
   
   -- Used by get_stats to return all statistics for frequency table 
-  -- Note this is nested, supporting multiple mode values in t_int_table
+  -- Note this is nested, supporting multiple mode values in t_num_table
   TYPE t_stats_summary IS RECORD (
-    sum_values      PLS_INTEGER,
+    sum_values      NUMBER,
     n_total         PLS_INTEGER,
     distinct_n      PLS_INTEGER,
     mean            NUMBER,
     median          NUMBER,
-    mode_values     t_int_table,
+    mode_values     t_num_table,
     lowest          NUMBER,
     highest         NUMBER,
     range           NUMBER,
@@ -1359,14 +1360,14 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   **   p_frequency_table      - Table of t_frequency_row
   **
   ** RETURN
-  **   PLS_INTEGER            - Sum of values in p_frequency_table
+  **   NUMBER                 - Sum of values in p_frequency_table
   **
   ** EXCEPTIONS
   **   e_null_table           - p_frequency_table must not be null.
   */
   FUNCTION frequency_table_sum(
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER;
+  ) RETURN NUMBER;
 
   /*
   ** frequency_table_count
@@ -1457,14 +1458,14 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   **   p_frequency_table      - Table of t_frequency_row
   **
   ** RETURN
-  **   t_int_table            - Table of modes
+  **   t_num_table            - Table of modes
   **
   ** EXCEPTIONS
   **   e_null_table           - p_frequency_table must not be null.
   */
   FUNCTION frequency_table_mode(
     p_frequency_table IN t_frequency_table
-  ) RETURN t_int_table;
+  ) RETURN t_num_table;
   
   /*
   ** frequency_table_highest
@@ -1477,14 +1478,14 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   **   p_frequency_table      - Table of t_frequency_row
   **
   ** RETURN
-  **   PLS_INTEGER            - Highest value in p_frequency_table
+  **   NUMBER                 - Highest value in p_frequency_table
   **
   ** EXCEPTIONS
   **   e_null_table           - p_frequency_table must not be null.
   */  
   FUNCTION frequency_table_highest(
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER;
+  ) RETURN NUMBER;
   
   /*
   ** frequency_table_lowest
@@ -1497,14 +1498,14 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   **   p_frequency_table      - Table of t_frequency_row
   **
   ** RETURN
-  **   PLS_INTEGER            - Lowest value in p_frequency_table
+  **   NUMBER                 - Lowest value in p_frequency_table
   **
   ** EXCEPTIONS
   **   e_null_table           - p_frequency_table must not be null.
   */ 
   FUNCTION frequency_table_lowest(
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER;
+  ) RETURN NUMBER;
   
   /*
   ** frequency_table_range
@@ -1516,14 +1517,14 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   **   p_frequency_table      - Table of t_frequency_row
   **
   ** RETURN
-  **   PLS_INTEGER            - Range of values in p_frequency_table
+  **   NUMBER                 - Range of values in p_frequency_table
   **
   ** EXCEPTIONS
   **   e_null_table           - p_frequency_table must not be null.
   */
   FUNCTION frequency_table_range(
     p_frequency_table IN t_frequency_table
-  ) RETURN PLS_INTEGER;
+  ) RETURN NUMBER;
 
   /*
   ** variance_pop
@@ -1539,8 +1540,11 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   ** m = Mean of the population
   ** N = Total number of data points in the population
   **
+  ** IN
+  **   p_frequency_table      - Table of t_frequency_row
+  **
   ** RETURN
-  **   NUMBER               - Population Variance for Range of values in p_frequency_table
+  **   NUMBER                 - Population Variance for Range of values in p_frequency_table
   **
   ** EXCEPTIONS
   */
@@ -1659,14 +1663,14 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   **
   **
   ** RETURN
-  **   PLS_INTEGER            - Key (observed value) in frequency table at the percentile p_pct
+  **   NUMBER                 - Key (observed value) in frequency table at the percentile p_pct
   **
   ** EXCEPTIONS
   */
   FUNCTION percentile_disc(
     p_frequency_table IN t_frequency_table,
     p_pct             IN NUMBER 
-  ) RETURN PLS_INTEGER;
+  ) RETURN NUMBER;
 
   /*
   ** percentile_cont
@@ -1752,7 +1756,7 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   **                                    stddev_pop (STDDEV_POP), stddev_samp (STDDEV_SAMP), IQR
   **    freq_tabl   t_frequency_table   Table of t_frequency_row: key, frequency
   **
-  ** NB: mode_values is a table of integer t_int_table as >1 mode may be returned
+  ** NB: mode_values is a table of integer t_num_table as >1 mode may be returned
   **
   **
   ** IN
