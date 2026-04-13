@@ -21,4 +21,6 @@ BEGIN
 EXCEPTION
   WHEN e_invalid_data THEN
     util_admin.log_message('Invalid data!');
+  WHEN OTHERS THEN
+    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
 END;

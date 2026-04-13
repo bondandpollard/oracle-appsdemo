@@ -12,7 +12,7 @@ DECLARE
   t_to NUMBER;
   exact BOOLEAN := FALSE;
 BEGIN
-  a := '1,1,2,2,2,14,14,14,14,16,16,18,18,18';
+  a := '1,1,2,2,2,9.0,9.25,9.8175,14,14,14,14,16,16,18,18,18';
   t := &p_target;
   t_to := &p_target_to;
   
@@ -54,10 +54,15 @@ BEGIN
   
   p := util_numeric.binary_search_nearest(t,a);
   dbms_output.put_line('TEST binary_search_nearest, result = ' || to_char(p));
-  
-  a := '1,2,3,4,6,7,8,9,10,11,12,13,14,15,16,17';
-  dbms_output.put_line('Array: ' || a);
+  util_admin.log_message('*********');
+  util_admin.log_message('NEW ARRAY');
+  util_admin.log_message('*********');
+  a := '1,2,3,4,5,6,7,8,9,10,10.1,10.3,10.567,14,15,16,17,18,19,20';
+  util_admin.log_message('Array: ' || a);
+  exact := TRUE;
+  p := test_binary_search_rightmost(t,a,exact);
+  util_admin.log_message('Position of ' || to_char(t) || ' is ' || to_char(p));
   p := util_numeric.binary_search_range(t, t_to,a);
-  dbms_output.put_line('TEST binary_search_range, from ' || to_char(t) || ' to ' || to_char(t_to) || ' result = ' || to_char(p));
+  util_admin.log_message('TEST binary_search_range, from ' || to_char(t) || ' to ' || to_char(t_to) || ' result = ' || to_char(p));
   
 END;

@@ -30,7 +30,7 @@ DECLARE
   v_mean NUMBER;
   v_median NUMBER;
   v_median_array NUMBER; 
-  v_modes util_numeric.t_int_table := util_numeric.t_int_table();
+  v_modes util_numeric.t_num_table := util_numeric.t_num_table();
   v_highest NUMBER;
   v_lowest NUMBER;
   v_range NUMBER;

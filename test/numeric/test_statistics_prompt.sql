@@ -34,5 +34,5 @@ BEGIN
 
 EXCEPTION
   WHEN OTHERS THEN
-    util_admin.log_message('See error messages above.');
+    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
 END;
