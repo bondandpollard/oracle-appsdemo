@@ -39,9 +39,9 @@ BEGIN
   
   util_admin.log_message('PERCENTILES');
   v_percentile_disc := util_numeric.percentile_disc(v_stats_result.freq_tbl,&p_percentile);
-  util_admin.log_message('PCT_DISC ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_disc,'9999999990.9999')));
+  util_admin.log_message('PCT_DISC ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_disc,'9,999,999,990.9999999999')));
   v_percentile_cont := util_numeric.percentile_cont(v_stats_result.freq_tbl,&p_percentile);
-  util_admin.log_message('PCT_CONT ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_cont,'9999999990.9999')));
+  util_admin.log_message('PCT_CONT ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_cont,'9,999,999,990.9999999999')));
   
   -- Write stats to CSV file
   v_csv_fname := export.stats(v_stats_result, '&p_name',&p_percentile);
@@ -49,5 +49,5 @@ BEGIN
   
 EXCEPTION
   WHEN OTHERS THEN
-    util_admin.log_message('See error messages above.');
+    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
 END;

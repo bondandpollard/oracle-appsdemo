@@ -45,9 +45,9 @@ BEGIN
   -- Calculate percentiles using frequency table
   util_admin.log_message('PERCENTILES');
   v_percentile_disc := util_numeric.percentile_disc(v_stats_result.freq_tbl,&p_percentile);
-  util_admin.log_message('PCT_DISC ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_disc,'9999999990.9999')));
+  util_admin.log_message('PCT_DISC ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_disc,'9,999,999,990.9999999999')));
   v_percentile_cont := util_numeric.percentile_cont(v_stats_result.freq_tbl,&p_percentile);
-  util_admin.log_message('PCT_CONT ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_cont,'9999999990.9999')));
+  util_admin.log_message('PCT_CONT ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_cont,'9,999,999,990.9999999999')));
   
   -- Export stats to CSV file
   v_csv_fname := export.project_stats(&p_project_id, v_stats_result, &p_percentile);
@@ -58,4 +58,6 @@ BEGIN
 EXCEPTION
   WHEN e_invalid_data THEN
     util_admin.log_message('Invalid data in STATS_DATA for Project_ID ' || to_char(&p_project_id));
+  WHEN OTHERS THEN
+    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
 END;

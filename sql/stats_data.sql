@@ -25,7 +25,7 @@ COLUMN project_desc       HEADING 'Description'         FORMAT A20;
 COLUMN data_project_id    HEADING 'Data Project ID'     FORMAT 9999;
 COLUMN stats_data_id      HEADING 'Data ID'             FORMAT 9999;
 COLUMN data_desc          HEADING 'Data Description'    FORMAT A20; 
-COLUMN stats_value        HEADING 'Value'               FORMAT 999,999,999;
+COLUMN stats_value        HEADING 'Value'               FORMAT 99,999,999,990.9999999999;
 
 BREAK ON project_id SKIP PAGE NODUP
 
