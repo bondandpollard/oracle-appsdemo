@@ -29,8 +29,8 @@
  ************************************************************
 */
 
-  DEFINE v_app_root = "D:\\USERS\\IANBO\\DOCUMENTS\\BUSINESS\\BOND \& POLLARD LTD\\ADMIN\\IT\\APPLICATIONS\\ORACLE\\DEMO\\XEPDB1\\APPSDEMO"
-  --DEFINE v_app_root = "D:\\TEST"
+  --DEFINE v_app_root = "D:\\USERS\\IANBO\\DOCUMENTS\\BUSINESS\\BOND \& POLLARD LTD\\ADMIN\\IT\\APPLICATIONS\\ORACLE\\DEMO\\XEPDB1\\APPSDEMO"
+  DEFINE v_app_root = "D:\\DEMO\\ORACLE-APPSDEMO-MAIN"
   
   @'&v_app_root\\config\\set_env'
   
