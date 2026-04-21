@@ -1,0 +1,1 @@
+SELECT util_date.dayname(TO_DATE(:p_date,'DD-MON-RR')) FROM dual;
