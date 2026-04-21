@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="08383590-6424-3237-2F87-AF94112F3D2F" containerWithKeyObject="EFB15776-790B-BF82-0A50-A704056AF4F2" localFKIndex="03C60AEB-F1C3-DB59-324C-71FB58D7D1B8" name="ITEM_PRODID_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:31:21 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<referredTableLongName>PRODUCT</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D01EE75C-A095-A841-5D23-8DE444E15C2B</referredTableID>
+<keyObject>2F310A8D-67E9-A621-42E2-8ED5A512A602</keyObject>
+<referredKeyID>2F310A8D-67E9-A621-42E2-8ED5A512A602</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>PRODID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+<propertyMap>
+<property name="createdByFKDiscoverer" value="true"/>
+</propertyMap>
+</FKIndexAssociation>

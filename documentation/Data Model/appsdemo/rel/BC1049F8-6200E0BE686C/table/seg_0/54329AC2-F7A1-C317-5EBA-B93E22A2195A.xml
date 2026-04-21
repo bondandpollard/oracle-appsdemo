@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="54329AC2-F7A1-C317-5EBA-B93E22A2195A" name="IMPORTCSV">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:46:07 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RECID" id="6A1602EA-6E10-C006-B056-1D544D82FECE">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:48:05 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>28</dataTypePrecision>
+<ownDataTypeParameters>,28,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FILEID" id="FA76100D-3476-6982-828B-5A5F0A37D5D3">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:53:39 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>28</dataTypePrecision>
+<ownDataTypeParameters>,28,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FILENAME" id="41D51350-EF4B-2227-9AB5-1DBF3BE53BBF">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:54:43 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CSV_REC" id="ACBD956F-9625-3A06-01E8-D87D040728E5">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:55:08 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="KEY_VALUE" id="8BE7B4C7-2B76-18B9-825C-DD4802DF3A6E">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:55:44 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EAD36ECF-2342-4FF8-E8C5-EF5F2CFF1DC9" name="IMPORTCSV_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:48:05 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A1602EA-6E10-C006-B056-1D544D82FECE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A23712A6-4ACD-DDAA-F740-E4B5B4F82A8D" name="IMPORTCSV_IDX">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:56:20 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A1602EA-6E10-C006-B056-1D544D82FECE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

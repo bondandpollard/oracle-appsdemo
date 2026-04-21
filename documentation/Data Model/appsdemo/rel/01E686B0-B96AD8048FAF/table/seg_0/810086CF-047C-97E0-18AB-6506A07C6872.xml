@@ -1,0 +1,108 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="810086CF-047C-97E0-18AB-6506A07C6872" name="PRICE">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 18:59:21 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PRODID" id="8E853C10-BC7E-BA8E-C3F3-B1B18F56BF07">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:52:46 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2705DF89-28B8-1CC1-16D0-206809786CC2" referredColumn="53DA1528-9954-9725-4579-3D502BE6D938"/>
+</associations>
+</Column>
+<Column name="STDPRICE" id="5C9C7178-A16C-F2AE-314F-F60E8CD2949C">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:54:46 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MINPRICE" id="A977CF9C-F0C9-62E6-EB1F-9084F3CA9B72">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:55:31 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STARTDATE" id="D7BA39FB-CAB8-5DD5-8051-410488539D2C">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:56:14 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ENDDATE" id="D8C5AC44-735F-81C2-6E3F-C4EB20E30764">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:56:35 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D0EF521D-4197-11A4-A85A-61691EDBA28C" name="PRICE_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:58:01 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E853C10-BC7E-BA8E-C3F3-B1B18F56BF07"/>
+<colUsage columnID="D7BA39FB-CAB8-5DD5-8051-410488539D2C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="10603D3D-20B7-6BF6-A218-10B83E7CF8AB" name="PRICE_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:59:04 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E853C10-BC7E-BA8E-C3F3-B1B18F56BF07"/>
+<colUsage columnID="D7BA39FB-CAB8-5DD5-8051-410488539D2C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4B3DD4A3-567D-7040-6AEE-A9363219E454" name="PRICE_PRODID_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-27 19:59:04 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E853C10-BC7E-BA8E-C3F3-B1B18F56BF07"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

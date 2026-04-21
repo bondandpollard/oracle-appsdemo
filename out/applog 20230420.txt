@@ -1,0 +1,19 @@
+columns cleared
+breaks cleared
+computes cleared
+                                                     Bond and Pollard Limited                                                     
+                                                     ========================                                                     
+Application Log                                                                                                   Page:          1
+                                                                                                                                  
+                                                                                                                                  
+Message                        Logged At            Username     SQLERRM                        Program      Severity        RECID
+------------------------------ -------------------- ------------ ------------------------------ ------------ ------------ --------
+Invalid data importing file or 20/04/23 12:04:32.96 APPSDEMO     ORA-20001:                     IMPORT.ORD_I Error              34
+der_data 017 ERRORS.csv        9000                                                             MP                                
+
+Error importing file order_dat 20/04/23 12:04:32.97 APPSDEMO     ORA-20099: Order import failed IMPORT_ORDER Error              35
+a 017 ERRORS.csv               7000                              . View errors in IMPORTERROR f .SQL                              
+                                                                 or file order_data 017 ERRORS.                                   
+                                                                 csv                                                              
+
+

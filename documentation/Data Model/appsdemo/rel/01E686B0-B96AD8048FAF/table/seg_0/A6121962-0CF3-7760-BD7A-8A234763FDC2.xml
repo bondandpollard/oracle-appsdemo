@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A6121962-0CF3-7760-BD7A-8A234763FDC2" name="DEPT">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 21:47:44 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="DEPTNO" id="CB4CDA97-E79D-E8C8-4327-2F8CF2F65E96">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 21:48:36 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DNAME" id="6206D2B2-DA01-4417-50B6-79E5121626E4">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 22:01:25 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>14 BYTE</dataTypeSize>
+<ownDataTypeParameters>14 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LOC" id="8B4A5EC3-1558-FA14-5855-CBBE2D2283D4">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 22:01:37 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>14 BYTE</dataTypeSize>
+<ownDataTypeParameters>14 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="927BA01F-3F60-110C-6AEA-965F925649D5" name="DEPT_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 21:48:41 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB4CDA97-E79D-E8C8-4327-2F8CF2F65E96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8C127C80-70B5-C1EC-01C9-0F3121701E30" name="DEPT_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 22:03:19 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB4CDA97-E79D-E8C8-4327-2F8CF2F65E96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

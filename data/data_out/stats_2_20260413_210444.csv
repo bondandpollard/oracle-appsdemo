@@ -1,0 +1,28 @@
+"Project ID: ",2,"Name: ","Heights"
+"KEY","FREQUENCY"
+168.0000000000,1
+170.0000000000,1
+174.0000000000,1
+177.0000000000,1
+178.0000000000,1
+"STATISTICS"
+"Sum",867.0000000000
+"N Total",5
+"Distinct N",5
+"Mean",173.4000000000
+"Median",174.0000000000
+"Mode 1",168.0000000000
+"Mode 2",170.0000000000
+"Mode 3",174.0000000000
+"Mode 4",177.0000000000
+"Mode 5",178.0000000000
+"Lowest",168.0000000000
+"Highest",178.0000000000
+"Range",10.0000000000
+"Variance Population",15.0400000000
+"Variance Sample",18.8000000000
+"Standard Deviation Population",3.8781438859
+"Standard Deviation Sample",4.3358966777
+"Interquartile Range",7.0000000000
+"Percentile Discrete ( 0.50)",174.0000000000
+"Percentile Continuous ( 0.50)",174.0000000000

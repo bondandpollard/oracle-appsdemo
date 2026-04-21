@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EFB15776-790B-BF82-0A50-A704056AF4F2" name="ITEM">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:09:48 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ORDID" id="9A8B3269-305A-D196-03F4-F343FB56F67A">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:10:27 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2D5547B4-734B-B26D-ED2C-4C9A3EBA6AC9" referredColumn="1661A855-2164-F0AB-BDFC-40133461DB0F"/>
+</associations>
+</Column>
+<Column name="ITEMID" id="75802815-C36C-80E4-CA5B-F2BB469575C0">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:10:27 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRODID" id="32760EAC-9A0A-0678-2DE7-C25E66622EE8">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:10:27 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="08383590-6424-3237-2F87-AF94112F3D2F" referredColumn="53DA1528-9954-9725-4579-3D502BE6D938"/>
+</associations>
+</Column>
+<Column name="ACTUALPRICE" id="70DDDDD4-99B2-9AD1-762C-3865DE964A78">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:10:27 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="QTY" id="9A800365-C303-C403-41C2-8BF2EA1AD181">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:10:27 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ITEMTOT" id="09709B69-5FCE-53B7-EF4E-9EE59061BB39">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 19:14:55 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="12AD2EA9-A973-A815-8157-21D81C1FDF27" name="ITEM_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:15:24 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A8B3269-305A-D196-03F4-F343FB56F67A"/>
+<colUsage columnID="75802815-C36C-80E4-CA5B-F2BB469575C0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23F80B1B-615B-F7E6-DAD0-4E29254A20A0" name="ITEM_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-29 08:44:34 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A8B3269-305A-D196-03F4-F343FB56F67A"/>
+<colUsage columnID="75802815-C36C-80E4-CA5B-F2BB469575C0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FE3582D8-D5FE-9339-CD33-BECD92379B6D" name="ITEM_ORDID_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:20:48 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A8B3269-305A-D196-03F4-F343FB56F67A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="03C60AEB-F1C3-DB59-324C-71FB58D7D1B8" name="ITEM_PRODID_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:31:21 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32760EAC-9A0A-0678-2DE7-C25E66622EE8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

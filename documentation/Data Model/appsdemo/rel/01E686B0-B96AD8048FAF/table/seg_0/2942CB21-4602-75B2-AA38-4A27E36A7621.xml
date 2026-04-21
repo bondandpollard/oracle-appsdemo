@@ -1,0 +1,200 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2942CB21-4602-75B2-AA38-4A27E36A7621" name="CUSTOMER">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:52:52 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CUSTOMER_ID" id="BEA9ED23-BCB9-CD36-3804-C50015562554">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:53:54 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_CUSTOMER_CUSTID</notNullConstraintName>
+</Column>
+<Column name="NAME" id="33277027-7E6A-6C66-173E-19F0F37BC93F">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:56:36 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45 BYTE</dataTypeSize>
+<ownDataTypeParameters>45 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADDRESS" id="EEF15704-7687-69AC-9FFC-FEB1B0FA3ECA">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:56:48 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CITY" id="739DED42-4481-BDF0-803B-56C18905244E">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:57:01 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE" id="D5B8F947-1C6C-FB80-8F8E-A47E8AD70D61">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 17:59:15 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2 BYTE</dataTypeSize>
+<ownDataTypeParameters>2 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZIP" id="1E4B26AA-E1A2-CEB8-179E-23F5337CC44E">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 17:59:48 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9 BYTE</dataTypeSize>
+<ownDataTypeParameters>9 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AREA" id="2AC84126-3DC3-400A-B279-9E5316858E42">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 18:00:44 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PHONE" id="2CE817CD-46FC-0EEF-4D13-D5CD7C082F70">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 18:01:34 UTC</createdTime>
+<notes><![CDATA[Phone number may need to be extended in the 21st century]]></notes>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REPID" id="2CB03A9B-3817-E452-3ED6-6434A2BAABE6">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 18:02:13 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<notNullConstraintName>NNC_CUSTOMER_REPID</notNullConstraintName>
+<associations>
+<colAssociation fkAssociation="0BC45556-3AC2-03F7-5FEC-39C18284573C" referredColumn="6F77D32D-69E0-F49A-B910-2ED4F2EFE3CA"/>
+</associations>
+</Column>
+<Column name="CREDITLIMIT" id="DD7EA6A2-FC98-4462-69B5-8BD584D8B6C4">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 18:43:04 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,9,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMMENTS" id="D8736254-50C4-E56F-E34D-41684D641A08">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 18:43:55 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LogDes-1768A872-F385-FDBA-D95E-0CB63F5908E2@LOGDT10045</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8C84727A-E7C9-531E-1F2D-E85816410443" name="CUSTOMER_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:53:54 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEA9ED23-BCB9-CD36-3804-C50015562554"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E43ACA81-48F1-2BF0-0DFC-A2E53A60A8AE" name="CUSTOMER_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:07:30 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEA9ED23-BCB9-CD36-3804-C50015562554"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="30305C2F-3540-3481-FD38-74C1F7E7A8C0" name="CUSTOMER_REPID_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 18:55:52 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2CB03A9B-3817-E452-3ED6-6434A2BAABE6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="CUSTOMER_CUSTID_CHK" directorySegmentName="seg_0" id="ED4AF9DA-FA03-49EE-F431-8B5ECEBBE985">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 18:48:19 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<rule><![CDATA[CUSTID > 0]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="CUSTOMER_REPID_NN" directorySegmentName="seg_0" id="A9AB2A75-CEF4-C40F-0C87-CE4003111F60">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-29 08:37:32 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<rule><![CDATA[REPID IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="CUSTOMER_CUSTID_NN" directorySegmentName="seg_0" id="3A46FAED-892A-9274-8826-79A520DE4C1B">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-29 08:38:13 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<rule><![CDATA[CUSTID IS NOT NOT]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

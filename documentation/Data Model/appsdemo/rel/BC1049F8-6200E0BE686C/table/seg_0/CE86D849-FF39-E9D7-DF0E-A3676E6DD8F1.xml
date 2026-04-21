@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CE86D849-FF39-E9D7-DF0E-A3676E6DD8F1" name="COUNTRY_HOLIDAY">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:34:36 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COUNTRY_ID" id="8F790EDE-98B3-FB34-0B77-648CD8B42C19">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:35:28 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2 BYTE</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1E73B1C4-EB99-996E-69BC-32B7C099044F" referredColumn="D42EF2E3-938F-FE73-E46F-D5653EAA783E"/>
+</associations>
+</Column>
+<Column name="YEAR_NO" id="C41F9585-7509-32BF-14D2-606B1ECD9697">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:36:14 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HOLIDAY_DATE" id="E3219D16-2B8E-F50F-7D62-BA3538F14431">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:36:44 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="54AFC5B5-B11B-471F-F8A4-F4F68D456438" name="COUNTRY_HOLIDAY_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:40:31 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F790EDE-98B3-FB34-0B77-648CD8B42C19"/>
+<colUsage columnID="C41F9585-7509-32BF-14D2-606B1ECD9697"/>
+<colUsage columnID="E3219D16-2B8E-F50F-7D62-BA3538F14431"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3AE39987-D7EA-F55C-98F4-5A0660DD9B57" name="COUNTRY_HOLIDAY_IDX">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:40:13 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F790EDE-98B3-FB34-0B77-648CD8B42C19"/>
+<colUsage columnID="C41F9585-7509-32BF-14D2-606B1ECD9697"/>
+<colUsage columnID="E3219D16-2B8E-F50F-7D62-BA3538F14431"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4E9E130E-09B5-55D9-C611-E4907948E3CB" name="COUNTRY_HOLIDAY_COUNTRY_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:43:42 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F790EDE-98B3-FB34-0B77-648CD8B42C19"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

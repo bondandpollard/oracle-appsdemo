@@ -1,0 +1,145 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1B6BBFAF-EC0B-10B8-1673-78B7548937F9" name="ORD">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:40:56 UTC</createdTime>
+<comment><![CDATA[Sales order table ORD. Associated details in the ITEM table.]]></comment>
+<ownerDesignName>scottorder</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ORDID" id="1661A855-2164-F0AB-BDFC-40133461DB0F">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:41:51 UTC</createdTime>
+<comment><![CDATA[Primary key uniquely identifies each order]]></comment>
+<ownerDesignName>scottorder</ownerDesignName>
+<sourceType>System</sourceType>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ORDERDATE" id="85C3248E-B59B-8AF4-F151-9300A7178217">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:52:12 UTC</createdTime>
+<comment><![CDATA[Identifies each sales order in the CSV data import file (extension to Oracle schema)]]></comment>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ORDREF" id="6DF5BD61-A17F-9EC7-97E5-B4306E0D181C">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:52:12 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CUSTID" id="A1471472-39FC-3097-1A06-CFC449F71B8A">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:52:46 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C8FB2620-5C44-E570-3BE5-03B5861EFD23" referredColumn="BEA9ED23-BCB9-CD36-3804-C50015562554"/>
+</associations>
+</Column>
+<Column name="COMMPLAN" id="559F2001-33DE-C4C9-9585-65D99BEF51E7">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 19:00:04 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SHIPDATE" id="70B84B6F-1FAD-7B9F-5ED5-ED7E9082F741">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 19:01:05 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TOTAL" id="F2FF5F9C-F31A-DB98-EB2F-634C59587348">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-26 19:01:28 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="33EB1BDA-61CE-E0FB-0D71-9C1E20200BE2" name="ORD_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 12:54:05 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1661A855-2164-F0AB-BDFC-40133461DB0F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24001609-EDAC-E326-138A-DC7FE5B0F031" name="ORD_ORDID_UN">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:07:09 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1661A855-2164-F0AB-BDFC-40133461DB0F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9971686B-0057-F3F9-4DD2-0D16C0B45EC8" name="ORD_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:07:09 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1661A855-2164-F0AB-BDFC-40133461DB0F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6C08DE47-4F4B-1CB2-B961-0F68F8B51A22" name="ORD_CUSTID_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:09:26 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A1471472-39FC-3097-1A06-CFC449F71B8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

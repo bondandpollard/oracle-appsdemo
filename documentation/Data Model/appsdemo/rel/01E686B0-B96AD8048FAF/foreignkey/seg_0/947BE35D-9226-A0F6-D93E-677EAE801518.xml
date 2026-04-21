@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="947BE35D-9226-A0F6-D93E-677EAE801518" containerWithKeyObject="9A96D5D5-7C8F-CCD7-9684-A02DB6D3FDC1" localFKIndex="7B8D7AC8-885B-9878-A016-B5697209A6DE" name="EMP_MGR_FK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-22 21:40:08 UTC</createdTime>
+<ownerDesignName>appsdemo</ownerDesignName>
+<referredTableLongName>EMP</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9A96D5D5-7C8F-CCD7-9684-A02DB6D3FDC1</referredTableID>
+<keyObject>ABF0125D-EB60-7660-087E-8B26B2423919</keyObject>
+<referredKeyID>ABF0125D-EB60-7660-087E-8B26B2423919</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>EMPNO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

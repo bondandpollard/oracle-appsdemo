@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D01EE75C-A095-A841-5D23-8DE444E15C2B" name="PRODUCT">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:27:38 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PRODID" id="53DA1528-9954-9725-4579-3D502BE6D938">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:29:51 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESCRIP" id="AAC32AC8-88A8-9EFA-69B8-437FF2A19B32">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:30:02 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2F310A8D-67E9-A621-42E2-8ED5A512A602" name="PRODUCT_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:30:13 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53DA1528-9954-9725-4579-3D502BE6D938"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8DBF9467-6A6E-D992-6356-EE8F25C8E243" name="PRODUCT_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-19 13:30:27 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53DA1528-9954-9725-4579-3D502BE6D938"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

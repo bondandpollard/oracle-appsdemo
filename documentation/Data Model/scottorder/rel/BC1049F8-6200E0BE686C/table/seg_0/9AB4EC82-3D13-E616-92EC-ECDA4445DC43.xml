@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9AB4EC82-3D13-E616-92EC-ECDA4445DC43" name="IMPORTERROR">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:57:56 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RECID" id="0A6D7942-4066-49EB-EB56-C19E18512E4D">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:58:30 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>28</dataTypePrecision>
+<ownDataTypeParameters>,28,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FILENAME" id="ED5331A5-AF84-07B0-7B99-2F1DF86F0653">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 19:04:22 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ERROR_DATA" id="60F39BD9-5EB6-C788-7E25-7C1BE58A33AF">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 19:05:24 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ERROR_MESSAGE" id="07490029-05ED-E736-E240-BF76EC270836">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 19:10:50 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000 BYTE</dataTypeSize>
+<ownDataTypeParameters>1000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ERROR_TIME" id="6C172BAE-7039-8A25-3389-07F96FD39834">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 19:11:11 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_NAME" id="E4916616-6F59-A340-3FAC-6F06FD91A172">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 19:11:36 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="KEY_VALUE" id="CAD35376-0279-FB4E-4201-2042074855F9">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 19:11:59 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IMPORT_SQLERRM" id="5931C7DF-FCE5-9ADE-7A51-EE07F28B67DE">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 19:12:43 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000 BYTE</dataTypeSize>
+<ownDataTypeParameters>1000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AEE8C795-6DAB-C143-0BD9-04E0D12495F1" name="IMPORTERROR_PK">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:58:30 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A6D7942-4066-49EB-EB56-C19E18512E4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D6AFA034-4A03-2796-7ABE-316145B5036F" name="IMPORTERROR_IDX">
+<createdBy>ianbo</createdBy>
+<createdTime>2022-08-28 18:59:00 UTC</createdTime>
+<ownerDesignName>scottorder</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A6D7942-4066-49EB-EB56-C19E18512E4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

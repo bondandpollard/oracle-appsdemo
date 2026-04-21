@@ -1,0 +1,164 @@
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\demo\oracle-appsdemo-main
+IMPORTANT: You must install Oracle before running this setup.
+
+Specify the application home directory APP_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\myapps\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> You may include spaces and ampersands & in the APP_HOME path. 
+> Do not include quotes " 
+
+Specify the data home directory DATA_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\test\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> Spaces are not allowed in this path.
+> Do not include ampersands &. 
+> Do not include quotes ". 
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\demo\oracle-appsdemo-main
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\demo\oracle-appsdemo-main
+Application Home SQL (SQL_APP_HOME)  : D:\\demo\\oracle-appsdemo-main
+Data Home Directory (DATA_HOME)      : D:\demo\oracle-appsdemo-main\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\demo\\oracle-appsdemo-main\\data
+Setup Log                            : D:\demo\oracle-appsdemo-main\install.log
+User confirmed installation to continue.
+APP_HOME is set to D:\demo\oracle-appsdemo-main
+DATA_HOME is set to D:\demo\oracle-appsdemo-main\data
+Creating D:\demo\oracle-appsdemo-main\config\set_env.sql...
+SQL script generated: D:\demo\oracle-appsdemo-main\config\set_env.sql
+Creating D:\demo\oracle-appsdemo-main\config\set_env.bat...
+Script generated: D:\demo\oracle-appsdemo-main\config\set_env.bat
+Creating D:\demo\oracle-appsdemo-main\install\auto_install.sql...
+SQL script generated: D:\demo\oracle-appsdemo-main\install\auto_install.sql
+Creating database objects.
+Executing: sqlplus / as sysdba @"D:\demo\oracle-appsdemo-main\install\auto_install.sql"
+Database objects created.
+Shortcut created on Desktop: APPSDEMO
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\demo\oracle-appsdemo-main
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\demo\oracle-appsdemo-main
+Application Home SQL (SQL_APP_HOME)  : D:\\demo\\oracle-appsdemo-main
+Data Home Directory (DATA_HOME)      : D:\demo\oracle-appsdemo-main\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\demo\\oracle-appsdemo-main\\data
+Setup Log                            : D:\demo\oracle-appsdemo-main\install.log
+
+
+Installation complete. Press RETURN to exit.
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\demo\oracle-appsdemo-main
+IMPORTANT: You must install Oracle before running this setup.
+
+Specify the application home directory APP_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\myapps\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> You may include spaces and ampersands & in the APP_HOME path. 
+> Do not include quotes " 
+
+Specify the data home directory DATA_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\test\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> Spaces are not allowed in this path.
+> Do not include ampersands &. 
+> Do not include quotes ". 
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\demo\oracle-appsdemo-main
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\demo\oracle-appsdemo-main
+Application Home SQL (SQL_APP_HOME)  : D:\\demo\\oracle-appsdemo-main
+Data Home Directory (DATA_HOME)      : D:\demo\oracle-appsdemo-main\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\demo\\oracle-appsdemo-main\\data
+Setup Log                            : D:\demo\oracle-appsdemo-main\install.log
+User confirmed installation to continue.
+APP_HOME is set to D:\demo\oracle-appsdemo-main
+DATA_HOME is set to D:\demo\oracle-appsdemo-main\data
+Creating D:\demo\oracle-appsdemo-main\config\set_env.sql...
+SQL script generated: D:\demo\oracle-appsdemo-main\config\set_env.sql
+Creating D:\demo\oracle-appsdemo-main\config\set_env.bat...
+Script generated: D:\demo\oracle-appsdemo-main\config\set_env.bat
+Creating D:\demo\oracle-appsdemo-main\install\auto_install.sql...
+SQL script generated: D:\demo\oracle-appsdemo-main\install\auto_install.sql
+Creating database objects.
+Executing: sqlplus / as sysdba @"D:\demo\oracle-appsdemo-main\install\auto_install.sql"
+Database objects created.
+Shortcut created on Desktop: APPSDEMO
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\demo\oracle-appsdemo-main
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\demo\oracle-appsdemo-main
+Application Home SQL (SQL_APP_HOME)  : D:\\demo\\oracle-appsdemo-main
+Data Home Directory (DATA_HOME)      : D:\demo\oracle-appsdemo-main\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\demo\\oracle-appsdemo-main\\data
+Setup Log                            : D:\demo\oracle-appsdemo-main\install.log
+
+
+Installation complete. Press RETURN to exit.
