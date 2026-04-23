@@ -33,8 +33,8 @@ DEFINE v_dbconnect = //localhost:1521/FREEPDB1
 -- Note that where directory names contain a special character such as &, you must precede each special character with the \ escape character.
 -- You will need to SET ESCAPE ON first.
 -- The directory name separator \ will also need to be preceded by a \ escape character.
-DEFINE v_app_home = "D:\\demo\\oracle-appsdemo-main"
+DEFINE v_app_home = "D:\\users\\ianbo\\Documents\\Business\\Bond \& Pollard Ltd\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo"
 -- Data Home directory.
 -- This is the location of the user data directories.
 -- Do not include spaces or special characters such as & in the directory name.
-DEFINE v_data_home = "D:\\demo\\oracle-appsdemo-main\\data"
+DEFINE v_data_home = "d:\\demo\\FREEPDB1\\APPSDEMO\\data"
