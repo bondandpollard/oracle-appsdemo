@@ -29,10 +29,10 @@ SET APP_OWNER=APPSDEMO
 SET CONNECT_USER=DEMO_CONNECT
 SET PORT=1521
 SET DBCONNECT=//localhost:1521/FREEPDB1
-SET APP_HOME="D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo"
+SET APP_HOME="D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo"
 REM Do NOT include spaces or special characters in this directory name. We cannot enclose this variable in quotes
 REM as we will need to add a filename later and enclose the whole path and filename in quotes.
-SET DATA_HOME=d:\demo\FREEPDB1\APPSDEMO\data
+SET DATA_HOME=D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\data
 IF "%1"=="STARTORA" GOTO END
 SET /P CONNECT_PWD=Enter the password for DEMO_CONNECT: 
 :END
