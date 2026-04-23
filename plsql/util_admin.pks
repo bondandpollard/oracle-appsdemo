@@ -46,7 +46,7 @@ CREATE OR REPLACE PACKAGE util_admin AS
   ** display on screen, or both.
   **
   ** Screen message format:
-  ** {Severity} from program {program name} at DD-MON-YYYY HH:MM:SS.FF SQLERRM is {SQLERRM} Message: {message text} {Log mode is [mode]}
+  ** {Severity} from program {program name} at DD-MON-YYYY HH:MI:SS.FF SQLERRM is {SQLERRM} Message: {message text} {Log mode is [mode]}
   **
   ** Parameters:
   **  All NULL                  : Blank line displayed on screen

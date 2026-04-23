@@ -130,7 +130,7 @@ CREATE OR REPLACE PACKAGE BODY util_admin AS
           dbms_output.put_line(
             NVL(severity_desc(l_severity),'Message')                                          ||
             ' from program '          || NVL(p_program_name,'[not named]')                    || 
-            ' at '                    || TO_CHAR(LOCALTIMESTAMP,'DD-MON-YYYY HH24:MM:SS.FF')  ||
+            ' at '                    || TO_CHAR(LOCALTIMESTAMP,'DD-MON-YYYY HH24:MI:SS.FF')  ||
             ' [Log mode is '          || l_mode ||  ']'                                       ||
             ' SQLERRM is '            || NVL(p_sqlerrm,'[not passed]')                        ||
             ' Message: '              || p_message
@@ -145,7 +145,7 @@ CREATE OR REPLACE PACKAGE BODY util_admin AS
   EXCEPTION
     WHEN OTHERS THEN
        dbms_output.put_line('UTIL_ADMIN.LOG_MESSAGE Unexpected error. Program ' || NVL(p_program_name,'[NOT SPECIFIED]') || 
-           ' at ' || TO_CHAR(LOCALTIMESTAMP,'DD-MON-RR HH24:MM:SS.FF') ||
+           ' at ' || TO_CHAR(LOCALTIMESTAMP,'DD-MON-RR HH24:MI:SS.FF') ||
            ' could not log message: ' || p_message || 
            ' SQLERRM is ' || SQLERRM ||
            ' (Log mode is ' || l_mode || ')' 
