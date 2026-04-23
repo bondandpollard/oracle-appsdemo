@@ -1,7 +1,7 @@
 -- Debugging
 --
 SELECT L.message,
-  to_char(L.logged_at,'DD/MM/YYYY HH24:MI:SS.FF') "HH24:MI:SS.FF not >> HH24:MM - (MM = Month!)",
+  to_char(L.logged_at,'DD/MM/YYYY HH24:MI:SS.FF') "HH24:MI:SS.FF not >>> HH24:MM - (MM = Month!)",
   L.user_name,
   L.applog_sqlerrm "SQLERRM",
   L.program_name,
