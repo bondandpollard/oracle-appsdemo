@@ -34,7 +34,7 @@ TTITLE CENTER 'Bond and Pollard Limited' SKIP 1 -
   LEFT 'Application Log'  -
   RIGHT 'Page:' SQL.PNO SKIP 2
 SELECT L.message,
-  to_char(L.logged_at,'DD/MM/RR HH24:MM:SS.FF') date_time,
+  to_char(L.logged_at,'DD/MM/RR HH24:MI:SS.FF') date_time,
   L.user_name,
   L.applog_sqlerrm,
   L.program_name,
