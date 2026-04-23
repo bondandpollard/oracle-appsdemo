@@ -9,7 +9,7 @@
 -- Handle special characters e.g. ampersand & in directory names and strings.
 -- You must escape the directory delimiters so use \\ not \ 
 SET ESCAPE ON
-DEFINE v_app_root="D:\\demo\\oracle-appsdemo-main"
+DEFINE v_app_root="D:\\users\\ianbo\\Documents\\Business\\Bond \& Pollard Ltd\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo"
 @'&v_app_root\\config\\set_env'
 ACCEPT v_sys_pwd CHAR PROMPT 'Enter SYS password: '
 CONNECT SYS/&v_sys_pwd@&v_dbconnect AS SYSDBA
