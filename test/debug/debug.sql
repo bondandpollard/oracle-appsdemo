@@ -1,7 +1,7 @@
 -- Debugging
 --
 SELECT L.message,
-  to_char(L.logged_at,'DD/MM/RR HH24:MM:SS.FF') "DATE TIME",
+  to_char(L.logged_at,'DD/MM/RR HH24:MI:SS.FF') "DATE TIME",
   L.user_name,
   L.applog_sqlerrm "SQLERRM",
   L.program_name,
