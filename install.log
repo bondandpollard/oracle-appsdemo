@@ -162,3 +162,276 @@ Setup Log                            : D:\demo\oracle-appsdemo-main\install.log
 
 
 Installation complete. Press RETURN to exit.
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo
+IMPORTANT: You must install Oracle before running this setup.
+
+Specify the application home directory APP_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\myapps\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> You may include spaces and ampersands & in the APP_HOME path. 
+> Do not include quotes " 
+
+Specify the data home directory DATA_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\test\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> Spaces are not allowed in this path.
+> Do not include ampersands &. 
+> Do not include quotes ". 
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond \& Pollard Ltd\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : d:\demo\FREEPDB1\APPSDEMO\data
+Data Home SQL (SQL_DATA_HOME)        : d:\\demo\\FREEPDB1\\APPSDEMO\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\install.log
+User confirmed installation to continue.
+APP_HOME is set to D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo
+Creating DATA_HOME. Moving files from D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data to d:\demo\FREEPDB1\APPSDEMO\data...
+
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_in\error\order_data 017 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_in\error\order_data 017 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_in\processed\stats_test9 sunshine.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_in\processed\stats_test9 sunshine.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_1_20260413_210444.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_1_20260413_210444.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_1_20260414_230426.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_1_20260414_230426.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_1_20260417_140404.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_1_20260417_140404.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_1_20260420_210403.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_1_20260420_210403.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_2_20260413_210444.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_2_20260413_210444.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_2_20260417_150434.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_2_20260417_150434.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_3_20260413_210445.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_3_20260413_210445.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_3_20260417_150434.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_3_20260417_150434.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_4_20260417_160402.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_4_20260417_160402.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\data_out\stats_4_20260417_160455.csv -> d:\demo\FREEPDB1\APPSDEMO\data\data_out\stats_4_20260417_160455.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo1.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo1.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo10.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo10.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo11 NULL DATE.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo11 NULL DATE.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo12..csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo12..csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo12.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo12.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo13.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo13.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo2.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo2.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo3.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo3.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo4.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo4.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo5.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo5.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo6.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo6.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo7.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo7.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo8.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo8.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\demo9.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\demo9.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 001 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 001 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 001 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 001 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 002 DUPLICATE.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 002 DUPLICATE.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 003 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 003 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 003 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 003 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 004.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 004.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 005 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 005 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 005 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 005 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 006.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 006.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 007 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 007 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 007 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 007 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 008 SHIPDATE ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 008 SHIPDATE ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 008 SHIPDATE FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 008 SHIPDATE FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 009.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 009.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 010.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 010.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 011 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 011 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 011 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 011 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 011 FIXEDDUPLICATE.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 011 FIXEDDUPLICATE.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 012 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 012 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 012 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 012 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 013.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 013.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 014 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 014 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 014 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 014 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 015.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 015.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 016.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 016.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 017 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 017 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 017 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 017 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 018.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 018.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 019 ERRORS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 019 ERRORS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 019 FIXED date format.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 019 FIXED date format.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 020.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 020.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 021.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 021.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 022.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 022.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 023.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 023.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 024.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 024.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 025.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 025.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 026.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 026.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 027.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 027.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 028.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 028.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 029.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 029.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 030.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 030.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 031.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 031.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 032.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 032.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 033.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 033.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 034.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 034.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 035.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 035.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 036.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 036.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 037.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 037.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 038 NULL FIRST.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 038 NULL FIRST.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 039.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 039.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 040 NULL ORD DATE.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 040 NULL ORD DATE.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 041 INVALID ORD DATE.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 041 INVALID ORD DATE.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 042 NULL ORDREF.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 042 NULL ORDREF.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 044.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 044.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 045.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 045.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 046.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 046.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 047.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 047.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 048.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 048.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 049.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 049.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 050 date format.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 050 date format.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\order_data 099 30K ROWS.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\order_data 099 30K ROWS.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_demo.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_demo.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_demo2.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_demo2.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_demo3.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_demo3.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_demo4.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_demo4.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_demo_exam.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_demo_exam.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test2 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test2 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test2.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test2.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test3 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test3 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test3.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test3.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test4.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test4.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test5.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test5.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test6 FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test6 FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test6.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test6.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test7.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test7.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test8 sunshine.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test8 sunshine.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test9 sunshine.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test9 sunshine.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\pending\stats_test_a FIXED.csv -> d:\demo\FREEPDB1\APPSDEMO\data\pending\stats_test_a FIXED.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\received\test.csv -> d:\demo\FREEPDB1\APPSDEMO\data\received\test.csv
+Moved file: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\data\received\test_myfile.csv -> d:\demo\FREEPDB1\APPSDEMO\data\received\test_myfile.csv
+DATA_HOME created.
+Creating D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.sql
+Creating D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.bat...
+Script generated: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.bat
+Creating D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\install\auto_install.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\install\auto_install.sql
+Creating database objects.
+Executing: sqlplus / as sysdba @"D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\install\auto_install.sql"
+Database objects created.
+Shortcut created on Desktop: APPSDEMO
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond \& Pollard Ltd\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : d:\demo\FREEPDB1\APPSDEMO\data
+Data Home SQL (SQL_DATA_HOME)        : d:\\demo\\FREEPDB1\\APPSDEMO\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond & Pollard Ltd\Admin\IT\source-repository\oracle\oracle-appsdemo\install.log
+
+
+Installation complete. Press RETURN to exit.
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo
+IMPORTANT: You must install Oracle before running this setup.
+
+Specify the application home directory APP_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\myapps\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> You may include spaces and ampersands & in the APP_HOME path. 
+> Do not include quotes " 
+
+Specify the data home directory DATA_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\test\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> Spaces are not allowed in this path.
+> Do not include ampersands &. 
+> Do not include quotes ". 
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\install.log
+User confirmed installation to continue.
+APP_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo
+DATA_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\data
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.sql
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.bat...
+Script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\config\set_env.bat
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\install\auto_install.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\install\auto_install.sql
+Creating database objects.
+Executing: sqlplus / as sysdba @"D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\install\auto_install.sql"
+Database objects created.
+Shortcut created on Desktop: APPSDEMO
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle\oracle-appsdemo\install.log
+
+
+Installation complete. Press RETURN to exit.
