@@ -29,8 +29,9 @@ SET PAGESIZE 66
 SET NEWPAGE 0
 SET LINESIZE 132
 
-TTITLE CENTER 'Bond and Pollard Limited' SKIP 1 -
-  CENTER ======================== SKIP 1-
+TTITLE SKIP 1 -
+  CENTER 'Bond and Pollard Limited' SKIP 1 -
+  CENTER  ========================  SKIP 1-
   LEFT 'Application Log'  -
   RIGHT 'Page:' SQL.PNO SKIP 2
 SELECT L.message,
