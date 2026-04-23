@@ -29,7 +29,7 @@ SET PAGESIZE 66
 SET NEWPAGE 0
 SET LINESIZE 132
 
-TTITLE SKIP 1 -
+TITLE SKIP 1 -
   CENTER 'Bond and Pollard Limited' SKIP 1 -
   CENTER  ========================  SKIP 1-
   LEFT 'Application Log'  -
