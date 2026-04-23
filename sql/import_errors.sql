@@ -32,8 +32,9 @@ SET PAGESIZE 66
 SET NEWPAGE 0
 SET LINESIZE 200
 
-TTITLE CENTER 'Bond and Pollard Limited' SKIP 1 -
-  CENTER ======================== SKIP 1-
+TITLE SKIP 1 - 
+  CENTER 'Bond and Pollard Limited' SKIP 1 -
+  CENTER  ========================  SKIP 1-
   LEFT 'Data Import Error Report'  -
   RIGHT 'Page:' SQL.PNO SKIP 2
 
