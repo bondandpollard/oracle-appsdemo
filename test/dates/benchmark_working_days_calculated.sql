@@ -23,14 +23,14 @@ BEGIN
   v_working_days := util_date.working_days(v_date_from,v_date_to,'XX',v_saturday_workday,v_sunday_workday);
   v_end_time1 := current_timestamp;
   dbms_output.put_line('There are ' || to_char(v_working_days) || ' working days between ' || to_char(v_date_from,'DD/MON/YYYY') || ' and ' || to_char(v_date_to,'DD/MON/YYYY'));
-  dbms_output.put_line('Execution time=' || to_char(v_end_time1 - v_start_time1,'HH:MM:SS:TH'));
+  dbms_output.put_line('Execution time=' || to_char(v_end_time1 - v_start_time1,'HH:MI:SS:TH'));
   
   dbms_output.put_line('Loop method (inefficient)');
   v_start_time2 := current_timestamp;
   v_working_days := util_date.working_days_between(v_date_from,v_date_to,'XX',v_saturday_workday,v_sunday_workday);
   v_end_time2 := current_timestamp;
   dbms_output.put_line('There are ' || to_char(v_working_days) || ' working days between ' || to_char(v_date_from,'DD/MON/YYYY') || ' and ' || to_char(v_date_to,'DD/MON/YYYY'));
-  dbms_output.put_line('Execution time=' || to_char(v_end_time2 - v_start_time2,'HH:MM:SS:TH'));
+  dbms_output.put_line('Execution time=' || to_char(v_end_time2 - v_start_time2,'HH:MI:SS:TH'));
   
 END;
 /
