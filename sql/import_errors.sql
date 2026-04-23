@@ -44,7 +44,7 @@ SELECT E.recid,
        E.error_data,
        E.error_message, 
        E.import_sqlerrm,
-       to_char(E.error_time,'DD-MON-RR HH24:MM:SS.FF') date_time,
+       to_char(E.error_time,'DD-MON-RR HH24:MI:SS.FF') date_time,
        E.user_name
 FROM importerror E
 --WHERE trunc(E.error_date) >= trunc(SYSDATE)
