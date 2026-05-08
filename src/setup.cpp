@@ -11,6 +11,7 @@
 #include <initguid.h>     // Required for `IShellLink`
 #include <shobjidl.h>     // Required for `IShellLink`
 #include <ctype.h>        // Required for `toupper()`
+#include <ctime>
 
 /*
   Program Name    : setup.cpp
@@ -42,12 +43,12 @@
   Date          Version     Author          Description
   =======================================================================================================================
   08/03/2025    1.00        IAB             Created.
-  06/04/2026    1.01        IAB             Amend to allow install in current directory without creating mew directories
+  06/04/2026    1.01        IAB             Amend to allow install in current directory without creating new directories
                                             and copying files. If installing to current directory do not add dbservice and
                                             app_owner to path. This makes installation easier when you download the demo
                                             app from a GitHub repository into a specified directory and just want to install it
                                             there.
-  
+  08/05/2026    1.02        IAB             Add date and time stamp to log.
  */
  
 // Log message, optionally display to screen 
@@ -695,7 +696,11 @@ int main() {
     char exec_sql[MAX_PATH];
     bool move_app_home;
     CONSOLE_SCREEN_BUFFER_INFO csbi; // positioning progress bar
-    
+    time_t tt;
+    struct tm* ti;       
+    time(&tt);            
+    ti = localtime(&tt);
+ 
    
     // Display welcome banner and instructions
     display_intro();
@@ -703,6 +708,9 @@ int main() {
     // Get the directory where setup.exe is running
     get_current_directory(source_dir, sizeof(source_dir));
     log_event_display("\nSetup is running from source directory: %s", source_dir);
+    
+    // Log installation start date and time
+    log_event_display("\nStarting setup at %s", asctime(ti));
     
     // Get the location of the application data files
     snprintf(source_data_dir, sizeof(source_data_dir),"%s%s", source_dir, "\\data");
