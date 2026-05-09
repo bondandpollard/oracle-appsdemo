@@ -49,6 +49,7 @@
                                             app from a GitHub repository into a specified directory and just want to install it
                                             there.
   08/05/2026    1.02        IAB             Add date and time stamp to log.
+  09/05/2026    1.03        IAB             Tidy up logging, include user responses.
  */
  
 // Log message, optionally display to screen 
@@ -286,7 +287,8 @@ void trim_whitespace(char *str) {
 
 // Function to prompt user with a custom message and default value
 void prompt_string(const char *message, char *input, int size, const char *default_value) {
-    printf("%s (Press Enter for default: '%s'): ", message, default_value);
+    //printf("%s (Press Enter for default: '%s'): ", message, default_value);
+    printf("%s", message, default_value);
     fgets(input, size, stdin);
 
     // Remove newline character
@@ -296,6 +298,14 @@ void prompt_string(const char *message, char *input, int size, const char *defau
     if (strlen(input) == 0) {
         strcpy(input, default_value);
     }
+ }
+ 
+// Prompt user, providing a default value. Optionally write prompt to log file.
+void prompt(const char *message, char *input, int size, const char *default_value) {
+    std::string prompt_message = std::string(message) + " (Press Enter for default: " + std::string(default_value) + "): ";
+    prompt_string(prompt_message.c_str(), input, size, default_value);
+    log_event("%s",prompt_message.c_str());  // write prompt message to log file
+    log_event(">> User entered %s", input);   // write user response to log file 
  }
 
 void get_current_directory(char *buffer, size_t size) {
@@ -372,7 +382,7 @@ bool path_valid(const char* path){
     
 // Function to prompt user for a directory path
 void prompt_directory(const char *message, char *input, int size, const char *default_value, char *target, int target_size, char *dbservice, char *app_owner, bool strict) {
-    prompt_string(message, input, size, default_value);
+    prompt(message, input, size, default_value);
     bool valid_directory = false;
     
     
@@ -721,16 +731,20 @@ int main() {
       return 0;
     }
     
+    log_event("\nUser confirmed installation to continue.");
+    
     while (getchar() != '\n');  // Flush input buffer
     
     // Prompt user for set up configuration values such as 
     // installation root directory, passwords
+ 
+    log_event("Prompting user for setup parameters.");
     
-    prompt_string("\nEnter the pluggable database service name",dbservice, sizeof(dbservice),"FREEPDB1");
-    prompt_string("\nEnter the application owner username",app_owner, sizeof(app_owner),"APPSDEMO");
-    prompt_string("\nEnter the connection username",connect_user, sizeof(connect_user),"DEMO_CONNECT");
-    prompt_string("\nEnter the listener port",port, sizeof(port),"1521");
-    
+    prompt("\nEnter the pluggable database service name",dbservice, sizeof(dbservice),"FREEPDB1");
+    prompt("\nEnter the application owner username",app_owner, sizeof(app_owner),"APPSDEMO");
+    prompt("\nEnter the connection username",connect_user, sizeof(connect_user),"DEMO_CONNECT");
+    prompt("\nEnter the listener port",port, sizeof(port),"1521");
+
     // Prompt user application installation location, store in app_home
     log_event_display("\nSpecify the application home directory APP_HOME.");
     log_event_display("If specifying a different directory:");
@@ -741,7 +755,6 @@ int main() {
     log_event_display("> You may include spaces and ampersands & in the APP_HOME path. ");
     log_event_display("> Do not include quotes \" ");
     prompt_directory("Enter APP_HOME directory path", app_install_locn, sizeof(app_install_locn), source_dir, app_home, sizeof(app_home), dbservice, app_owner,false);
-
     
     // Create sql_app_home for sql scripts with escape character prior to directory delimiters.
     // If path contains ampersands insert escape characters in front of them
@@ -832,7 +845,7 @@ int main() {
         notify_complete(source_dir, dbservice, port, db_connect, app_owner, connect_user, app_home, sql_app_home, data_home, sql_data_home);
         status=0;
     } else {
-        log_event_display("Installation abandoned.");
+        log_event_display("*** Installation abandoned by user ***.");
         status=0;
     }
       
