@@ -1,0 +1,2 @@
+# placeholder
+bin           - Binaries directory
