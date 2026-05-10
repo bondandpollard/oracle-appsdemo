@@ -116,6 +116,7 @@ void log_install_param( const char *source_dir,
                         const char *data_home,
                         const char *sql_data_home
                         ) {
+    log_event_display("\n");
     log_event_display("=======================");
     log_event_display("INSTALLATION PARAMETERS");
     log_event_display("=======================");
@@ -305,7 +306,7 @@ void prompt(const char *message, char *input, int size, const char *default_valu
     std::string prompt_message = std::string(message) + " (Press Enter for default: " + std::string(default_value) + "): ";
     prompt_string(prompt_message.c_str(), input, size, default_value);
     log_event("%s",prompt_message.c_str());  // write prompt message to log file
-    log_event(">> User entered %s", input);   // write user response to log file 
+    log_event(">> User entered: %s", input);   // write user response to log file 
  }
 
 void get_current_directory(char *buffer, size_t size) {
@@ -791,7 +792,7 @@ int main() {
     // Confirm user wishes to continue
     if (confirm_continue("Do you want to continue with the installation (Y or N)?")) {
         
-        log_event_display("User confirmed installation to continue.");
+        log_event_display("\nUser confirmed installation to continue.\n");
         
         // APP_HOME setup
         if (strcmp(app_home, source_dir) !=0) {
@@ -845,7 +846,7 @@ int main() {
         notify_complete(source_dir, dbservice, port, db_connect, app_owner, connect_user, app_home, sql_app_home, data_home, sql_data_home);
         status=0;
     } else {
-        log_event_display("*** Installation abandoned by user ***.");
+        log_event_display("\n*** Installation abandoned by user ***.");
         status=0;
     }
       
