@@ -288,7 +288,6 @@ void trim_whitespace(char *str) {
 
 // Function to prompt user with a custom message and default value
 void prompt_string(const char *message, char *input, int size, const char *default_value) {
-    //printf("%s (Press Enter for default: '%s'): ", message, default_value);
     printf("%s", message, default_value);
     fgets(input, size, stdin);
 
@@ -301,7 +300,7 @@ void prompt_string(const char *message, char *input, int size, const char *defau
     }
  }
  
-// Prompt user, providing a default value. Optionally write prompt to log file.
+// Prompt user, providing a default value. Write prompt and response to log file.
 void prompt(const char *message, char *input, int size, const char *default_value) {
     std::string prompt_message = std::string(message) + " (Press Enter for default: " + std::string(default_value) + "): ";
     prompt_string(prompt_message.c_str(), input, size, default_value);
