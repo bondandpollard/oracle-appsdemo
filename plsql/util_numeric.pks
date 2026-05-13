@@ -82,6 +82,7 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   ** 22/03/2026       Ian Bond            Add functions to write frequency table and stats to CSV file.
   ** 24/03/2026       Ian Bond            Add function to export project stats to CSV file.
   ** 12/02/2026       Ian Bond            Allow decimal places in statistics data.
+  ** 13/05/2026       Ian Bond            Add function reverse_array - reverse the order of an array of integers.
   */
  
   
