@@ -82,7 +82,7 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   ** 22/03/2026       Ian Bond            Add functions to write frequency table and stats to CSV file.
   ** 24/03/2026       Ian Bond            Add function to export project stats to CSV file.
   ** 12/02/2026       Ian Bond            Allow decimal places in statistics data.
-  ** 13/05/2026       Ian Bond            Add function reverse_array - reverse the order of an array of integers. NB: Does not sort array.
+  ** 13/05/2026       Ian Bond            Add function reverse_array, reverse_list - reverse the order of an array of numbers. NB: Does not sort array.
   */
  
   
@@ -1264,6 +1264,44 @@ CREATE OR REPLACE PACKAGE util_numeric AS
     p_list       IN VARCHAR2
   ) RETURN VARCHAR2;
   
+
+  /*
+  ** reverse_array 
+  **
+  ** Reverse order of numbers in an array.
+  ** Array is NOT sorted sequentially.
+  **
+  ** IN
+  **   p_array                - Array of numbers
+  **
+  ** RETURN
+  **   t_number_array         - Array in reverse order
+  **
+  ** EXCEPTIONS
+  **   e_null_array           - p_array must not be null
+  */
+  FUNCTION reverse_array(
+    p_array       IN t_number_array
+  ) RETURN t_number_array;
+  
+  /*
+  ** reverse_list 
+  **
+  ** Reverse order of list of numbers separated by commas.
+  ** The list is NOT sorted sequentially!
+  **
+  ** IN
+  **   p_list                 - String containing list of comma separated numbers.
+  **
+  ** RETURN
+  **   VARCHAR2               - List of numbers in reverse order.
+  **
+  ** EXCEPTIONS
+  **   e_null_list            - p_list must not be a null string
+  */
+  FUNCTION reverse_list(
+    p_list       IN VARCHAR2
+  ) RETURN VARCHAR2;
   
   /*
   ** array_contains_null      - Check if array contains null values

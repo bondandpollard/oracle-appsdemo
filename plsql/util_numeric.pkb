@@ -1623,6 +1623,67 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
       RETURN NULL;
   END remove_duplicates_list;
 
+  FUNCTION reverse_array(
+    p_array       IN t_number_array
+  ) RETURN t_number_array
+  IS 
+    v_temp_value NUMBER;
+    v_reverse_array t_number_array := t_number_array();
+    v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.REVERSE_ARRAY';
+    v_debug_msg applog.message%TYPE;
+    v_debug_mode VARCHAR2(1) := 'X';
+    e_null_array EXCEPTION;
+  BEGIN 
+    IF p_array IS NULL THEN 
+      RAISE e_null_array;
+    END IF;
+     
+    -- Populate array to be reverse with array passed to function
+    v_reverse_array := p_array;
+    
+    -- Iterate from start of array to middle, incrementing position by 1
+    -- at each pass. Swap the number from the first half of the table with 
+    -- the number in the corresponding position in the second half, reversing 
+    -- the sequence.
+    FOR p IN 1 .. v_reverse_array.COUNT/2 LOOP 
+      v_temp_value := v_reverse_array(p);
+      v_reverse_array(p):= v_reverse_array(v_reverse_array.COUNT - p + 1);
+      v_reverse_array(v_reverse_array.COUNT - p + 1) := v_temp_value;
+    END LOOP;
+    RETURN v_reverse_array;
+  EXCEPTION
+    WHEN e_null_array THEN 
+      util_admin.log_message('The array must not be empty.', sqlerrm, v_debug_module, 'S', gc_error);
+      RETURN NULL;
+    WHEN OTHERS THEN
+      util_admin.log_message('Unexpected error.', sqlerrm, v_debug_module, 'S', gc_error);
+      RETURN NULL;
+  END reverse_array;
+  
+  FUNCTION reverse_list(
+    p_list       IN VARCHAR2
+  ) RETURN VARCHAR2
+  IS 
+    v_reverse_list plsql_constants.maxvarchar2_t;
+    v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.REVERSE_LIST';
+    v_debug_msg applog.message%TYPE;
+    v_debug_mode VARCHAR2(1) := 'X';
+    e_null_list EXCEPTION;
+  BEGIN 
+    IF p_list IS NULL THEN 
+      RAISE e_null_list;
+    END IF;
+    v_reverse_list := array_to_list(reverse_array(list_to_array(p_list)));
+    RETURN v_reverse_list;
+  EXCEPTION
+    WHEN e_null_list THEN 
+      util_admin.log_message('List is empty.', sqlerrm, v_debug_module, 'S', gc_error);
+      RETURN NULL;    
+    WHEN OTHERS THEN
+      util_admin.log_message('Unexpected error.', sqlerrm, v_debug_module, 'S', gc_error);
+      RETURN NULL;
+  END reverse_list;
+
   FUNCTION populate_frequency_table (
     p_array IN t_number_array
   ) RETURN t_frequency_table
