@@ -5,7 +5,6 @@ ACCEPT p_list PROMPT "Enter a list of numbers separated by commas, with duplicat
 DECLARE
   v_noduplicate_list VARCHAR2(32767);
   v_unsorted_nodup_list VARCHAR2(32767);
-  v_median NUMBER;
 BEGIN
   -- Test remove duplicates with list sorted.
   v_noduplicate_list := util_numeric.remove_duplicates_list('&p_list');
