@@ -68,7 +68,7 @@ CREATE OR REPLACE PACKAGE export AS
   FUNCTION orders RETURN BOOLEAN;
 
   /*
-  ** stats - export statistics to a CSV file
+  ** stats_export - export statistics to a CSV file
   ** 
   ** Export frequency table and statistics to a CSV file.
   **
