@@ -1,3 +1,9 @@
+/*
+  test_delete_csv.sql 
+  Delete data from table IMPORTCSV
+  Enter the FILEID for rows to be deleted.
+  COMMIT changes to database.
+*/
 SET SERVEROUTPUT ON
 DECLARE 
   v_file_id NUMBER :=0;

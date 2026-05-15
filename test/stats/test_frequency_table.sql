@@ -23,14 +23,14 @@ ACCEPT p_list PROMPT "Enter a list of numbers separated by commas"
 ACCEPT p_percentile NUMBER PROMPT "Percentile (number > 0 and < 1)?"
 
 DECLARE
-  v_array util_numeric.t_number_array;
-  v_frequency_table util_numeric.t_frequency_table;
+  v_array plsql_types.t_number_array;
+  v_frequency_table plsql_types.t_frequency_table;
   v_sum NUMBER;
   v_count_distinct NUMBER;
   v_mean NUMBER;
   v_median NUMBER;
   v_median_array NUMBER; 
-  v_modes util_numeric.t_num_table := util_numeric.t_num_table();
+  v_modes plsql_types.t_num_table := plsql_types.t_num_table();
   v_highest NUMBER;
   v_lowest NUMBER;
   v_range NUMBER;
@@ -55,7 +55,7 @@ BEGIN
     util_admin.log_message('v_array('||to_char(m)||') = '||to_char(v_array(m)));
   END LOOP;
   
-  v_frequency_table := util_numeric.populate_frequency_table(v_array);
+  v_frequency_table := stats.populate_frequency_table(v_array);
   IF v_frequency_table IS NULL THEN 
     util_admin.log_message('Array must not be null.');
     RAISE e_invalid_data;
@@ -67,40 +67,40 @@ BEGIN
     util_admin.log_message('v_frequency_table KEY='||to_char(v_frequency_table(M).KEY)||' Frequency='||to_char(v_frequency_table(M).frequency));
   END LOOP;
   util_admin.log_message('---------------------------------------------');
-  v_sum := util_numeric.frequency_table_sum(v_frequency_table);
+  v_sum := stats.frequency_table_sum(v_frequency_table);
   util_admin.log_message('Sum='||to_char(v_sum));
   util_admin.log_message('N Total='||to_char(v_array.COUNT));
   v_count_distinct := v_frequency_table.COUNT;
   util_admin.log_message('Distinct N='||to_char(v_count_distinct));
-  v_mean := util_numeric.frequency_table_mean(v_frequency_table);
+  v_mean := stats.frequency_table_mean(v_frequency_table);
   util_admin.log_message('Mean (AVG)='||trim(to_char(v_mean,'9999990.9999')));
-  v_median_array := util_numeric.median_array(v_array);
+  v_median_array := stats.median_array(v_array);
   util_admin.log_message('Median (ARRAY) ='||to_char(v_median_array)||' NB: This value is derived from array not frequency table and shows mid array value');
-  v_median := util_numeric.frequency_table_median(v_frequency_table);
+  v_median := stats.frequency_table_median(v_frequency_table);
   util_admin.log_message('Median ='||to_char(v_median));
-  v_modes := util_numeric.frequency_table_mode(v_frequency_table);
+  v_modes := stats.frequency_table_mode(v_frequency_table);
   FOR i IN 1 .. v_modes.COUNT LOOP 
     util_admin.log_message('Mode '||to_char(i)||' = '||to_char(v_modes(i)));
   END LOOP;
-  v_lowest := util_numeric.frequency_table_lowest(v_frequency_table);
+  v_lowest := stats.frequency_table_lowest(v_frequency_table);
   util_admin.log_message('Lowest (MIN)='||to_char(v_lowest));
-  v_highest := util_numeric.frequency_table_highest(v_frequency_table);
+  v_highest := stats.frequency_table_highest(v_frequency_table);
   util_admin.log_message('Highest (MAX)='||to_char(v_highest));
-  v_range := util_numeric.frequency_table_range(v_frequency_table);
+  v_range := stats.frequency_table_range(v_frequency_table);
   util_admin.log_message('Range='||to_char(v_range));
-  v_var_pop := util_numeric.variance_pop(v_frequency_table);
+  v_var_pop := stats.variance_pop(v_frequency_table);
   util_admin.log_message('Variance Pop (VAR_POP)='||trim(to_char(v_var_pop,'999999999999990.9999')));
-  v_var_samp := util_numeric.variance_samp(v_frequency_table);
+  v_var_samp := stats.variance_samp(v_frequency_table);
   util_admin.log_message('Variance Sample (VAR_SAMP)='||trim(to_char(v_var_samp,'99999999999990.9999')));
-  v_stddev_pop := util_numeric.stddev_pop(v_frequency_table);
+  v_stddev_pop := stats.stddev_pop(v_frequency_table);
   util_admin.log_message('Standard Deviation Pop (STDDEV_POP)='||trim(to_char(v_stddev_pop,'9999999990.9999')));
-  v_stddev_samp := util_numeric.stddev_samp(v_frequency_table);
+  v_stddev_samp := stats.stddev_samp(v_frequency_table);
   util_admin.log_message('Standard Deviation Sample (STDDEV_SAMP)='||trim(to_char(v_stddev_samp,'9999999990.9999')));
-  v_percentile_disc := util_numeric.percentile_disc(v_frequency_table,&p_percentile);
-  v_iqr := util_numeric.iqr(v_frequency_table);
+  v_percentile_disc := stats.percentile_disc(v_frequency_table,&p_percentile);
+  v_iqr := stats.iqr(v_frequency_table);
   util_admin.log_message('Interquartile Range='||trim(to_char(v_iqr,'9999999990.9999')));
   util_admin.log_message('Discrete Percentile (PERCENTILE_DISC) for ('||to_char(&p_percentile,'0.99')||') ='||trim(to_char(v_percentile_disc,'9999999999.9999')));
-  v_percentile_cont := util_numeric.percentile_cont(v_frequency_table,&p_percentile);
+  v_percentile_cont := stats.percentile_cont(v_frequency_table,&p_percentile);
   util_admin.log_message('Continuous Interpolated Percentile(PERCENTILE_CONT) for ('||to_char(&p_percentile,'0.99')||') ='||trim(to_char(v_percentile_cont,'9999999999.9999')));
 
   

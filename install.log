@@ -1,0 +1,330 @@
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Starting setup at Wed May 13 16:38:32 2026
+
+IMPORTANT: You must install Oracle before running this setup.
+
+User confirmed installation to continue.
+Prompting user for setup parameters.
+
+Enter the pluggable database service name (Press Enter for default: FREEPDB1): 
+>> User entered: FREEPDB1
+
+Enter the application owner username (Press Enter for default: APPSDEMO): 
+>> User entered: APPSDEMO
+
+Enter the connection username (Press Enter for default: DEMO_CONNECT): 
+>> User entered: DEMO_CONNECT
+
+Enter the listener port (Press Enter for default: 1521): 
+>> User entered: 1521
+
+Specify the application home directory APP_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\myapps\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> You may include spaces and ampersands & in the APP_HOME path. 
+> Do not include quotes " 
+Enter APP_HOME directory path (Press Enter for default: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo): 
+>> User entered: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Specify the data home directory DATA_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\test\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> Spaces are not allowed in this path.
+> Do not include ampersands &. 
+> Do not include quotes ". 
+Enter the DATA_HOME data directory path (Press Enter for default: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo): 
+>> User entered: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install.log
+
+User confirmed installation to continue.
+
+APP_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+DATA_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.sql
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.bat...
+Script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.bat
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql
+Creating database objects.
+Executing: sqlplus / as sysdba @"D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql"
+Database objects created.
+Shortcut created on Desktop: APPSDEMO
+
+
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install.log
+
+
+Installation complete. Press RETURN to exit.
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Starting setup at Thu May 14 12:22:05 2026
+
+IMPORTANT: You must install Oracle before running this setup.
+
+User confirmed installation to continue.
+Prompting user for setup parameters.
+
+Enter the pluggable database service name (Press Enter for default: FREEPDB1): 
+>> User entered: FREEPDB1
+
+Enter the application owner username (Press Enter for default: APPSDEMO): 
+>> User entered: APPSDEMO
+
+Enter the connection username (Press Enter for default: DEMO_CONNECT): 
+>> User entered: DEMO_CONNECT
+
+Enter the listener port (Press Enter for default: 1521): 
+>> User entered: 1521
+
+Specify the application home directory APP_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\myapps\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> You may include spaces and ampersands & in the APP_HOME path. 
+> Do not include quotes " 
+Enter APP_HOME directory path (Press Enter for default: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo): 
+>> User entered: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Specify the data home directory DATA_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\test\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> Spaces are not allowed in this path.
+> Do not include ampersands &. 
+> Do not include quotes ". 
+Enter the DATA_HOME data directory path (Press Enter for default: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo): 
+>> User entered: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install.log
+
+User confirmed installation to continue.
+
+APP_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+DATA_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.sql
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.bat...
+Script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.bat
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql
+Creating database objects.
+Executing: sqlplus / as sysdba @"D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql"
+Database objects created.
+Shortcut created on Desktop: APPSDEMO
+
+
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install.log
+
+
+Installation complete. Press RETURN to exit.
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Starting setup at Thu May 14 19:31:07 2026
+
+IMPORTANT: You must install Oracle before running this setup.
+
+User confirmed installation to continue.
+Prompting user for setup parameters.
+
+Enter the pluggable database service name (Press Enter for default: FREEPDB1): 
+>> User entered: FREEPDB1
+
+Enter the application owner username (Press Enter for default: APPSDEMO): 
+>> User entered: APPSDEMO
+
+Enter the connection username (Press Enter for default: DEMO_CONNECT): 
+>> User entered: DEMO_CONNECT
+
+Enter the listener port (Press Enter for default: 1521): 
+>> User entered: 1521
+
+Specify the application home directory APP_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\myapps\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> You may include spaces and ampersands & in the APP_HOME path. 
+> Do not include quotes " 
+Enter APP_HOME directory path (Press Enter for default: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo): 
+>> User entered: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Specify the data home directory DATA_HOME.
+If specifying a different directory:
+> Include the drive letter.
+> Separate each directory with a single \. 
+> e.g. D:\test\demo
+> Do not end with a \ unless specifying just the drive root e.g. D:\ 
+> Spaces are not allowed in this path.
+> Do not include ampersands &. 
+> Do not include quotes ". 
+Enter the DATA_HOME data directory path (Press Enter for default: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo): 
+>> User entered: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install.log
+
+User confirmed installation to continue.
+
+APP_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+DATA_HOME is set to D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.sql
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.bat...
+Script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\config\set_env.bat
+Creating D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql...
+SQL script generated: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql
+Creating database objects.
+Executing: sqlplus / as sysdba @"D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install\auto_install.sql"
+Database objects created.
+Shortcut created on Desktop: APPSDEMO
+
+
+=======================
+INSTALLATION PARAMETERS
+=======================
+Setup started in                     : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Database Service                     : FREEPDB1
+Listener Port                        : 1521
+Database Connection                  : //localhost:1521/FREEPDB1
+Application Owner (APP_OWNER)        : APPSDEMO
+Connection User (CONNECT_USER)       : DEMO_CONNECT
+Application Home Directory (APP_HOME): D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+Application Home SQL (SQL_APP_HOME)  : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo
+Data Home Directory (DATA_HOME)      : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\data
+Data Home SQL (SQL_DATA_HOME)        : D:\\users\\ianbo\\Documents\\Business\\Bond-and-Pollard\\Admin\\IT\\source-repository\\oracle-appsdemo\\data
+Setup Log                            : D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo\install.log
+
+
+Installation complete. Press RETURN to exit.

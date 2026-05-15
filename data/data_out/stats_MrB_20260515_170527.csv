@@ -1,0 +1,30 @@
+"Name: ","MrB"
+"KEY","FREQUENCY"
+1.0000000000,1
+4.0000000000,1
+5.0000000000,1
+7.0000000000,1
+88.0000000000,1
+99.0000000000,1
+"STATISTICS"
+"Sum",204.0000000000
+"N Total",6
+"Distinct N",6
+"Mean",34.0000000000
+"Median",6.0000000000
+"Mode 1",1.0000000000
+"Mode 2",4.0000000000
+"Mode 3",5.0000000000
+"Mode 4",7.0000000000
+"Mode 5",88.0000000000
+"Mode 6",99.0000000000
+"Lowest",1.0000000000
+"Highest",99.0000000000
+"Range",98.0000000000
+"Variance Population",1,783.3333333333
+"Variance Sample",2,140.0000000000
+"Standard Deviation Population",42.2295315311
+"Standard Deviation Sample",46.2601340249
+"Interquartile Range",63.5000000000
+"Percentile Discrete ( 0.22)",4.0000000000
+"Percentile Continuous ( 0.22)",4.1000000000

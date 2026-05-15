@@ -11,7 +11,7 @@ CREATE OR REPLACE PACKAGE BODY export AS
   */
   PROCEDURE stats_csv(
     p_file_id       IN utl_file.file_type,
-    p_stats_result  IN util_numeric.t_stats_result,
+    p_stats_result  IN plsql_types.t_stats_result,
     p_pct           IN NUMBER DEFAULT 0.5
   )
   IS 
@@ -49,8 +49,8 @@ CREATE OR REPLACE PACKAGE BODY export AS
     utl_file.put_line(p_file_id,'"Standard Deviation Sample"' || gc_delim || trim(to_char(p_stats_result.stats.stddev_samp,c_format)));
     utl_file.put_line(p_file_id,'"Interquartile Range"' || gc_delim || trim(to_char(p_stats_result.stats.iqr,c_format)));  
     -- Percentiles
-    utl_file.put_line(p_file_id,'"Percentile Discrete ('||to_char(p_pct,'0.99')||')"'|| gc_delim || trim(to_char(util_numeric.percentile_disc(p_stats_result.freq_tbl, p_pct),c_format)));
-    utl_file.put_line(p_file_id,'"Percentile Continuous ('||to_char(p_pct,'0.99')||')"' || gc_delim || trim(to_char(util_numeric.percentile_cont(p_stats_result.freq_tbl, p_pct),c_format)));
+    utl_file.put_line(p_file_id,'"Percentile Discrete ('||to_char(p_pct,'0.99')||')"'|| gc_delim || trim(to_char(stats.percentile_disc(p_stats_result.freq_tbl, p_pct),c_format)));
+    utl_file.put_line(p_file_id,'"Percentile Continuous ('||to_char(p_pct,'0.99')||')"' || gc_delim || trim(to_char(stats.percentile_cont(p_stats_result.freq_tbl, p_pct),c_format)));
   END stats_csv;
 
   /*
@@ -181,8 +181,8 @@ CREATE OR REPLACE PACKAGE BODY export AS
       RETURN FALSE;
   END orders;
   
-  FUNCTION stats(
-    p_stats_result IN util_numeric.t_stats_result,
+  FUNCTION stats_export(
+    p_stats_result IN plsql_types.t_stats_result,
     p_name VARCHAR2 DEFAULT NULL,
     p_pct IN NUMBER DEFAULT 0.5
   )
@@ -216,11 +216,11 @@ CREATE OR REPLACE PACKAGE BODY export AS
     WHEN OTHERS THEN
       util_admin.log_message('Unexpected Error',SQLERRM,'EXPORT.STATS','B',gc_error);
       RETURN NULL;
-  END stats;
+  END stats_export;
     
   FUNCTION project_stats(
     p_project_id    IN stats_project.stats_project_id%TYPE,
-    p_stats_result  IN util_numeric.t_stats_result,
+    p_stats_result  IN plsql_types.t_stats_result,
     p_pct IN NUMBER DEFAULT 0.5
   )
     RETURN VARCHAR2

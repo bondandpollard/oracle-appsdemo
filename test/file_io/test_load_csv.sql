@@ -1,5 +1,14 @@
+/*
+  test_load_csv.sql 
+  
+  Copy a CSV file to DATA_IN directory (See Directories in demo schema for path)
+  Run this script.
+  Enter the filename including extension.
+  If data loaded successfully, COMMIT.
+  View data in table IMPORTCSV.
+*/
 SET SERVEROUTPUT ON
-ACCEPT p_filename PROMPT "Enter the name of the CSV file to load"
+ACCEPT p_filename PROMPT "Enter the name of the CSV file in directory DATA_IN to load"
 DECLARE 
   v_filename VARCHAR2(100);
   v_file_id NUMBER :=0;

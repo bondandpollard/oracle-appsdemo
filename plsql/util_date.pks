@@ -28,13 +28,13 @@ CREATE OR REPLACE PACKAGE util_date AS
   /*
   ** Global constants
   */
-  gc_monday    CONSTANT INTEGER   :=1;
-  gc_tuesday   CONSTANT INTEGER   :=2;
-  gc_wednesday CONSTANT INTEGER   :=3;
-  gc_thursday  CONSTANT INTEGER   :=4;
-  gc_friday    CONSTANT INTEGER   :=5;
-  gc_saturday  CONSTANT INTEGER   :=6;
-  gc_sunday    CONSTANT INTEGER   :=7;
+  gc_monday    plsql_constants.monday%TYPE                  := plsql_constants.monday;
+  gc_tuesday   plsql_constants.tuesday%TYPE                 := plsql_constants.tuesday;
+  gc_wednesday plsql_constants.wednesday%TYPE               := plsql_constants.wednesday;
+  gc_thursday  plsql_constants.thursday%TYPE                := plsql_constants.thursday;
+  gc_friday    plsql_constants.friday%TYPE                  := plsql_constants.friday;
+  gc_saturday  plsql_constants.saturday%TYPE                := plsql_constants.saturday;
+  gc_sunday    plsql_constants.sunday%TYPE                  := plsql_constants.sunday;
   gc_error     CONSTANT plsql_constants.severity_error%TYPE := plsql_constants.severity_error;
   gc_info      CONSTANT plsql_constants.severity_info%TYPE  := plsql_constants.severity_info;
   gc_warn      CONSTANT plsql_constants.severity_warn%TYPE  := plsql_constants.severity_warn;

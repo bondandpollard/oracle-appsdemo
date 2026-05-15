@@ -10,5 +10,5 @@ ACCEPT p_to NUMBER PROMPT "Enter end number of range"
 SELECT '&p_number_list' LIST, 
 '&p_from' RANGEFROM,
 '&p_to' RANGETO,
-util_numeric.binary_search_range(&p_from, &p_to, '&p_number_list') RANGE
+search.binary_search_range(&p_from, &p_to, '&p_number_list') RANGE
 FROM dual;

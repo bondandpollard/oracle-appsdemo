@@ -37,7 +37,7 @@ CREATE OR REPLACE PACKAGE util_string AS
   gc_info                   CONSTANT  plsql_constants.severity_info%TYPE          := plsql_constants.severity_info;
   gc_warn                   CONSTANT  plsql_constants.severity_warn%TYPE          := plsql_constants.severity_warn;
   gc_debug_mode             CONSTANT  VARCHAR2(1)                                 := 'X'; -- X turns off debug messages, S display on screen
-  gc_max_array_size         CONSTANT  NUMBER := 999;
+  gc_max_array_size         CONSTANT  plsql_constants.max_arraysize%TYPE          := plsql_constants.max_arraysize;
   gc_array_string_size      CONSTANT  NUMBER := 200;
 
   

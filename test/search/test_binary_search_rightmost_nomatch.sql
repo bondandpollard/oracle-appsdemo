@@ -7,8 +7,8 @@ ACCEPT p_target NUMBER PROMPT "Enter a number to search for"
 DECLARE
   v_result NUMBER;
 BEGIN
-  v_result := util_numeric.binary_search_rightmost(&p_target, '&p_number_list', FALSE);
+  v_result := search.binary_search_rightmost(&p_target, '&p_number_list', FALSE);
   util_admin.log_message('EXACT MATCH FALSE: v_result=' || to_char(v_result));
-  v_result := util_numeric.binary_search_rightmost(&p_target, '&p_number_list', TRUE);
+  v_result := search.binary_search_rightmost(&p_target, '&p_number_list', TRUE);
   util_admin.log_message('EXACT MATCH TRUE: v_result=' || to_char(v_result));
 END;

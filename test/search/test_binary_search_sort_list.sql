@@ -13,8 +13,8 @@ SET SERVEROUTPUT ON
 ACCEPT p_number_list PROMPT "Enter an unsorted list of numbers to search, separated by commas"
 ACCEPT p_target NUMBER PROMPT "Enter a target number to find"
 DECLARE
-  v_unsorted_array util_numeric.t_number_array;
-  v_sorted_array util_numeric.t_number_array;
+  v_unsorted_array plsql_types.t_number_array;
+  v_sorted_array plsql_types.t_number_array;
   v_position NUMBER;
 BEGIN
   util_admin.log_message('Unsorted list=' || '&p_number_list');
@@ -30,6 +30,6 @@ BEGIN
   LOOP
     util_admin.log_message('v_sorted_array('||to_char(m)||') = '||to_char(v_sorted_array(m)));
   END LOOP;
-  v_position := util_numeric.binary_search_array('&p_target', v_sorted_array);
+  v_position := search.binary_search_array('&p_target', v_sorted_array);
   util_admin.log_message('Position='||to_char(v_position));
 END;

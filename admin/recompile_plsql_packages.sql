@@ -14,6 +14,7 @@
 ** 06/08/2022   Ian Bond      Include set_env.sql to define all environment variables.
 ** 06/03/2023   Ian Bond      Remove prompt for password as this is done in set_env.sql
 ** 05/04/2025   Ian Bond      Fix issues with directories containing spaces and special characters such as ampersands.
+** 14/05/2026   Ian Bond      Add new packages search, stats, plsql_types.
 */
 
 -- Handle special characters e.g. ampersand & in directory names and strings

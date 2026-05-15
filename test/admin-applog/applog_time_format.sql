@@ -1,5 +1,6 @@
--- Debugging
---
+-- applog_time_format
+-- Display time correctly - HH:MM is not the same as HH:MI
+-- Many people make this mistake!
 SELECT L.message,
   to_char(L.logged_at,'DD/MM/YYYY HH24:MI:SS.FF') "HH24:MI:SS.FF not << HH24:MM >> (MM = Month!)",
   L.user_name,

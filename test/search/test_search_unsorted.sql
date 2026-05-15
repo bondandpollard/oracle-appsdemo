@@ -5,5 +5,5 @@ ACCEPT p_number_list PROMPT "Enter a list of unsorted numbers to search, separat
 ACCEPT p_target NUMBER PROMPT "Enter a number to search for"
 SELECT '&p_number_list' LIST, 
 '&p_target' TARGET
-, util_numeric.search_unsorted(&p_target, '&p_number_list') RESULT
+, search.search_unsorted(&p_target, '&p_number_list') RESULT
 FROM dual;

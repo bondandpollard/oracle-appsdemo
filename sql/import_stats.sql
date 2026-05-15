@@ -20,13 +20,16 @@
 **------------------------------------------------------------------------------------------------------------------------------
 ** 10/03/2026   Ian Bond      Created
 ** 24/03/2026   Ian Bond      Create CSV files for multiple imported projects
+** 14/05/2026   Ian Bond      Function export.stats renamed to export.stats_export to avoid conflict with stats package
+**                            Statistic functions moved from util_numeric to stats package.
+**                            Types moved to plsql_types.
 */
 
 SET SERVEROUTPUT ON
 DECLARE 
   v_filename plsql_constants.filenamelength_t := '&1';
   v_csv_fname plsql_constants.filenamelength_t;
-  v_stats_result util_numeric.t_stats_result :=util_numeric.t_stats_result();
+  v_stats_result plsql_types.t_stats_result :=plsql_types.t_stats_result();
   tb_project_id_tbl import.tb_project :=import.tb_project();
 BEGIN
   util_admin.log_message('Data Import from file: '||v_filename);
@@ -43,7 +46,7 @@ BEGIN
       util_admin.log_message('Stats data imported OK for Project ID='||to_char(tb_project_id_tbl(i)));
     
       -- Generate statistics for imported project data
-      v_stats_result := util_numeric.get_stats_project(tb_project_id_tbl(i));
+      v_stats_result := stats.get_stats_project(tb_project_id_tbl(i));
  
       -- Export frequency table and stats for this project to CSV file
       v_csv_fname := export.project_stats(tb_project_id_tbl(i),v_stats_result);

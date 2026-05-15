@@ -19,7 +19,7 @@ DECLARE
 BEGIN
   v_result := export.demo;
   IF v_result THEN
-    util_admin.log_message('Success!');
+    util_admin.log_message('Success! File created /data/data_out/demo_YYMMDD.csv');
   ELSE
     raise_application_error (-20099,'Export failed.');
   END IF;

@@ -9,8 +9,8 @@ DECLARE
   CURSOR c_emp IS
     SELECT e.sal
     FROM emp e;
-  v_array util_numeric.t_number_array :=util_numeric.t_number_array();
-  v_stats_result util_numeric.t_stats_result;
+  v_array plsql_types.t_number_array :=plsql_types.t_number_array();
+  v_stats_result plsql_types.t_stats_result;
   v_percentile_disc NUMBER;
   v_percentile_cont NUMBER;
   e_invalid_data EXCEPTION;
@@ -28,15 +28,15 @@ BEGIN
     RAISE e_invalid_data;
   END IF;
 
-  v_stats_result := util_numeric.get_stats_array(v_array);
+  v_stats_result := stats.get_stats_array(v_array);
   
-  util_numeric.display_frequency_table(v_stats_result);
-  util_numeric.display_stats(v_stats_result,&p_percentile);
+  stats.display_frequency_table(v_stats_result);
+  stats.display_stats(v_stats_result,&p_percentile);
   
   -- Calculate percentiles using frequency table
-  v_percentile_disc := util_numeric.percentile_disc(v_stats_result.freq_tbl,&p_percentile);
+  v_percentile_disc := stats.percentile_disc(v_stats_result.freq_tbl,&p_percentile);
   util_admin.log_message('PCT_DISC ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_disc,'9,999,999,990.9999999999')));
-  v_percentile_cont := util_numeric.percentile_cont(v_stats_result.freq_tbl,&p_percentile);
+  v_percentile_cont := stats.percentile_cont(v_stats_result.freq_tbl,&p_percentile);
   util_admin.log_message('PCT_CONT ('||to_char(&p_percentile,'0.99')||')='||trim(to_char(v_percentile_cont,'9,999,999,990.9999999999')));
   
 

@@ -14,6 +14,8 @@ CREATE OR REPLACE PACKAGE export AS
   ** 13/07/2022       Ian Bond            Program created
   ** 22/03/2026       Ian Bond            Add function to export statistics to CSV file.  
   ** 24/03/2026       Ian Bond            Create functions to export project stats.
+  ** 14/05/2026       Ian Bond            Function stats renamed to stats_export to prevent scope clash with stats package which
+  **                                      gives compile error PLS-00225: subprogram or cursor 'STATS' reference is out of scope
   */
   
  
@@ -24,8 +26,8 @@ CREATE OR REPLACE PACKAGE export AS
   gc_import_error_dir      CONSTANT plsql_constants.filenamelength_t    := plsql_constants.import_error_dir;
   gc_import_processed_dir  CONSTANT plsql_constants.filenamelength_t    := plsql_constants.import_processed_dir;
   gc_export_directory      CONSTANT plsql_constants.filenamelength_t    := plsql_constants.export_directory;
-  gc_delim                 CONSTANT VARCHAR2(1)                         := ',';
-  gc_quote                 CONSTANT VARCHAR2(1)                         := '"';
+  gc_delim                 CONSTANT plsql_constants.csv_delimiter%TYPE  := plsql_constants.csv_delimiter;
+  gc_quote                 CONSTANT plsql_constants.double_quote%TYPE   := plsql_constants.double_quote;
   gc_error                 CONSTANT plsql_constants.severity_error%TYPE := plsql_constants.severity_error;
   gc_info                  CONSTANT plsql_constants.severity_info%TYPE  := plsql_constants.severity_info;
   gc_warn                  CONSTANT plsql_constants.severity_warn%TYPE  := plsql_constants.severity_warn;
@@ -88,8 +90,8 @@ CREATE OR REPLACE PACKAGE export AS
   ** EXCEPTIONS
   **   <exception_name1>      - <brief description>
   */
-  FUNCTION stats(
-    p_stats_result IN util_numeric.t_stats_result,
+  FUNCTION stats_export(
+    p_stats_result IN plsql_types.t_stats_result,
     p_name VARCHAR2 DEFAULT NULL,
     p_pct IN NUMBER DEFAULT 0.5
   ) RETURN VARCHAR2;
@@ -124,7 +126,7 @@ CREATE OR REPLACE PACKAGE export AS
   */
   FUNCTION project_stats(
     p_project_id IN stats_project.stats_project_id%TYPE,
-    p_stats_result IN util_numeric.t_stats_result,
+    p_stats_result IN plsql_types.t_stats_result,
     p_pct IN NUMBER DEFAULT 0.5
   ) RETURN VARCHAR2;
 

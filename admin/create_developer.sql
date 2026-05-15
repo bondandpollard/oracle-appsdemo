@@ -18,6 +18,7 @@
 **------------------------------------------------------------------------------------------------------------------------------
 ** 20/04/2023   Ian Bond      Created script
 ** 12/03/2025   Ian Bond      Amend to prompt for owning schema name etc.
+** 15/05/2026   Ian Bond      Add new tables and packages for search, stats.
 */
 
 ACCEPT v_owner PROMPT "Enter the schema owner name: "
@@ -47,6 +48,7 @@ GRANT DELETE, INSERT, SELECT, UPDATE ON applog TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON appseverity TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON bonus TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON appsdemo.country TO &v_user;
+GRANT DELETE, INSERT, SELECT, UPDATE ON country TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON country_holiday TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON customer TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON demo TO &v_user;
@@ -60,6 +62,8 @@ GRANT DELETE, INSERT, SELECT, UPDATE ON ord TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON price TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON product TO &v_user;
 GRANT DELETE, INSERT, SELECT, UPDATE ON salgrade TO &v_user;
+GRANT DELETE, INSERT, SELECT, UPDATE ON stats_data TO &v_user;
+GRANT DELETE, INSERT, SELECT, UPDATE ON stats_project TO &v_user;
 
 -- Views
 GRANT SELECT ON sales to &v_user;
@@ -72,6 +76,9 @@ GRANT EXECUTE ON export TO &v_user;
 GRANT EXECUTE ON import TO &v_user;
 GRANT EXECUTE ON orderrp TO &v_user;
 GRANT EXECUTE ON plsql_constants TO &v_user;
+GRANT EXECUTE ON plsql_types TO &v_user;
+GRANT EXECUTE ON search TO &v_user;
+GRANT EXECUTE ON stats TO &v_user;
 GRANT EXECUTE ON util_admin TO &v_user;
 GRANT EXECUTE ON util_date TO &v_user;
 GRANT EXECUTE ON util_file TO &v_user;
@@ -113,6 +120,9 @@ CREATE SYNONYM export FOR &v_owner..export;
 CREATE SYNONYM import FOR &v_owner..import;
 CREATE SYNONYM orderrp FOR &v_owner..orderrp;
 CREATE SYNONYM plsql_constants FOR &v_owner..plsql_constants;
+CREATE SYNONYM plsql_types FOR &v_owner..plsql_types;
+CREATE SYNONYM search FOR &v_owner..util_search;
+CREATE SYNONYM stats FOR &v_owner..stats;
 CREATE SYNONYM util_admin FOR &v_owner..util_admin;
 CREATE SYNONYM util_date FOR &v_owner..util_date;
 CREATE SYNONYM util_file FOR &v_owner..util_file;

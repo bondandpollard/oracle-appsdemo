@@ -21,10 +21,10 @@ BEGIN
   dbms_output.put_line('Target To: ' || to_char(t_to));
   
   
-  p := util_numeric.binary_chop_search(t,a);
+  p := search.binary_chop_search(t,a);
   dbms_output.put_line('TEST binary_chop_search, result = ' || to_char(p));
   
-  p := util_numeric.binary_search(t,a);
+  p := search.binary_search(t,a);
   dbms_output.put_line('TEST binary_search, result = ' || to_char(p));
   
   dbms_output.put_line('TEST Binary Search Leftmost, EXACT match.');
@@ -43,16 +43,16 @@ BEGIN
   exact := FALSE;
   p := test_binary_search_rightmost(t,a,exact);
   
-  p := util_numeric.binary_rank(t,a);
+  p := search.binary_rank(t,a);
   dbms_output.put_line('TEST binary_rank, result = ' || to_char(p));
   
-  p := util_numeric.binary_search_predecessor(t,a);
+  p := search.binary_search_predecessor(t,a);
   dbms_output.put_line('TEST binary_search_predecessor, result = ' || to_char(p));
   
-  p := util_numeric.binary_search_successor(t,a);
+  p := search.binary_search_successor(t,a);
   dbms_output.put_line('TEST binary_search_successor, result = ' || to_char(p));
   
-  p := util_numeric.binary_search_nearest(t,a);
+  p := search.binary_search_nearest(t,a);
   dbms_output.put_line('TEST binary_search_nearest, result = ' || to_char(p));
   util_admin.log_message('*********');
   util_admin.log_message('NEW ARRAY');
@@ -62,7 +62,7 @@ BEGIN
   exact := TRUE;
   p := test_binary_search_rightmost(t,a,exact);
   util_admin.log_message('Position of ' || to_char(t) || ' is ' || to_char(p));
-  p := util_numeric.binary_search_range(t, t_to,a);
+  p := search.binary_search_range(t, t_to,a);
   util_admin.log_message('TEST binary_search_range, from ' || to_char(t) || ' to ' || to_char(t_to) || ' result = ' || to_char(p));
   
 END;

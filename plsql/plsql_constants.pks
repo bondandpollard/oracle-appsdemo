@@ -19,28 +19,52 @@ CREATE OR REPLACE PACKAGE plsql_constants AS
   ** Date            Name                 Description
   **------------------------------------------------------------------------
   ** 10/07/2022      Ian Bond             Program created
-  **   
+  ** 14/05/2026      Ian Bond             Add days of week
   */
 
+  /*
+  ** Subtypes
+  */
 
   SUBTYPE maxvarchar2_t IS VARCHAR2(32767);
   SUBTYPE filenamelength_t IS VARCHAR2(255);
   SUBTYPE csvfieldlength_t IS VARCHAR2(255);
   SUBTYPE dirdelimlength_t IS VARCHAR2(1);
   SUBTYPE csvfielddelim_t IS VARCHAR2(1);
-
-  max_arraysize          CONSTANT PLS_INTEGER := 32767;
-  max_linesize           CONSTANT PLS_INTEGER := 32767;
+ 
+  /*
+  ** Constants
+  */
+  
+  -- Days of the week as numbers
+  monday                 CONSTANT PLS_INTEGER                      :=1;
+  tuesday                CONSTANT PLS_INTEGER                      :=2;
+  wednesday              CONSTANT PLS_INTEGER                      :=3;
+  thursday               CONSTANT PLS_INTEGER                      :=4;
+  friday                 CONSTANT PLS_INTEGER                      :=5;
+  saturday               CONSTANT PLS_INTEGER                      :=6;
+  sunday                 CONSTANT PLS_INTEGER                      :=7;
+  
+  -- Array dimensions
+  max_arraysize          CONSTANT PLS_INTEGER                      := 32767;
+  max_linesize           CONSTANT PLS_INTEGER                      := 32767;
+  
+  -- Error message levels
   severity_info          CONSTANT appseverity.severity%TYPE        := 'I'; -- Severity codes used in APPLOG and APPSEVERITY
   severity_error         CONSTANT appseverity.severity%TYPE        := 'E'; -- Severity codes used in APPLOG and APPSEVERITY
   severity_warn          CONSTANT appseverity.severity%TYPE        := 'W'; -- Severity codes used in APPLOG and APPSEVERITY
+  
+  -- File system directories
   import_directory       CONSTANT plsql_constants.filenamelength_t := 'DATA_IN';
   import_error_dir       CONSTANT plsql_constants.filenamelength_t := 'DATA_IN_ERROR';
   import_processed_dir   CONSTANT plsql_constants.filenamelength_t := 'DATA_IN_PROCESSED';
   export_directory       CONSTANT plsql_constants.filenamelength_t := 'DATA_OUT';
+  
+  -- CSV and character handling
   backslash              CONSTANT VARCHAR2(1)                      := CHR(92);
   directory_delimiter    CONSTANT plsql_constants.dirdelimlength_t := backslash; -- Backslash (SQL Developer removes the literal character)
   csv_delimiter          CONSTANT plsql_constants.csvfielddelim_t  := ',';
+  double_quote           CONSTANT VARCHAR2(1)                      := '"';
   newline                CONSTANT VARCHAR2(1)                      := CHR(10);
   newline_string         CONSTANT VARCHAR2(2)                      := backslash||'n';
   carriage_return        CONSTANT VARCHAR2(1)                      := CHR(13);

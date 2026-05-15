@@ -15,6 +15,7 @@
 ** 05/04/2025   Ian Bond      Fix issues with directories containing spaces and special characters such as ampersands.
 ** 12/03/2025   Ian Bond      Fix issues with synonyms. Create private synonyms for connect_user.
 ** 08/03/2026   Ian Bond      Remove DEMO_STRING package from compilation.
+** 14/05/2026   Ian Bond      Add new packages search, stats, plsql_types.
 */
 
     
@@ -41,6 +42,7 @@
   CONNECT &v_app_owner/&v_pwd@&v_dbconnect
   
   @'&v_app_home\\plsql\\plsql_constants.pks'
+  @'&v_app_home\\plsql\\plsql_types.pks'
   @'&v_app_home\\plsql\\util_admin.pks'
   @'&v_app_home\\plsql\\util_string.pks'
   @'&v_app_home\\plsql\\util_file.pks'
@@ -49,6 +51,8 @@
   @'&v_app_home\\plsql\\util_date.pks'
   @'&v_app_home\\plsql\\util_numeric.pks'
   @'&v_app_home\\plsql\\export.pks'
+  @'&v_app_home\\plsql\\stats.pks'
+  @'&v_app_home\\plsql\\search.pks'
   
   @'&v_app_home\\plsql\\util_admin.pkb'
   @'&v_app_home\\plsql\\util_string.pkb'
@@ -58,6 +62,8 @@
   @'&v_app_home\\plsql\\util_date.pkb'
   @'&v_app_home\\plsql\\util_numeric.pkb'
   @'&v_app_home\\plsql\\export.pkb'
+  @'&v_app_home\\plsql\\stats.pkb'
+  @'&v_app_home\\plsql\\search.pkb'
   
  
 /*
@@ -67,14 +73,17 @@
   GRANT EXECUTE ON import          TO &v_connect_user;
   GRANT EXECUTE ON orderrp         TO &v_connect_user;
   GRANT EXECUTE ON plsql_constants TO &v_connect_user;
+  GRANT EXECUTE ON plsql_types     TO &v_connect_user;
   GRANT EXECUTE ON util_admin      TO &v_connect_user;
   GRANT EXECUTE ON util_date       TO &v_connect_user;
   GRANT EXECUTE ON util_file       TO &v_connect_user;
   GRANT EXECUTE ON util_numeric    TO &v_connect_user;
   GRANT EXECUTE ON util_string     TO &v_connect_user;
+  GRANT EXECUTE ON search          TO &v_connect_user;
+  GRANT EXECUTE ON stats           TO &v_connect_user;
+
   
-  
- /*
+/*
 ** Private synonyms for Packages
 ** NB: Escape is on so you need to use \ to prefix the dot separator.
 */
@@ -85,9 +94,12 @@
   CREATE OR REPLACE SYNONYM import          FOR &v_app_owner\.import;
   CREATE OR REPLACE SYNONYM orderrp         FOR &v_app_owner\.orderrp;
   CREATE OR REPLACE SYNONYM plsql_constants FOR &v_app_owner\.plsql_constants;
+  CREATE OR REPLACE SYNONYM plsql_types     FOR &v_app_owner\.plsql_types;
   CREATE OR REPLACE SYNONYM util_admin      FOR &v_app_owner\.util_admin;
   CREATE OR REPLACE SYNONYM util_date       FOR &v_app_owner\.util_date;
   CREATE OR REPLACE SYNONYM util_file       FOR &v_app_owner\.util_file;
   CREATE OR REPLACE SYNONYM util_numeric    FOR &v_app_owner\.util_numeric;
   CREATE OR REPLACE SYNONYM util_string     FOR &v_app_owner\.util_string;
+  CREATE OR REPLACE SYNONYM search          FOR &v_app_owner\.search;
+  CREATE OR REPLACE SYNONYM stats           FOR &v_app_owner\.stats;
   

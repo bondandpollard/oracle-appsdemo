@@ -9,5 +9,5 @@ ACCEPT p_number_list PROMPT "Enter a list of numbers to search, separated by com
 ACCEPT p_target NUMBER PROMPT "Enter a number to find predecessor of"
 SELECT '&p_number_list' LIST, 
 '&p_target' KEY
-, util_numeric.binary_search_predecessor(&p_target, '&p_number_list') RESULT
+, search.binary_search_predecessor(&p_target, '&p_number_list') RESULT
 FROM dual;

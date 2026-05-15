@@ -17,18 +17,21 @@
 ** Date         Name          Description
 **------------------------------------------------------------------------------------------------------------------------------
 ** 24/03/2026   Ian Bond      Created
+** 14/05/2026   Ian Bond      Function export.stats renamed to export.stats_export to avoid conflict with stats package
+**                            Statistic functions moved from util_numeric to stats package.
+**                            Types moved to plsql_types.
 */
 SET SERVEROUTPUT ON
 ACCEPT p_list PROMPT "Enter a list of numbers separated by commas"
 ACCEPT p_percentile NUMBER PROMPT "Percentile (number > 0 and < 1)?"
 
 DECLARE
-  v_stats_result util_numeric.t_stats_result;
+  v_stats_result plsql_types.t_stats_result;
 BEGIN
   util_admin.log_message('Input list is: ' || '&p_list');
-  v_stats_result := util_numeric.get_stats_list('&p_list');
-  util_numeric.display_frequency_table(v_stats_result);
-  util_numeric.display_stats(v_stats_result,&p_percentile);  
+  v_stats_result := stats.get_stats_list('&p_list');
+  stats.display_frequency_table(v_stats_result);
+  stats.display_stats(v_stats_result,&p_percentile);  
 EXCEPTION
   WHEN OTHERS THEN
     util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);

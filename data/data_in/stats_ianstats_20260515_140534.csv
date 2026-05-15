@@ -1,0 +1,23 @@
+"Name: ","ian-stats"
+"KEY","FREQUENCY"
+66.0000000000,2
+67.0000000000,1
+69.0000000000,1
+70.0000000000,1
+"STATISTICS"
+"Sum",338.0000000000
+"N Total",5
+"Distinct N",4
+"Mean",67.6000000000
+"Median",67.0000000000
+"Mode 1",66.0000000000
+"Lowest",66.0000000000
+"Highest",70.0000000000
+"Range",4.0000000000
+"Variance Population",2.6400000000
+"Variance Sample",3.3000000000
+"Standard Deviation Population",1.6248076809
+"Standard Deviation Sample",1.8165902125
+"Interquartile Range",3.0000000000
+"Percentile Discrete ( 0.55)",67.0000000000
+"Percentile Continuous ( 0.55)",67.4000000000
