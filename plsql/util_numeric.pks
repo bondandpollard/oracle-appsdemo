@@ -605,7 +605,8 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   /*
   ** fibonacci
   **
-  ** Calculate the Fibonacci sequence, for the first N integers as specified.
+  ** Calculate the Fibonacci sequence, for the first N integers as specified in
+  ** p_number. Valid range is 0 to 45.
   **
   ** IN
   **   p_number               - Total number of values to calculate

@@ -953,7 +953,11 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.FIBONACCI';
     v_debug_msg applog.message%TYPE;
     v_debug_mode VARCHAR2(1) := 'X';
+    e_out_of_range EXCEPTION;
   BEGIN
+    IF p_number < 0 OR p_number > 45 THEN
+      RAISE e_out_of_range;
+    END IF;
     FOR i in 1 .. p_number LOOP
       z := x + y;
       v_array.EXTEND;
@@ -963,10 +967,13 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
     END LOOP;
     RETURN v_array;
   EXCEPTION
+    WHEN e_out_of_range THEN
+      util_admin.log_message('ERROR: Parameter p_number='||TO_CHAR(p_number)||' is invalid. You must specify a value between 0 and 45.', sqlerrm, v_debug_module, 'S', gc_error);
+      RETURN NULL;
     WHEN OTHERS THEN
       util_admin.log_message('Unexpected error.', sqlerrm, v_debug_module, 'S', gc_error);
       RETURN NULL;
-  END;
+  END fibonacci;
   
 END util_numeric;
 /
