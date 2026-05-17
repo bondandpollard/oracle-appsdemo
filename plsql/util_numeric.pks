@@ -84,6 +84,7 @@ CREATE OR REPLACE PACKAGE util_numeric AS
   ** 12/02/2026       Ian Bond            Allow decimal places in statistics data.
   ** 13/05/2026       Ian Bond            Add function reverse_array, reverse_list - reverse the order of an array of numbers. NB: Does not sort array.
   ** 14/05/2026       Ian Bond            Move search and stats functions to separate packagees, and reference common types in plsql_types.pks.
+  ** 17/05/2026       Ian Bond            Add Fibonacci function.
   */
  
   
@@ -600,6 +601,24 @@ CREATE OR REPLACE PACKAGE util_numeric AS
     p_list  IN VARCHAR2,
     p_order IN VARCHAR2
   ) RETURN BOOLEAN;
+  
+  /*
+  ** fibonacci
+  **
+  ** Calculate the Fibonacci sequence, for the first N integers as specified.
+  **
+  ** IN
+  **   p_number               - Total number of values to calculate
+  **
+  ** RETURN
+  **   t_number_array         - Array of numbers containing Fibonacci sequence values
+  **
+  ** EXCEPTIONS
+  **   <exception_name1>      - <brief description>
+  */
+  FUNCTION fibonacci(
+    p_number  IN PLS_INTEGER
+  ) RETURN plsql_types.t_number_array;
    
 END util_numeric;
 /

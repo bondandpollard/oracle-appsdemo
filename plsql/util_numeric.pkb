@@ -939,6 +939,34 @@ CREATE OR REPLACE PACKAGE BODY util_numeric AS
       util_admin.log_message('Unexpected error.', sqlerrm, v_debug_module, 'S', gc_error);
       RETURN NULL;
   END reverse_list;
+  
 
+  FUNCTION fibonacci(
+    p_number  IN PLS_INTEGER
+  ) RETURN plsql_types.t_number_array
+  IS
+    x PLS_INTEGER :=0;
+    y PLS_INTEGER :=1;
+    z PLS_INTEGER;
+    i PLS_INTEGER;
+    v_array plsql_types.t_number_array := plsql_types.t_number_array();
+    v_debug_module applog.program_name%TYPE := 'UTIL_NUMERIC.FIBONACCI';
+    v_debug_msg applog.message%TYPE;
+    v_debug_mode VARCHAR2(1) := 'X';
+  BEGIN
+    FOR i in 1 .. p_number LOOP
+      z := x + y;
+      v_array.EXTEND;
+      v_array(i) := x;
+      y := x;
+      x := z;
+    END LOOP;
+    RETURN v_array;
+  EXCEPTION
+    WHEN OTHERS THEN
+      util_admin.log_message('Unexpected error.', sqlerrm, v_debug_module, 'S', gc_error);
+      RETURN NULL;
+  END;
+  
 END util_numeric;
 /
