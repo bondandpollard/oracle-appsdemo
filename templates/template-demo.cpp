@@ -26,8 +26,8 @@ int main(int argc, char* argv[]) {
 
   // simple help
   if (argc > 1 && (args[1] == "-h" || args[1] == "--help")) {
-    std::cout << "Usage: " << args[0] << " [options]\n"
-              << "  -h, --help    Show this help\n";
+    std::cout << "Usage: " << args[0] << " [options]" << std::endl
+              << "  [-h | --help]" << std::endl;
     return EXIT_SUCCESS;
   }
 
@@ -36,17 +36,17 @@ int main(int argc, char* argv[]) {
   if (argc > 1) {
     std::istringstream iss(args[1]);
     if (!(iss >> value)) {
-      std::cerr << "Invalid integer: " << args[1] << '\n';
+      std::cerr << "Invalid integer: " << args[1] << std::endl;
       return EXIT_FAILURE;
     }
   }
 
   // main program body (replace with your code)
-  std::cout << "Argument count: " << argc << '\n';
+  std::cout << "Argument count: " << argc << std::endl;
   for (int i = 0; i < argc; ++i) {
-    std::cout << "argv[" << i << "] = " << args[i] << '\n';
+    std::cout << "argv[" << i << "] = " << args[i] << std::endl;
   }
-  std::cout << "Parsed value = " << value << '\n';
+  std::cout << "Parsed value = " << value << std::endl;
 
   return EXIT_SUCCESS;
 }
