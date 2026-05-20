@@ -17,7 +17,7 @@
 
 SET SERVEROUTPUT ON
 DECLARE 
-  v_result plsql_constants.filenamelength_t;;
+  v_result plsql_constants.filenamelength_t;
 BEGIN
   v_result := export.orders;
   IF NOT v_result IS NULL THEN
