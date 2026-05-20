@@ -1,0 +1,28 @@
+"Name: ","Bondy"
+"KEY","FREQUENCY"
+3.0000000000,1
+4.0000000000,1
+5.0000000000,1
+9.0000000000,1
+10.0000000000,1
+"STATISTICS"
+"Sum",31.0000000000
+"N Total",5
+"Distinct N",5
+"Mean",6.2000000000
+"Median",5.0000000000
+"Mode 1",3.0000000000
+"Mode 2",4.0000000000
+"Mode 3",5.0000000000
+"Mode 4",9.0000000000
+"Mode 5",10.0000000000
+"Lowest",3.0000000000
+"Highest",10.0000000000
+"Range",7.0000000000
+"Variance Population",7.7600000000
+"Variance Sample",9.7000000000
+"Standard Deviation Population",2.7856776554
+"Standard Deviation Sample",3.1144823005
+"Interquartile Range",5.0000000000
+"Percentile Discrete ( 0.22)",4.0000000000
+"Percentile Continuous ( 0.22)",3.8800000000

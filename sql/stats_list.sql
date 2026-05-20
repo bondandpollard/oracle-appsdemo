@@ -34,5 +34,5 @@ BEGIN
   stats.display_stats(v_stats_result,&p_percentile);  
 EXCEPTION
   WHEN OTHERS THEN
-    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
+    util_admin.log_message('Unexpected error.', SQLERRM,'STATS_LIST.SQL','B','E');
 END;

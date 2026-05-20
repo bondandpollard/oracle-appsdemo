@@ -59,7 +59,7 @@ CREATE OR REPLACE PACKAGE BODY export AS
 
 
   FUNCTION demo
-    RETURN BOOLEAN 
+    RETURN VARCHAR2
   IS
     --
     CURSOR demo_cur IS
@@ -72,8 +72,8 @@ CREATE OR REPLACE PACKAGE BODY export AS
     l_filename plsql_constants.filenamelength_t;
     l_rec plsql_constants.maxvarchar2_t;
   BEGIN
-    -- Create the CSV file named: demo_YYYMMDD.csv
-    l_filename := 'demo_'||to_char(SYSDATE,'YYMMDD')||'.csv';
+    -- Create the CSV file named with prefix demo_ followed by data and time
+    l_filename := 'demo_'||to_char(SYSDATE,'YYYYMMDD_HH24MISS')||'.csv';
     l_file_id := utl_file.fopen(gc_export_directory, l_filename, 'W');
 
     -- Write CSV Header
@@ -95,15 +95,15 @@ CREATE OR REPLACE PACKAGE BODY export AS
     END LOOP;
     CLOSE demo_cur;
     utl_file.fclose(l_file_id);
-    RETURN TRUE;
+    RETURN l_filename;
   EXCEPTION
     WHEN OTHERS THEN
       util_admin.log_message('Unexpected Error',SQLERRM,'EXPORT.DEMO','B',gc_error);
-      RETURN FALSE;
+      RETURN NULL;
   END demo;
 
   FUNCTION orders 
-    RETURN BOOLEAN 
+    RETURN VARCHAR2
   IS
     --
     CURSOR ord_cur IS
@@ -138,8 +138,8 @@ CREATE OR REPLACE PACKAGE BODY export AS
     l_filename plsql_constants.filenamelength_t;
     l_rec plsql_constants.maxvarchar2_t;
   BEGIN
-    -- Create the CSV file named: orders_YYYMMDD.csv
-    l_filename := 'orders_'||to_char(SYSDATE,'YYMMDD')||'.csv';
+    -- Create the CSV file prefix orders_ with date and time stamp
+    l_filename := 'orders_'||to_char(SYSDATE,'YYYYMMDD_HH24MISS')||'.csv';
     l_file_id := utl_file.fopen(gc_export_directory, l_filename, 'W');
 
     -- Write CSV Header
@@ -174,11 +174,11 @@ CREATE OR REPLACE PACKAGE BODY export AS
     END LOOP;
     CLOSE ord_cur;
     utl_file.fclose(l_file_id);
-    RETURN TRUE;
+    RETURN l_filename;
   EXCEPTION
     WHEN OTHERS THEN
       util_admin.log_message('Unexpected Error',SQLERRM,'EXPORT.ORDERS','B',gc_error);
-      RETURN FALSE;
+      RETURN NULL;
   END orders;
   
   FUNCTION stats_export(
@@ -196,7 +196,7 @@ CREATE OR REPLACE PACKAGE BODY export AS
     -- Tag in file name to identify file, remove special chars
     l_tag := TRIM(SUBSTR(NVL(regexp_replace(p_name, '[^A-Za-z0-9 ]', ''),'notag'),1,15));
     -- Create the CSV file
-    l_filename := 'stats_'||l_tag||'_'||to_char(SYSDATE,'YYYYMMDD_HH24MMSS')||'.csv';
+    l_filename := 'stats_'||l_tag||'_'||to_char(SYSDATE,'YYYYMMDD_HH24MISS')||'.csv';
     l_file_id := utl_file.fopen(gc_export_directory, l_filename, 'W');
     
     -- CSV Header 
@@ -242,7 +242,7 @@ CREATE OR REPLACE PACKAGE BODY export AS
     -- Create the CSV file
     -- Tag in file name to identify project
     l_id := TO_CHAR(p_project_id);
-    l_filename := 'stats_'||l_id||'_'||to_char(SYSDATE,'YYYYMMDD_HH24MMSS')||'.csv';
+    l_filename := 'stats_'||l_id||'_'||to_char(SYSDATE,'YYYYMMDD_HH24MISS')||'.csv';
     l_file_id := utl_file.fopen(gc_export_directory, l_filename, 'W');
     
     -- CSV header (Title)
@@ -266,6 +266,61 @@ CREATE OR REPLACE PACKAGE BODY export AS
       util_admin.log_message('Unexpected Error',SQLERRM,l_debug_module,'B',gc_error);
       RETURN NULL;
   END project_stats;
+  
+  FUNCTION project_stats_data(
+    p_project_id    IN stats_project.stats_project_id%TYPE
+  )
+    RETURN VARCHAR2
+  IS
+    --
+    CURSOR stats_data_cur(cp_project_id stats_project.stats_project_id%TYPE) IS
+      SELECT  p.description project_desc,
+              d.description data_desc,
+              d.stats_value
+      FROM    stats_project p,
+              stats_data d
+      WHERE   p.stats_project_id = cp_project_id 
+      AND     d.stats_project_id = p.stats_project_id;
+    -- 
+    l_proj_desc stats_project.description%TYPE;
+    l_file_id utl_file.file_type;
+    l_id VARCHAR2(15); -- include in filename 
+    l_filename plsql_constants.filenamelength_t;
+    l_rec plsql_constants.maxvarchar2_t;
+    l_debug_msg applog.message%TYPE;
+    l_debug_module applog.program_name%TYPE := 'EXPORT.PROJECT_STATS';
+    l_debug_mode VARCHAR2(1) := 'B';
+  BEGIN
+    SELECT NVL(description,'No Project Description')
+    INTO l_proj_desc
+    FROM stats_project
+    WHERE stats_project_id = p_project_id;
+    
+    -- Create the CSV file
+    -- Tag in file name to identify project
+    l_id := TO_CHAR(p_project_id);
+    l_filename := 'stats_data_'||l_id||'_'||to_char(SYSDATE,'YYYYMMDD_HH24MISS')||'.csv';
+    l_file_id := utl_file.fopen(gc_export_directory, l_filename, 'W');
+    
+    -- Write CSV header (Title)
+    utl_file.put_line(l_file_id,'"PROJECT"'||gc_delim||'"'||l_proj_desc||'"');
+    
+    -- Write CSV body
+    FOR rec_stats_data IN stats_data_cur(p_project_id) LOOP
+      utl_file.put_line(l_file_id,'"'||rec_stats_data.data_desc||'"'||gc_delim||rec_stats_data.stats_value);
+    END LOOP;
+  
+    -- Close CSV file
+    utl_file.fclose(l_file_id);
+    RETURN l_filename;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      util_admin.log_message('Project not found, Project ID:'||TO_CHAR(p_project_id),SQLERRM,l_debug_module,'B',gc_error);
+      RETURN NULL;   
+    WHEN OTHERS THEN
+      util_admin.log_message('Unexpected Error',SQLERRM,l_debug_module,'B',gc_error);
+      RETURN NULL;
+  END project_stats_data;
 
 END export;
 /

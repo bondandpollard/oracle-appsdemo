@@ -45,7 +45,7 @@ BEGIN
 
 EXCEPTION
   WHEN e_invalid_data THEN
-    util_admin.log_message('Invalid data in STATS_DATA for Project_ID ' || to_char(&p_project_id));
+    util_admin.log_message('Invalid data in STATS_DATA for Project_ID ' || to_char(&p_project_id), SQLERRM,'STATS_PROJECT.SQL','B','E');
   WHEN OTHERS THEN
-    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
+    util_admin.log_message('Unexpected error.', SQLERRM,'STATS_PROJECT.SQL','B','E');
 END;

@@ -1,0 +1,30 @@
+"Name: ","MrBondTest"
+"KEY","FREQUENCY"
+1.0000000000,1
+2.0000000000,1
+3.0000000000,1
+4.0000000000,1
+5.0000000000,1
+99.0000000000,1
+"STATISTICS"
+"Sum",114.0000000000
+"N Total",6
+"Distinct N",6
+"Mean",19.0000000000
+"Median",3.5000000000
+"Mode 1",1.0000000000
+"Mode 2",2.0000000000
+"Mode 3",3.0000000000
+"Mode 4",4.0000000000
+"Mode 5",5.0000000000
+"Mode 6",99.0000000000
+"Lowest",1.0000000000
+"Highest",99.0000000000
+"Range",98.0000000000
+"Variance Population",1,281.6666666667
+"Variance Sample",1,538.0000000000
+"Standard Deviation Population",35.8003724375
+"Standard Deviation Sample",39.2173431023
+"Interquartile Range",2.5000000000
+"Percentile Discrete ( 0.55)",4.0000000000
+"Percentile Continuous ( 0.55)",3.7500000000

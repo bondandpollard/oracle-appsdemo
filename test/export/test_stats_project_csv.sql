@@ -1,6 +1,6 @@
 /*
 ** Copyright (c) 2026 Bond & Pollard Ltd. All rights reserved.  
-** NAME   : stats_project_csv.sql
+** NAME   : test_stats_project_csv.sql
 **
 ** DESCRIPTION
 **  Calculate statistics for a project, export result to CSV file.
@@ -14,11 +14,9 @@
 **
 ** Date         Name          Description
 **------------------------------------------------------------------------------------------------------------------------------
-** 22/03/2026   Ian Bond      Created
-** 14/05/2026   Ian Bond      Function export.stats renamed to export.stats_export to avoid conflict with stats package
-**                            Statistic functions moved from util_numeric to stats package.
-**                            Types moved to plsql_types.
+** 20/05/2026   Ian Bond      Created
 */
+
 SET SERVEROUTPUT ON
 ACCEPT p_project_id NUMBER PROMPT "Enter Project ID to generate statistics for:"
 ACCEPT p_percentile NUMBER PROMPT "Percentile (number > 0 and < 1)?"
@@ -60,7 +58,7 @@ BEGIN
 
 EXCEPTION
   WHEN e_invalid_data THEN
-    util_admin.log_message('Invalid data in STATS_DATA for Project_ID ' || to_char(&p_project_id), SQLERRM,'STATS_PROJECT_CSV.SQL','B','E');
+    util_admin.log_message('Invalid data in STATS_DATA for Project_ID ' || to_char(&p_project_id));
   WHEN OTHERS THEN
-    util_admin.log_message('Unexpected error.',SQLERRM,'STATS_PROJECT_CSV.SQL','B','E');
+    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
 END;

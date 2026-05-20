@@ -16,6 +16,8 @@ CREATE OR REPLACE PACKAGE export AS
   ** 24/03/2026       Ian Bond            Create functions to export project stats.
   ** 14/05/2026       Ian Bond            Function stats renamed to stats_export to prevent scope clash with stats package which
   **                                      gives compile error PLS-00225: subprogram or cursor 'STATS' reference is out of scope
+  ** 20/05/2026       Ian Bond            Fix time format HH24MI not HH24MM. Add function project_stats_data.
+  **                                      demo and orders functions amended to return filename.
   */
   
  
@@ -49,11 +51,11 @@ CREATE OR REPLACE PACKAGE export AS
   **
   ** IN
   ** RETURN
-  **   BOOLEAN   TRUE if data exported OK, FALSE if failed
+  **   VARCHAR2  Filename of CSV file created, null if export failed
   ** EXCEPTIONS
   **   <exception_name1>      - <brief description>
   */
-  FUNCTION demo RETURN BOOLEAN;
+  FUNCTION demo RETURN VARCHAR2;
 
   /*
   ** orders - export order data to a CSV file
@@ -61,11 +63,11 @@ CREATE OR REPLACE PACKAGE export AS
   **
   ** IN
   ** RETURN
-  **   BOOLEAN   TRUE if data exported OK, FALSE if failed
+  **   VARCHAR2  Filename of CSV file created, null if export failed
   ** EXCEPTIONS
   **   <exception_name1>      - <brief description>
   */
-  FUNCTION orders RETURN BOOLEAN;
+  FUNCTION orders RETURN VARCHAR2;
 
   /*
   ** stats_export - export statistics to a CSV file
@@ -73,7 +75,7 @@ CREATE OR REPLACE PACKAGE export AS
   ** Export frequency table and statistics to a CSV file.
   **
   ** The CSV file is created in DATA_HOME/data_out
-  ** File name: stats_[name]_YYYYMMDD_HHMMSS.csv
+  ** File name: stats_[name]_YYYYMMDD_HHMISS.csv
   **
   ** The CSV contains:
   **  Header info is the name passed in p_name
@@ -107,7 +109,7 @@ CREATE OR REPLACE PACKAGE export AS
   **  STATS_DATA
   **
   ** The CSV file is created in DATA_HOME/data_out
-  ** File name: stats_[Project ID]_YYYYMMDD_HHMMSS.csv
+  ** File name: stats_[Project ID]_YYYYMMDD_HHMISS.csv
   **
   ** The CSV contains:
   **  Header info identifying project id and description
@@ -129,7 +131,57 @@ CREATE OR REPLACE PACKAGE export AS
     p_stats_result IN plsql_types.t_stats_result,
     p_pct IN NUMBER DEFAULT 0.5
   ) RETURN VARCHAR2;
-
+  
+  /*
+  ** project_stats_data - export project statistics data to a CSV file
+  ** 
+  **
+  ** Statistics data for each project are stored in tables:
+  **  STATS_PROJECT 
+  **  STATS_DATA
+  **
+  ** The CSV file is created in DATA_HOME/data_out
+  ** File name: stats_data_[Project ID]_YYYYMMDD_HHMISS.csv
+  **
+  ** CSV file format
+  ** For each project, there will be a group of records consisting of a header
+  ** record with the project description, followed by 1 or more body records containing 
+  ** statistics data.
+  **
+  ** Header Record
+  **   Field              Type    Size            Description
+  **   ========================================================================
+  **   Record Type        Char                    PROJECT identifies the header
+  **   Project Desc       Char    100             Maps to STATS_PROJECT.DESCRIPTION
+  **
+  ** Body Record (1 to N records per header)
+  **   ========================================================================
+  **   Data Description   Char                    STATS_DATA.DESCRIPTION
+  **   Data               Char                    STATS_DATA.STATS_VALUE
+  **
+  **  e.g.
+  **    PROJECT,PL/SQL Exam Results
+  **    Fred,90
+  **    Jim,93
+  **    Ann,97
+  **    Ian,98
+  **    Steve F,100
+  **    Bruce Scott,99
+  **    Tiger,95
+  **    Mary,91
+  **    Connor McD,100
+  **
+  ** IN
+  **   p_project_id             - Primary key identifying project data to export
+  **
+  ** RETURN
+  **   VARCHAR2  Filename of CSV file created, null if export failed
+  ** EXCEPTIONS
+  **   <exception_name1>      - <brief description>
+  */
+  FUNCTION project_stats_data(
+    p_project_id IN stats_project.stats_project_id%TYPE
+  ) RETURN VARCHAR2;
 
 END export;
 /

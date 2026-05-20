@@ -1,6 +1,6 @@
 /*
 ** Copyright (c) 2026 Bond & Pollard Ltd. All rights reserved.  
-** NAME   : stats_list_csv.sql
+** NAME   : test_stats_list_csv.sql
 **
 ** DESCRIPTION
 **  Calculate statistics for a list of numbers, export result to CSV file.
@@ -17,10 +17,7 @@
 **
 ** Date         Name          Description
 **------------------------------------------------------------------------------------------------------------------------------
-** 24/03/2026   Ian Bond      Created
-** 14/05/2026   Ian Bond      Function export.stats renamed to export.stats_export to avoid conflict with stats package
-**                            Statistic functions moved from util_numeric to stats package.
-**                            Types moved to plsql_types.
+** 20/05/2026   Ian Bond      Created
 */
 SET SERVEROUTPUT ON
 ACCEPT p_name PROMPT "Enter a name for your statistics:"
@@ -52,5 +49,5 @@ BEGIN
   
 EXCEPTION
   WHEN OTHERS THEN
-    util_admin.log_message('Unexpected error.',SQLERRM,'STATS_LIST_CSV.SQL','B','E');
+    util_admin.log_message('Unexpected error, SQLERRM: ' || SQLERRM);
 END;
