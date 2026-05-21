@@ -1,5 +1,7 @@
 /*
 ** Copyright (c) 2026 Bond & Pollard Ltd. All rights reserved.  
+** This software is free to use and modify at your own risk.
+**  
 ** NAME   : test_stats_project_csv.sql
 **
 ** DESCRIPTION
