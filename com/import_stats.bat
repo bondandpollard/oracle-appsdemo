@@ -1,6 +1,7 @@
 ECHO OFF
 REM Copyright (c) 2022 Bond & Pollard Ltd. All rights reserved.
-REM  
+REM This software is free to use and modify at your own risk.
+REM
 REM NAME: import_stats.bat
 REM
 REM DESCRIPTION

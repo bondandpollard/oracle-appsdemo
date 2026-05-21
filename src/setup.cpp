@@ -14,6 +14,9 @@
 #include <ctime>
 
 /*
+  Copyright (c) 2023 Bond & Pollard Ltd. All rights reserved.
+  This software is free to use and modify at your own risk.
+
   Program Name    : setup.cpp
   Description     : Oracle Demo Installer
   Copyright       : Bond & Pollard Ltd 2025

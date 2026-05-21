@@ -1,4 +1,7 @@
 ECHO OFF
+REM Copyright (c) 2022 Bond & Pollard Ltd. All rights reserved.
+REM This software is free to use and modify at your own risk.
+REM
 REM NAME: startora.bat
 REM
 REM DESCRIPTION
