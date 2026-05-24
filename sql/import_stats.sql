@@ -25,7 +25,8 @@
 ** 14/05/2026   Ian Bond      Function export.stats renamed to export.stats_export to avoid conflict with stats package
 **                            Statistic functions moved from util_numeric to stats package.
 **                            Types moved to plsql_types.
-** 24/05/2026   Ian Bond      Add explicit COMMIT if PL/SQL function import.stats_imp returns without an application having been raised.
+** 24/05/2026   Ian Bond      Add explicit COMMIT if PL/SQL function import.stats_imp returns with tb_project_id_tbl not NULL
+**                            (import OK, table of new projects returned).
 **                            Do not rely on SQL*Plus EXITCOMMIT parameter being set to ON.
 */
 
