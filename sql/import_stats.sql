@@ -36,6 +36,10 @@ DECLARE
   v_csv_fname plsql_constants.filenamelength_t;
   v_stats_result plsql_types.t_stats_result :=plsql_types.t_stats_result();
   tb_project_id_tbl import.tb_project :=import.tb_project();
+  v_project_id stats_project.stats_project_id%TYPE;
+  e_import_error EXCEPTION;
+  e_get_stats_error EXCEPTION;
+  e_export_stats_error EXCEPTION;
 BEGIN
   util_admin.log_message('Data Import from file: '||v_filename);
   
@@ -52,25 +56,38 @@ BEGIN
     
       -- For each imported project, create CSV file containing fequency table and statistics
       
-      util_admin.log_message('Stats data imported OK for Project ID='||to_char(tb_project_id_tbl(i)));
+      v_project_id := tb_project_id_tbl(i);
+      
+      util_admin.log_message('Stats data imported OK for Project ID ['||TO_CHAR(v_project_id)||']');
     
       -- Generate statistics for imported project data
-      v_stats_result := stats.get_stats_project(tb_project_id_tbl(i));
- 
+      v_stats_result := stats.get_stats_project(v_project_id);
+      IF v_stats_result.stats.sum_values IS NULL THEN
+        RAISE e_get_stats_error;
+      END IF;
+      
       -- Export frequency table and stats for this project to CSV file
-      v_csv_fname := export.project_stats(tb_project_id_tbl(i),v_stats_result);
+      v_csv_fname := export.project_stats(v_project_id,v_stats_result);
+      IF v_csv_fname IS NULL THEN 
+        RAISE e_export_stats_error;
+      END IF;
       
       -- Display CSV file name
-      util_admin.log_message('Statistics exported to file: '||v_csv_fname); 
+      util_admin.log_message('Statistics for Project ID ['||TO_CHAR(v_project_id)||'] exported to file: '||v_csv_fname); 
    
-    END LOOP;
-    
+    END LOOP;  
   ELSE
-    raise_application_error (-20099,'Import failed. View errors in IMPORTERROR for file '||v_filename);
+    raise e_import_error;
   END IF;
 EXCEPTION
+  WHEN e_import_error THEN
+    util_admin.log_message('Import failed (IMPORT.STATS_IMP). View errors in table IMPORTERROR for file: '||v_filename,SQLERRM,'IMPORT_STATS.SQL','B','E');
+  WHEN e_get_stats_error THEN
+    util_admin.log_message('No statistics results returned by function STATS.GET_STATS_PROJECT for Project ID ['||TO_CHAR(v_project_id)||'] imported from file: '||v_filename,SQLERRM,'IMPORT_STATS.SQL','B','E');
+  WHEN e_export_stats_error THEN
+    util_admin.log_message('Export failed (EXPORT.PROJECT_STATS) for Project ID ['||TO_CHAR(v_project_id)||'] imported from file: '||v_filename,SQLERRM,'IMPORT_STATS.SQL','B','E');
   WHEN OTHERS THEN
-    util_admin.log_message('Error importing file '||v_filename,SQLERRM,'IMPORT_STATS.SQL','B','E');
+    util_admin.log_message('Unexpected Error importing file '||v_filename,SQLERRM,'IMPORT_STATS.SQL','B','E');
 END;
 /
 EXIT
