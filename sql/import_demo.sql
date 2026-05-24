@@ -21,6 +21,9 @@
 ** Date         Name          Description
 **------------------------------------------------------------------------------------------------------------------------------
 ** 24/07/2022   Ian Bond      Created
+** 24/05/2026   Ian Bond      Note that there is no explicit commit after the PL/SQL function import.demo_imp returns.
+**                            The program relies on the SQL*PLUS parameter EXITCOMMIT being set to ON.
+**                            When SQL*Plus exits, if EXITCOMMIT is ON a COMMIT is issued, otherwise a ROLLBACK is issued.
 */
 
 SET SERVEROUTPUT ON
@@ -32,6 +35,7 @@ BEGIN
   v_result := import.demo_imp(v_filename);
   IF v_result THEN
     util_admin.log_message('Success!');
+    /* No explicit commit, we are relying on SQL*Plus parameter EXITCOMMIT ON */
   ELSE
     raise_application_error (-20099,'Import failed. View errors in IMPORTERROR for file '||v_filename);
   END IF;

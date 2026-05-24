@@ -25,6 +25,8 @@
 ** 14/05/2026   Ian Bond      Function export.stats renamed to export.stats_export to avoid conflict with stats package
 **                            Statistic functions moved from util_numeric to stats package.
 **                            Types moved to plsql_types.
+** 24/05/2026   Ian Bond      Add explicit COMMIT if PL/SQL function import.stats_imp returns without an application having been raised.
+**                            Do not rely on SQL*Plus EXITCOMMIT parameter being set to ON.
 */
 
 SET SERVEROUTPUT ON
@@ -41,6 +43,10 @@ BEGIN
   tb_project_id_tbl := import.stats_imp(v_filename);
   
   IF tb_project_id_tbl IS NOT NULL THEN
+  
+    COMMIT; /* import.stats_imp did not raise an exception, and returned a table of newly created project data,
+               so issue a commit here */
+    
     FOR i IN 1 .. tb_project_id_tbl.COUNT LOOP
     
       -- For each imported project, create CSV file containing fequency table and statistics

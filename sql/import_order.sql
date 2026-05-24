@@ -24,6 +24,8 @@
 ** Date         Name          Description
 **------------------------------------------------------------------------------------------------------------------------------
 ** 21/07/2022   Ian Bond      Created
+** 24/05/2026   Ian Bond      Issue explicit commit if import.ord_imp returns with no errors. Do not rely on EXITCOMMIT 
+**                            parameter in SQL*PLUS being set to ON.
 */
 
 SET SERVEROUTPUT ON
@@ -35,6 +37,7 @@ BEGIN
   v_result := import.ord_imp(v_filename);
   IF v_result THEN
     util_admin.log_message('Success!');
+    COMMIT;  /* No errors, so explicitly commit new order data to database */
   ELSE
     raise_application_error (-20099,'Order import failed. View errors in IMPORTERROR for file '||v_filename);
   END IF;
