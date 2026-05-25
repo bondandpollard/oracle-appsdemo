@@ -19,6 +19,7 @@ CREATE OR REPLACE PACKAGE import AS
   ** 18/03/2026       Ian Bond            Amend stats_imp to handle CSV structure for multiple
   **                                      projects, grouped into header record followed by data.
   ** 24/03/2026       Ian Bond            Amend stats_imp to return table of project_id
+  ** 25/05/2026       Ian Bond            Improve documentation in comments re commit.
   */
   
 
@@ -69,7 +70,7 @@ CREATE OR REPLACE PACKAGE import AS
   ** 1. Copy a CSV format file in the format described below to the import directory DATA_HOME/received
   ** 2. Run import_demo in the com APP_HOME/com directory.
   ** 3. Check the CSV file has been processed, it will be in either DATA_IN_PROCESSED or DATA_IN_ERROR
-  ** 4. Run SQl report import_errors to check the import error log.
+  ** 4. Run SQL report import_errors to check the import error log.
   ** 5. If the CSV data was processed OK, the data will be in the tables as described below.
   **
   ** This function:
@@ -87,12 +88,33 @@ CREATE OR REPLACE PACKAGE import AS
   **  4.2. Move the CSV file to the error directory.
   **  4.3. Stop processing, exit with an error status.
   **  5. If data passes validation:
-  **  5.1. Insert data into the Demo table.
+  **  5.1. Insert data into the DEMO table.
   **  5.2. Delete old error messages from the IMPORTERROR table for the data successfully imported,
   **       using the KEY_VALUE column of IMPORTCSV.
   **  5.3. Delete the data from the IMPORTCSV staging table.
   **  5.4. Move the CSV to the processed directory.
   **  5.5. Exit with a success status.
+  **
+  **
+  ** Commit - Transaction Processing:
+  **  The PL/SQL program does not commit data. This is handled by the calling application.
+  **  If validation failed:
+  **    Errors are logged in table IMPORTERROR pending commit.
+  **    Data in the staging table IMPORTCSV is marked for deletion.
+  **    Control returns to the caller with a value FALSE (failed).
+  **  If validation succeeded:
+  **    There are no rows in the IMPORTERROR table as all data was valid.
+  **    Rows are inserted into the DEMO table.
+  **    Data in the staging table IMPORTCSV is marked for deletion.
+  **    Control returns to the caller with a value TRUE (succeeded).
+  **    If an error occurs after validation:
+  **      A ROLLBACK occurs and the data rolls back to the state at the savepoint before data was 
+  **      loaded into the staging table.
+  **      An error is logged in APPLOG.
+  **      Control returns to the caller with a value FALSE (failed).
+  **  The calling application:
+  **    Issues a COMMIT 
+  **    Reports the status of the import process
   **
   ** CSV FILE
   ** Header 
@@ -125,7 +147,7 @@ CREATE OR REPLACE PACKAGE import AS
   ** 1. Copy a CSV format file in the format described below to the import directory DATA_HOME/received
   ** 2. Run import_order in the com APP_HOME/com directory.
   ** 3. Check the CSV file has been processed, it will be in either DATA_IN_PROCESSED or DATA_IN_ERROR
-  ** 4. Run SQl report import_errors to check the import error log.
+  ** 4. Run SQL report import_errors to check the import error log.
   ** 5. If the CSV data was processed OK, the data will be in the tables as described below.
   **
   ** The csv file containing the order data must be in the import directory DATA_IN.
@@ -151,6 +173,26 @@ CREATE OR REPLACE PACKAGE import AS
   **  5.3. Delete the data from the IMPORTCSV staging table.
   **  5.4. Move the CSV to the processed directory.
   **  5.5. Exit with a success status.
+  **
+  ** Commit - Transaction Processing:
+  **  The PL/SQL program does not commit data. This is handled by the calling application.
+  **  If validation failed:
+  **    Errors are logged in table IMPORTERROR pending commit. 
+  **    Data in the staging table IMPORTCSV is marked for deletion.
+  **    Control returns to the caller with a value FALSE (failed).
+  **  If validation succeeded:
+  **    There are no rows in the IMPORTERROR table as all data was valid.
+  **    Rows are inserted into the ORD and ITEM tables.
+  **    Data in the staging table IMPORTCSV is marked for deletion.
+  **    Control returns to the caller with a value TRUE (succeeded).
+  **    If an error occurs after validation:
+  **      A ROLLBACK occurs and the data rolls back to the state at the savepoint before data was 
+  **      loaded into the staging table.
+  **      An error is logged in APPLOG.
+  **      Control returns to the caller with a value FALSE (failed).
+  **  The calling application:
+  **    Issues a COMMIT 
+  **    Reports the status of the import process
   **
   ** CSV FILE
   ** Header 
@@ -209,7 +251,7 @@ CREATE OR REPLACE PACKAGE import AS
   ** 1. Copy a CSV format file in the format described below to the import directory DATA_HOME/received
   ** 2. Run import_stats in the com APP_HOME/com directory.
   ** 3. Check the CSV file has been processed, it will be in either DATA_IN_PROCESSED or DATA_IN_ERROR
-  ** 4. Run SQl report import_errors to check the import error log.
+  ** 4. Run SQL report import_errors to check the import error log.
   ** 5. If the CSV data was processed OK, the data will be in the tables as described below.
   **
   ** The csv file containing the data must be in the import directory DATA_IN.
@@ -235,6 +277,26 @@ CREATE OR REPLACE PACKAGE import AS
   **  5.3. Delete the data from the IMPORTCSV staging table.
   **  5.4. Move the CSV to the processed directory.
   **  5.5. Exit with a success status.
+  **
+  ** Commit - Transaction Processing:
+  **  The PL/SQL program does not commit data. This is handled by the calling application.
+  **  If validation failed:
+  **    Errors are logged in table IMPORTERROR pending commit. 
+  **    Data in the staging table IMPORTCSV is marked for deletion.
+  **    Control returns to the caller with a value FALSE (failed).
+  **  If validation succeeded:
+  **    There are no rows in the IMPORTERROR table as all data was valid.
+  **    Rows are inserted into the STATS_PROJECT and STATS_DATA tables.
+  **    Data in the staging table IMPORTCSV is marked for deletion.
+  **    Control returns to the caller with a value TRUE (succeeded).
+  **    If an error occurs after validation:
+  **      A ROLLBACK occurs and the data rolls back to the state at the savepoint before data was 
+  **      loaded into the staging table.
+  **      An error is logged in APPLOG.
+  **      Control returns to the caller with a value FALSE (failed).
+  **  The calling application:
+  **    Issues a COMMIT 
+  **    Reports the status of the import process
   **
   ** CSV file
   ** For each project, there will be a group of records consisting of a header
