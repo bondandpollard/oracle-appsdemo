@@ -67,33 +67,38 @@ CREATE OR REPLACE PACKAGE import AS
   ** demo_imp - Import data from a CSV file into the Demo table.
   **
   ** User Guide:
-  ** 1. Copy a CSV format file in the format described below to the import directory DATA_HOME/received
+  ** 1. Copy a CSV file in the format described below to the import directory DATA/RECEIVED
   ** 2. Run import_demo in the com APP_HOME/com directory.
-  ** 3. Check the CSV file has been processed, it will be in either DATA_IN_PROCESSED or DATA_IN_ERROR
+  ** 3. Check the CSV file has been processed, it will be in either DATA_IN/PROCESSED or DATA_IN/ERROR
   ** 4. Run SQL report import_errors to check the import error log.
   ** 5. If the CSV data was processed OK, the data will be in the tables as described below.
   **
-  ** This function:
+  ** This function operates as follows:
   **  1. Calls the package function UTIL_FILE.LOAD_CSV to load data from a CSV file into the 
   **     IMPORTCSV staging table. 
   **  2. The load_csv function returns an integer FILEID, which identifies the group of records loaded
   **     from the CSV file into the staging table.
-  **  2.1. If the file was not found, report error and stop processing.
+  **  2.1. If the file was not found, report error and return with status FALSE (failed).
   **  3. Validate the data in IMPORTCSV matching FILEID.
   **  3.1. Set field KEY_VALUE in IMPORTCSV to a value that identifies the data, in this 
   **       case it  will be the first field in the CSV file, ENTRY_DATE.
-  **  3.2. Record all validation errors found in the IMPORTERROR table, including the KEY_VALUE field.
+  **  3.2. Record all validation errors found in the IMPORTERROR table. Include KEY_VALUE field as a reference.
   **  4. If data fails validation:
   **  4.1. Delete the data from the IMPORTCSV staging table.
   **  4.2. Move the CSV file to the error directory.
-  **  4.3. Stop processing, exit with an error status.
+  **  4.3. Return with status FALSE (failed).
   **  5. If data passes validation:
   **  5.1. Insert data into the DEMO table.
   **  5.2. Delete old error messages from the IMPORTERROR table for the data successfully imported,
   **       using the KEY_VALUE column of IMPORTCSV.
   **  5.3. Delete the data from the IMPORTCSV staging table.
   **  5.4. Move the CSV to the processed directory.
-  **  5.5. Exit with a success status.
+  **  5.5. Return with status TRUE (succeeded).
+  **  5.6. If an error occurs during this process:
+  **  5.6.1. Rollback data to savepoint before data was loaded into staging table.
+  **  5.6.2. Log error in APPLOG, IMPORTERROR.
+  **  5.6.3. Move the CSV file to the error directory.
+  **  5.6.4. Return with status FALSE (failed).
   **
   **
   ** Commit - Transaction Processing:
@@ -108,7 +113,7 @@ CREATE OR REPLACE PACKAGE import AS
   **    Data in the staging table IMPORTCSV is marked for deletion.
   **    Control returns to the caller with a value TRUE (succeeded).
   **    If an error occurs after validation:
-  **      A ROLLBACK occurs and the data rolls back to the state at the savepoint before data was 
+  **      A ROLLBACK is issued and the data rolls back to the state at the savepoint before data was 
   **      loaded into the staging table.
   **      An error is logged in APPLOG.
   **      Control returns to the caller with a value FALSE (failed).
@@ -144,35 +149,40 @@ CREATE OR REPLACE PACKAGE import AS
   ** ord_imp - Import order data from a CSV file into the ORD and ITEM tables
   **
   ** User Guide:
-  ** 1. Copy a CSV format file in the format described below to the import directory DATA_HOME/received
+  ** 1. Copy a CSV file in the format described below to the import directory DATA/RECEIVED
   ** 2. Run import_order in the com APP_HOME/com directory.
-  ** 3. Check the CSV file has been processed, it will be in either DATA_IN_PROCESSED or DATA_IN_ERROR
+  ** 3. Check the CSV file has been processed, it will be in either DATA_IN/PROCESSED or DATA_IN/ERROR
   ** 4. Run SQL report import_errors to check the import error log.
   ** 5. If the CSV data was processed OK, the data will be in the tables as described below.
   **
   ** The csv file containing the order data must be in the import directory DATA_IN.
   **
-  ** This function:
+  ** This function operates as follows:
   **  1. Calls the package function UTIL_FILE.LOAD_CSV to load order data from a CSV file into the 
   **     IMPORTCSV staging table. 
   **  2. The load_csv function returns an integer FILEID, which identifies the group of records loaded
   **     from the CSV file into the staging table.
-  **  2.1. If the file was not found, report error and stop processing.
+  **  2.1. If the file was not found, report error and return with status FALSE (failed).
   **  3. Validate the data in IMPORTCSV matching FILEID.
   **  3.1. Set field KEY_VALUE in IMPORTCSV to a unique value, that identifies the order, in this 
   **       case it  will be the first field in the CSV file, ORDREF
-  **  3.2. Record all validation errors found in the IMPORTERROR table, including the KEY_VALUE field.
+  **  3.2. Record all validation errors found in the IMPORTERROR table. Include KEY_VALUE field as a reference.
   **  4. If data fails validation:
   **  4.1. Delete the data from the IMPORTCSV staging table.
   **  4.2. Move the CSV file to the error directory.
-  **  4.3. Stop processing, exit with an error status.
+  **  4.3. Return with status FALSE (failed).
   **  5. If data passes validation:
   **  5.1. Insert data into the ORD and ITEM tables.
   **  5.2. Delete old error messages from the IMPORTERROR table for the orders successfully imported,
   **       using the KEY_VALUE column of IMPORTCSV.
   **  5.3. Delete the data from the IMPORTCSV staging table.
   **  5.4. Move the CSV to the processed directory.
-  **  5.5. Exit with a success status.
+  **  5.5. Return with status TRUE (succeeded).
+  **  5.6. If an error occurs during this process:
+  **  5.6.1. Rollback data to savepoint before data was loaded into staging table.
+  **  5.6.2. Log error in APPLOG, IMPORTERROR.
+  **  5.6.3. Move the CSV file to the error directory.
+  **  5.6.4. Return with status FALSE (failed).
   **
   ** Commit - Transaction Processing:
   **  The PL/SQL program does not commit data. This is handled by the calling application.
@@ -186,7 +196,7 @@ CREATE OR REPLACE PACKAGE import AS
   **    Data in the staging table IMPORTCSV is marked for deletion.
   **    Control returns to the caller with a value TRUE (succeeded).
   **    If an error occurs after validation:
-  **      A ROLLBACK occurs and the data rolls back to the state at the savepoint before data was 
+  **      A ROLLBACK is issued and the data rolls back to the state at the savepoint before data was 
   **      loaded into the staging table.
   **      An error is logged in APPLOG.
   **      Control returns to the caller with a value FALSE (failed).
@@ -248,35 +258,40 @@ CREATE OR REPLACE PACKAGE import AS
   ** stats_imp - Import data from a CSV file into the STATS_DATA table.
   **
   ** User Guide:
-  ** 1. Copy a CSV format file in the format described below to the import directory DATA_HOME/received
+  ** 1. Copy a CSV file in the format described below to the import directory DATA/RECEIVED
   ** 2. Run import_stats in the com APP_HOME/com directory.
-  ** 3. Check the CSV file has been processed, it will be in either DATA_IN_PROCESSED or DATA_IN_ERROR
+  ** 3. Check the CSV file has been processed, it will be in either DATA_IN/PROCESSED or DATA_IN/ERROR
   ** 4. Run SQL report import_errors to check the import error log.
   ** 5. If the CSV data was processed OK, the data will be in the tables as described below.
   **
   ** The csv file containing the data must be in the import directory DATA_IN.
   **
-  ** This function:
+  ** This function operates as follows:
   **  1. Calls the package function UTIL_FILE.LOAD_CSV to load data from a CSV file into the 
   **     IMPORTCSV staging table. 
   **  2. The load_csv function returns an integer FILEID, which identifies the group of records loaded
   **     from the CSV file into the staging table.
-  **  2.1. If the file was not found, report error and stop processing.
+  **  2.1. If the file was not found, report error and return with status FALSE (failed).
   **  3. Validate the data in IMPORTCSV matching FILEID.
   **  3.1. Set field KEY_VALUE in IMPORTCSV to a unique value, that identifies the data, in this 
   **       case it  will be the CSV header record field Project Description.
-  **  3.2. Record all validation errors found in the IMPORTERROR table, including the KEY_VALUE field.
+  **  3.2. Record all validation errors found in the IMPORTERROR table. Include KEY_VALUE field as a reference.
   **  4. If data fails validation:
   **  4.1. Delete the data from the IMPORTCSV staging table.
   **  4.2. Move the CSV file to the error directory.
-  **  4.3. Stop processing, exit with an error status.
+  **  4.3. Return with status FALSE (failed).
   **  5. If data passes validation:
   **  5.1. Insert data into the STATS_PROJECT and STATS_DATA tables.
   **  5.2. Delete old error messages from the IMPORTERROR table for the data successfully imported,
   **       using the KEY_VALUE column of IMPORTCSV.
   **  5.3. Delete the data from the IMPORTCSV staging table.
   **  5.4. Move the CSV to the processed directory.
-  **  5.5. Exit with a success status.
+  **  5.5. Return with status TRUE (succeeded).
+  **  5.6. If an error occurs during this process:
+  **  5.6.1. Rollback data to savepoint before data was loaded into staging table.
+  **  5.6.2. Log error in APPLOG, IMPORTERROR.
+  **  5.6.3. Move the CSV file to the error directory.
+  **  5.6.4. Return with status FALSE (failed).
   **
   ** Commit - Transaction Processing:
   **  The PL/SQL program does not commit data. This is handled by the calling application.
@@ -290,7 +305,7 @@ CREATE OR REPLACE PACKAGE import AS
   **    Data in the staging table IMPORTCSV is marked for deletion.
   **    Control returns to the caller with a value TRUE (succeeded).
   **    If an error occurs after validation:
-  **      A ROLLBACK occurs and the data rolls back to the state at the savepoint before data was 
+  **      A ROLLBACK is issued and the data rolls back to the state at the savepoint before data was 
   **      loaded into the staging table.
   **      An error is logged in APPLOG.
   **      Control returns to the caller with a value FALSE (failed).
