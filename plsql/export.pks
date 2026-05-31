@@ -18,6 +18,7 @@ CREATE OR REPLACE PACKAGE export AS
   **                                      gives compile error PLS-00225: subprogram or cursor 'STATS' reference is out of scope
   ** 20/05/2026       Ian Bond            Fix time format HH24MI not HH24MM. Add function project_stats_data.
   **                                      demo and orders functions amended to return filename.
+  ** 31/05/20026      Ian Bond            Amend project_stats_data: Remove quote delimiters from CSV fields.
   */
   
  

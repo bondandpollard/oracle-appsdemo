@@ -5,7 +5,7 @@
 ** NAME   : stats_data_export.sql
 **
 ** DESCRIPTION
-**   TEST: Call a PL/SQL package function to export statistics data to a CSV file.
+**   Call a PL/SQL package function to export statistics data to a CSV file.
 
 ** 
 **------------------------------------------------------------------------------------------------------------------------------

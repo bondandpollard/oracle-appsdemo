@@ -288,7 +288,7 @@ CREATE OR REPLACE PACKAGE BODY export AS
     l_filename plsql_constants.filenamelength_t;
     l_rec plsql_constants.maxvarchar2_t;
     l_debug_msg applog.message%TYPE;
-    l_debug_module applog.program_name%TYPE := 'EXPORT.PROJECT_STATS';
+    l_debug_module applog.program_name%TYPE := 'EXPORT.PROJECT_STATS_DATA';
     l_debug_mode VARCHAR2(1) := 'B';
   BEGIN
     SELECT NVL(description,'No Project Description')
@@ -303,11 +303,11 @@ CREATE OR REPLACE PACKAGE BODY export AS
     l_file_id := utl_file.fopen(gc_export_directory, l_filename, 'W');
     
     -- Write CSV header (Title)
-    utl_file.put_line(l_file_id,'"PROJECT"'||gc_delim||'"'||l_proj_desc||'"');
+    utl_file.put_line(l_file_id,'PROJECT'||gc_delim||l_proj_desc);
     
     -- Write CSV body
     FOR rec_stats_data IN stats_data_cur(p_project_id) LOOP
-      utl_file.put_line(l_file_id,'"'||rec_stats_data.data_desc||'"'||gc_delim||rec_stats_data.stats_value);
+      utl_file.put_line(l_file_id,rec_stats_data.data_desc||gc_delim||rec_stats_data.stats_value);
     END LOOP;
   
     -- Close CSV file
