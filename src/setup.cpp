@@ -1,18 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <windows.h>
-#include <shlwapi.h>      // For PathCombine()
-#include <shlobj.h>       // For SHCreateDirectoryEx()
-#include <iostream>
-#include <objbase.h>      // For `CoInitialize`
-#include <initguid.h>     // Required for `IShellLink`
-#include <shobjidl.h>     // Required for `IShellLink`
-#include <ctype.h>        // Required for `toupper()`
-#include <ctime>
-
 /*
   Copyright (c) 2023 Bond & Pollard Ltd. All rights reserved.
   This software is free to use and modify at your own risk.
@@ -53,7 +38,21 @@
                                             there.
   08/05/2026    1.02        IAB             Add date and time stamp to log.
   09/05/2026    1.03        IAB             Tidy up logging, include user responses.
- */
+*/
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <windows.h>
+#include <shlwapi.h>      // For PathCombine()
+#include <shlobj.h>       // For SHCreateDirectoryEx()
+#include <iostream>
+#include <objbase.h>      // For `CoInitialize`
+#include <initguid.h>     // Required for `IShellLink`
+#include <shobjidl.h>     // Required for `IShellLink`
+#include <ctype.h>        // Required for `toupper()`
+#include <ctime>
  
 // Log message, optionally display to screen 
 static void log_event_v(const char *format, bool display, va_list args) {
