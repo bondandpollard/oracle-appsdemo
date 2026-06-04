@@ -328,3 +328,49 @@ Setup Log                            : D:\users\ianbo\Documents\Business\Bond-an
 
 
 Installation complete. Press RETURN to exit.
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Starting setup at Thu Jun 04 10:50:07 2026
+
+IMPORTANT: You must install Oracle before running this setup.
+Exiting setup before entering parameters.
+********************************************
+*                                          *
+*      ORACLE DEMO APPLICATION SETUP       *
+*                                          *
+*      (c) Bond & Pollard Ltd 2026         *
+*                                          *
+********************************************
+
+PREREQUISITES
+You must install Oracle first
+
+INSTRUCTIONS
+This program will install the Oracle demo application.
+You will be prompted to enter the parameters required to configure the demo app.
+Press ENTER to accept the default values, or enter your own preferences.
+Check the log for errors.
+
+Setup is running from source directory: D:\users\ianbo\Documents\Business\Bond-and-Pollard\Admin\IT\source-repository\oracle-appsdemo
+
+Starting setup at Thu Jun 04 11:14:20 2026
+
+IMPORTANT: You must install Oracle before running this setup.
+Exiting setup before entering parameters.
